@@ -9,7 +9,6 @@ namespace Jellyfish
         public PropertyAttribute([CallerMemberName] string propertyName = null)
         {
             PropertyName = propertyName;
-            Console.WriteLine(PropertyName);
         }
 
         public string PropertyName { get; set; }

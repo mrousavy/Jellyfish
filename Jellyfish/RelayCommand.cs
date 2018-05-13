@@ -45,10 +45,7 @@ namespace Jellyfish
         /// <returns>If this command can execute with this parameter</returns>
         public bool CanExecute(object o)
         {
-            if (o is T parameter)
-            {
-                return _canExecute?.Invoke(parameter) ?? false;
-            }
+            if (o is T parameter) return _canExecute?.Invoke(parameter) ?? false;
             return false;
         }
 
@@ -59,10 +56,7 @@ namespace Jellyfish
         /// <param name="o">The parameter object</param>
         public void Execute(object o)
         {
-            if (o is T parameter)
-            {
-                _execute?.Invoke(parameter);
-            }
+            if (o is T parameter) _execute?.Invoke(parameter);
         }
 
         /// <summary>
@@ -80,22 +74,22 @@ namespace Jellyfish
     {
         /// <inheritdoc />
         /// <summary>
-        ///     Initialize a new instance of the <see cref="T:Jellyfish.RelayCommand" />, a <see cref="T:System.Windows.Input.ICommand" /> implementation,
+        ///     Initialize a new instance of the <see cref="T:Jellyfish.RelayCommand" />, a
+        ///     <see cref="T:System.Windows.Input.ICommand" /> implementation,
         ///     where <see cref="!:CanExecute" /> is always true
         /// </summary>
         /// <param name="execute">The callback to execute on command execution</param>
         public RelayCommand(Action<object> execute) : base(execute)
-        {
-        }
+        { }
 
         /// <inheritdoc />
         /// <summary>
-        ///     Initialize a new instance of the <see cref="T:Jellyfish.RelayCommand" />, a <see cref="T:System.Windows.Input.ICommand" /> implementation
+        ///     Initialize a new instance of the <see cref="T:Jellyfish.RelayCommand" />, a
+        ///     <see cref="T:System.Windows.Input.ICommand" /> implementation
         /// </summary>
         /// <param name="execute">The callback to execute on command execution</param>
         /// <param name="canExecute">The callback to check if this command can execute</param>
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : base(execute, canExecute)
-        {
-        }
+        { }
     }
 }

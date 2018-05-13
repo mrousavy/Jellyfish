@@ -17,8 +17,7 @@ namespace Jellyfish.Validation
         {
             if (value is string s)
                 return new ValidationResult(!string.IsNullOrWhiteSpace(s), InvalidMessage);
-            else
-                return new ValidationResult(false, InvalidTypeMessage);
+            return new ValidationResult(false, InvalidTypeMessage);
         }
     }
 }
