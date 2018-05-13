@@ -17,7 +17,7 @@ build:
   verbosity: minimal
 after_build:
 - cmd: >-
-    dotnet pack Jellyfish\Jellyfish.csproj
+    nuget pack Jellyfish\Jellyfish.csproj
 artifacts:
   - path: Jellyfish\bin\$(configuration)\*.nupkg
     name: NupkgArtifact
