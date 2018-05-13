@@ -19,7 +19,7 @@ after_build:
 - cmd: >-
     nuget pack Jellyfish\Jellyfish.csproj
 artifacts:
-  - path: Jellyfish\bin\$(configuration)\*.nupkg
+  - path: *.nupkg
     name: NupkgArtifact
 deploy:
   provider: NuGet
