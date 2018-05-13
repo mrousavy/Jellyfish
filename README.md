@@ -18,3 +18,107 @@ Jellyfish is on [NuGet](https://www.nuget.org/packages/Jellyfish/):
 ```pm
 PM> Install-Package Jellyfish
 ```
+
+
+# Usage
+
+## View Models
+Every ViewModel needs to implement the [`ViewModelBase`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModelBase.cs) class:
+
+```cs
+public class LoginViewModel : ViewModelBase
+{
+    ...
+}
+```
+
+Using this base class' [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModelBase.cs#L37) function allows for quick notifying properties:
+
+```cs
+private string _username;
+public string Username
+{
+    get => _username;
+    set => Set(ref _username, value);
+}
+```
+
+> If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/blob/master/NPPTemplate.md).
+
+Or even cleaner (work in progress):
+```cs
+[Property]
+public string Username { get; set; }
+```
+
+## Commands
+The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
+
+Allowing any parameter with [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx) always true:
+```cs
+ICommand LoginCommand = new RelayCommand(LoginAction);
+// ...
+void LoginAction(object parameter)
+{
+    // Login button clicked
+}
+```
+
+Allowing only parameters of type `MyObject`:
+```cs
+ICommand LoginCommand = new RelayCommand<MyObject>(LoginAction);
+// ...
+void LoginAction(MyObject parameter)
+{
+    // Login button clicked
+}
+```
+
+Custom [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx):
+```cs
+ICommand LoginCommand = new RelayCommand<MyObject>(LoginAction, CanExecute);
+// ...
+bool CanExecute(MyObject parameter)
+{
+    return parameter.SomeValue == true;
+}
+```
+> Be sure to call [`RaiseCanExecuteChanged`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs#L65)
+
+
+# Results
+> Clean code.
+```cs
+public class LoginViewModel : ViewModelBase
+{
+    [Property]
+    public string Username { get; set; }
+}
+```
+.. instead of
+
+```cs
+public class LoginViewModel : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    
+    private string _username;
+    public string Username
+    { 
+        get
+	{
+	    return _username;
+	}
+	set
+	{
+	    _username = value;
+	    OnPropertyChanged("Username");
+	}
+    }
+}
+```
