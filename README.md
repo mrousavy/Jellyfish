@@ -85,6 +85,26 @@ bool CanExecute(MyObject parameter)
 ```
 > Be sure to call [`RaiseCanExecuteChanged`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs#L65)
 
+## Enums
+The enum binding source extension allows for better binding support on enums.
+
+Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
+```xaml
+<ComboBox ItemsSource="{Binding Source={jellyfish:EnumBindingSource {x:Type local:Status}}}"
+	  SelectedItem="{Binding SelectedStatus}" />
+```
+
+It even allows [Description](https://msdn.microsoft.com/en-us/library/system.componentmodel.descriptionattribute(v=vs.110).aspx) support:
+```cs
+[TypeConverter(typeof(EnumDescriptionTypeConverter))]
+enum Status
+{
+    [Description("Everything went fine")]
+    Ok,
+    [Description("Everything went horribly wrong")]
+    Error
+}
+```
 
 # Results
 > Clean code.
