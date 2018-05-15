@@ -106,6 +106,57 @@ enum Status
 }
 ```
 
+## Preferences
+An abstract class definition for any application preferences.
+
+Create a new class that will hold your app preferences which inherits from the [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs) class:
+```cs
+public class DemoPreferences : Preferences
+{
+    public DemoPreferences(string path) : base(path)
+    { }
+
+    public int SomeInt { get; set; } = 400;
+    public string SomeString { get; set; } = "test string";
+    public bool SomeBool { get; set; } = false;
+
+    public object SomeObject { get; set; } = new
+    {
+        Name = "Marc",
+        IsValid = true
+    };
+}
+```
+
+Loading and saving is pretty trivial with the `Preferences` base:
+
+* Creating new Preferences
+```cs
+var prefs = new DemoPreferences(Preferences.RecommendedPath);
+prefs.Save();
+```
+
+* Loading Preferences
+```cs
+var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
+prefsLoaded.Save();
+```
+> Or `Preferences.LoadOrDefault`
+
+The generated `config.json` file looks like this:
+```json
+{  
+   "SomeInt":400,
+   "SomeString":"test string",
+   "SomeBool":false,
+   "SomeObject":{  
+      "Name":"Marc",
+      "IsValid":true
+   }
+}
+```
+
+
 # Results
 > Clean code.
 ```cs

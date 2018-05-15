@@ -26,7 +26,7 @@ namespace Jellyfish
         /// </summary>
         public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
 
-        private string Path { get; }
+        private string Path { get; set; }
 
         /// <summary>
         ///     Initialize the Preferences construct
@@ -56,7 +56,26 @@ namespace Jellyfish
                 throw new PreferencesFileNotFoundException(path);
 
             string json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<TPreferences>(json);
+            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
+            preferences.Path = path;
+            return preferences;
+        }
+
+        /// <summary>
+        ///     Load a preferences instance from the given file or return null if not found
+        /// </summary>
+        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences"/>)</typeparam>
+        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath"/>)</param>
+        /// <returns>A deserialized instance of the preferences</returns>
+        public static TPreferences LoadOrDefault<TPreferences>(string path) where TPreferences : Preferences
+        {
+            if (!File.Exists(path))
+                return default(TPreferences);
+
+            string json = File.ReadAllText(path);
+            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
+            preferences.Path = path;
+            return preferences;
         }
 
         /// <summary>
@@ -64,6 +83,7 @@ namespace Jellyfish
         /// </summary>
         public void Save()
         {
+            CreateDirectory();
             string json = JsonConvert.SerializeObject(this);
             File.WriteAllText(Path, json);
         }
@@ -73,6 +93,7 @@ namespace Jellyfish
         /// </summary>
         public async Task SaveAsync()
         {
+            CreateDirectory();
             string json = JsonConvert.SerializeObject(this);
             var content = Encoding.Unicode.GetBytes(json);
 
@@ -82,11 +103,7 @@ namespace Jellyfish
             }
         }
 
-        /// <summary>
-        ///     Checks if the Preferences file exists and creates it if it doesn't
-        /// </summary>
-        /// <returns>Whether the file was created or not</returns>
-        public bool EnsureExists()
+        private void CreateDirectory()
         {
             var file = new FileInfo(Path);
             var directory = file.Directory;
@@ -98,12 +115,6 @@ namespace Jellyfish
                     directory.Create();
                 }
             }
-
-            if (file.Exists)
-                return false;
-
-            file.Create().Dispose();
-            return true;
         }
     }
 }
