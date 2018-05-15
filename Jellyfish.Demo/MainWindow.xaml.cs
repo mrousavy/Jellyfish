@@ -14,6 +14,12 @@ namespace Jellyfish.Demo
         {
             InitializeComponent();
             var timer = new Timer(TimerCallback);
+
+            var prefs = new DemoPreferences(Preferences.RecommendedPath);
+            prefs.Save();
+
+            var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
+            prefsLoaded.Save();
         }
 
         private void TimerCallback(object state)
