@@ -72,7 +72,7 @@
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Validation\EmailValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
-    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ObservableObject.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

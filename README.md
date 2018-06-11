@@ -29,16 +29,16 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 # Usage
 
 ## View Models
-Every ViewModel needs to implement the [`ViewModelBase`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModelBase.cs) class:
+Every ViewModel needs to implement the [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) class:
 
 ```cs
-public class LoginViewModel : ViewModelBase
+public class LoginViewModel : ObservableObject
 {
     ...
 }
 ```
 
-Using this base class' [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModelBase.cs#L37) function allows for quick notifying properties:
+Using this base class' [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs#L37) function allows for quick notifying properties:
 
 ```cs
 private string _username;
@@ -151,11 +151,11 @@ prefsLoaded.Save();
 
 The generated `config.json` file looks like this:
 ```json
-{  
+{
    "SomeInt":400,
    "SomeString":"test string",
    "SomeBool":false,
-   "SomeObject":{  
+   "SomeObject":{
       "Name":"Marc",
       "IsValid":true
    }
@@ -166,7 +166,7 @@ The generated `config.json` file looks like this:
 # Results
 > Clean code.
 ```cs
-public class LoginViewModel : ViewModelBase
+public class LoginViewModel : ObservableObject
 {
     [Property]
     public string Username { get; set; }
@@ -183,10 +183,10 @@ public class LoginViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-    
+
     private string _username;
     public string Username
-    { 
+    {
         get
 	{
 	    return _username;

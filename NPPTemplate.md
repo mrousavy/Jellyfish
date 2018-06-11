@@ -20,8 +20,8 @@ public $TYPE$ $PROPERTY$
     * **TYPE:** _Choose Macro_
     * **FIELDNAME:** _Suggest name for a variable_
     * **PROPERTY:** _Value of FIELDNAME with the first letter in upper case_
-    
+
     ![NPP Template](https://raw.githubusercontent.com/mrousavy/Jellyfish/master/Images/template.png)
 6. Save to apply
 
-In any `.cs` file you can write `npp` to insert the template at the current position (needs to be a class inheriting `ViewModelBase` to work)
+In any `.cs` file you can write `npp` to insert the template at the current position (needs to be a class inheriting `ObservableObject` to work)

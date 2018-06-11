@@ -9,7 +9,7 @@ namespace Jellyfish
     ///     The observable base class for every view model providing a rich
     ///     <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> wrapper
     /// </summary>
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         /// <inheritdoc />
         /// <summary>
