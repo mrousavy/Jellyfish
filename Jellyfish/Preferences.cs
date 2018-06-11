@@ -26,6 +26,7 @@ namespace Jellyfish
         /// </summary>
         public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
 
+        [JsonIgnore]
         private string Path { get; set; }
 
         /// <summary>
