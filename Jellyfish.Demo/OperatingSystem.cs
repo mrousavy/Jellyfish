@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel;
+using Jellyfish.Extensions;
 
 namespace Jellyfish.Demo
 {
+    [TypeConverter(typeof(EnumDescriptionTypeConverter))]
     public enum OperatingSystem
     {
         [Description("Linux")]
