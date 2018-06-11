@@ -19,6 +19,12 @@ Jellyfish is on [NuGet](https://www.nuget.org/packages/Jellyfish/):
 PM> Install-Package Jellyfish
 ```
 
+Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net/), [Prism](https://github.com/PrismLibrary/Prism) or [Caliburn.Micro](https://caliburnmicro.com/), this framework is
+* as light as possible
+* using modern best-practices
+* using modern code style
+* exactly fitting my needs
+
 
 # Usage
 
