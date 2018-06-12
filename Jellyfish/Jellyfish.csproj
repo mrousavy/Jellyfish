@@ -53,7 +53,14 @@
     <Compile Include="Exceptions\PreferencesFileNotFoundException.cs" />
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="Forms\CheckInputAttribute.cs" />
+    <Compile Include="Forms\DoubleInputAttribute.cs" />
+    <Compile Include="Forms\PasswordInputAttribute.cs" />
+    <Compile Include="Forms\ToggleInputAttribute.cs" />
+    <Compile Include="Forms\DateInputAttribute.cs" />
     <Compile Include="Forms\IFormInput.cs" />
+    <Compile Include="Forms\IntInputAttribute.cs" />
+    <Compile Include="Forms\TextInputAttribute.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
