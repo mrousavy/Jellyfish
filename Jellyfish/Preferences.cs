@@ -1,10 +1,10 @@
-﻿using Jellyfish.Exceptions;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Jellyfish.Exceptions;
+using Newtonsoft.Json;
 
 namespace Jellyfish
 {
@@ -14,25 +14,14 @@ namespace Jellyfish
     public abstract class Preferences
     {
         /// <summary>
-        ///     Path to the Application Data directory (%AppData%)
+        ///     The size of the buffer for the filestream in bytes
         /// </summary>
-        public static string AppData => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        /// <summary>
-        ///     Name of the calling executable
-        /// </summary>
-        public static string ExecutableName => Process.GetCurrentProcess().ProcessName;
-        /// <summary>
-        ///     The recommended path of the Preferences file (<c>%AppData%\[app name]\config.json</c>)
-        /// </summary>
-        public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
-
-        [JsonIgnore]
-        private string Path { get; set; }
+        public static int WriteBufferSize = 4096;
 
         /// <summary>
         ///     Initialize the Preferences construct
         /// </summary>
-        /// <param name="path">The Path to the preferences file (See <see cref="RecommendedPath"/></param>
+        /// <param name="path">The Path to the preferences file (See <see cref="RecommendedPath" /></param>
         protected Preferences(string path)
         {
             Path = path;
@@ -46,10 +35,28 @@ namespace Jellyfish
         }
 
         /// <summary>
+        ///     Path to the Application Data directory (%AppData%)
+        /// </summary>
+        public static string AppData => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        /// <summary>
+        ///     Name of the calling executable
+        /// </summary>
+        public static string ExecutableName => Process.GetCurrentProcess().ProcessName;
+
+        /// <summary>
+        ///     The recommended path of the Preferences file (<c>%AppData%\[app name]\config.json</c>)
+        /// </summary>
+        public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
+
+        [JsonIgnore]
+        private string Path { get; set; }
+
+        /// <summary>
         ///     Load a preferences instance from the given file
         /// </summary>
-        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences"/>)</typeparam>
-        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath"/>)</param>
+        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
+        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath" />)</param>
         /// <returns>A deserialized instance of the preferences</returns>
         public static TPreferences Load<TPreferences>(string path) where TPreferences : Preferences
         {
@@ -65,8 +72,8 @@ namespace Jellyfish
         /// <summary>
         ///     Load a preferences instance from the given file or return null if not found
         /// </summary>
-        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences"/>)</typeparam>
-        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath"/>)</param>
+        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
+        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath" />)</param>
         /// <returns>A deserialized instance of the preferences</returns>
         public static TPreferences LoadOrDefault<TPreferences>(string path) where TPreferences : Preferences
         {
@@ -80,7 +87,7 @@ namespace Jellyfish
         }
 
         /// <summary>
-        ///     Serialize and save the preferences instance to the preferences file (<see cref="Path"/>)
+        ///     Serialize and save the preferences instance to the preferences file (<see cref="Path" />)
         /// </summary>
         public void Save()
         {
@@ -90,7 +97,7 @@ namespace Jellyfish
         }
 
         /// <summary>
-        ///     Serialize and save the preferences instance to the preferences file (<see cref="Path"/>) asynchronous
+        ///     Serialize and save the preferences instance to the preferences file (<see cref="Path" />) asynchronous
         /// </summary>
         public async Task SaveAsync()
         {
@@ -98,7 +105,8 @@ namespace Jellyfish
             string json = JsonConvert.SerializeObject(this);
             var content = Encoding.Unicode.GetBytes(json);
 
-            using (var sourceStream = new FileStream(Path, FileMode.Append, FileAccess.Write, FileShare.None, 4096, true))
+            using (var sourceStream = new FileStream(Path, FileMode.Append, FileAccess.Write, FileShare.None,
+                WriteBufferSize, true))
             {
                 await sourceStream.WriteAsync(content, 0, content.Length);
             }
@@ -110,12 +118,8 @@ namespace Jellyfish
             var directory = file.Directory;
 
             if (directory != null)
-            {
                 if (!directory.Exists)
-                {
                     directory.Create();
-                }
-            }
         }
     }
 }

@@ -5,7 +5,6 @@ namespace Jellyfish.Exceptions
     public class PreferencesFileNotFoundException : Exception
     {
         private static readonly string Nl = Environment.NewLine;
-        public string Path { get; }
 
         public PreferencesFileNotFoundException(string path) :
             base($"The Preferences file could not be found!{Nl}" +
@@ -14,5 +13,7 @@ namespace Jellyfish.Exceptions
         {
             Path = path;
         }
+
+        public string Path { get; }
     }
 }

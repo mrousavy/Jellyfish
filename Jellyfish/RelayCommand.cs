@@ -80,7 +80,8 @@ namespace Jellyfish
         /// </summary>
         /// <param name="execute">The callback to execute on command execution</param>
         public RelayCommand(Action<object> execute) : base(execute)
-        { }
+        {
+        }
 
         /// <inheritdoc />
         /// <summary>
@@ -90,6 +91,7 @@ namespace Jellyfish
         /// <param name="execute">The callback to execute on command execution</param>
         /// <param name="canExecute">The callback to check if this command can execute</param>
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : base(execute, canExecute)
-        { }
+        {
+        }
     }
 }

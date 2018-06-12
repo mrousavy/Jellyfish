@@ -4,7 +4,7 @@ using System.Threading;
 namespace Jellyfish.Demo
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow
     {
@@ -22,13 +22,13 @@ namespace Jellyfish.Demo
             prefsLoaded.Save();
         }
 
+        [Property]
+        public string TestProperty { get; set; }
+
         private void TimerCallback(object state)
         {
             int random = _random.Next(1);
             TestProperty = random == 0 ? "zero" : "one";
         }
-
-        [Property]
-        public string TestProperty { get; set; }
     }
 }

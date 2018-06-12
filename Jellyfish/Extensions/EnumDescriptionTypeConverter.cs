@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace Jellyfish.Extensions
 {
@@ -11,15 +12,17 @@ namespace Jellyfish.Extensions
         {
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             if (destinationType != typeof(string)) return base.ConvertTo(context, culture, value, destinationType);
             if (value == null) return string.Empty;
             var fi = value.GetType().GetField(value.ToString());
             if (fi == null) return string.Empty;
             var attributes = (DescriptionAttribute[]) fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            return ((attributes.Length > 0) && (!string.IsNullOrEmpty(attributes[0].Description))) ? attributes[0].Description : value.ToString();
-
+            return attributes.Length > 0 && !string.IsNullOrEmpty(attributes[0].Description)
+                ? attributes[0].Description
+                : value.ToString();
         }
     }
 }

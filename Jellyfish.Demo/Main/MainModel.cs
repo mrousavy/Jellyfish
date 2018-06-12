@@ -1,5 +1,4 @@
-﻿
-namespace Jellyfish.Demo.Main
+﻿namespace Jellyfish.Demo.Main
 {
     public class MainModel
     {
