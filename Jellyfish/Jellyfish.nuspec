@@ -3,13 +3,13 @@
   <metadata>
     <id>Jellyfish</id>
     <version>1.0.1</version>
+    <title>Jellyfish</title>
     <authors>mrousavy</authors>
     <owners>mrousavy</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An incredibly light and type safe MVVM library for .NET WPF</description>
     <releaseNotes>Performance improvements, Code cleanup, Properties parameters</releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <title>Jellyfish</title>
     <summary>An incredibly light and type safe MVVM library for .NET WPF</summary>
     <projectUrl>https://github.com/mrousavy/Jellyfish</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/mrousavy/Jellyfish/master/Images/jellyfish.png</iconUrl>
