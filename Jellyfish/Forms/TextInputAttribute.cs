@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 
 namespace Jellyfish.Forms
 {
@@ -21,6 +20,14 @@ namespace Jellyfish.Forms
         {
         }
 
+        /// <summary>
+        ///     The formatter to use for custom formatting the field
+        /// </summary>
+        /// <example>
+        ///     You can define a formatter to display hours like this:
+        /// 
+        ///     var formatter = val => $"{val}h";
+        /// </example>
         public Func<string, string> Formatter { get; set; }
         public string Text { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Jellyfish.Forms
 {
@@ -8,19 +9,27 @@ namespace Jellyfish.Forms
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class DoubleInputAttribute : Attribute, IFormInput<double>
     {
-        public DoubleInputAttribute(string text, Func<double, double> formatter)
+        public DoubleInputAttribute(string text, Func<double, string> formatter)
         {
             Text = text;
             Formatter = formatter;
         }
-        public DoubleInputAttribute(string text) : this(text, t => t)
+        public DoubleInputAttribute(string text) : this(text, t => t.ToString(CultureInfo.InvariantCulture))
         {
         }
         public DoubleInputAttribute() : this("")
         {
         }
 
-        public Func<double, double> Formatter { get; set; }
+        /// <summary>
+        ///     The formatter to use for custom formatting the field
+        /// </summary>
+        /// <example>
+        ///     You can define a formatter to display hours like this:
+        /// 
+        ///     var formatter = val => $"{val}h";
+        /// </example>
+        public Func<double, string> Formatter { get; set; }
         public string Text { get; set; }
     }
 }

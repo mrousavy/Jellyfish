@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security;
-using System.Windows.Controls;
 
 namespace Jellyfish.Forms
 {
@@ -18,7 +17,6 @@ namespace Jellyfish.Forms
         {
         }
 
-        public Func<SecureString, SecureString> Formatter { get; set; }
         public string Text { get; set; }
     }
 }

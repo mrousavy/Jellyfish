@@ -9,19 +9,14 @@ namespace Jellyfish.Forms
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class ToggleInputAttribute : Attribute, IFormInput<bool>
     {
-        public ToggleInputAttribute(string text, Func<bool, bool> formatter)
+        public ToggleInputAttribute(string text)
         {
             Text = text;
-            Formatter = formatter;
-        }
-        public ToggleInputAttribute(string text) : this(text, t => t)
-        {
         }
         public ToggleInputAttribute() : this("")
         {
         }
 
-        public Func<bool, bool> Formatter { get; set; }
         public string Text { get; set; }
     }
 }

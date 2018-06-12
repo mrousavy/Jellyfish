@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 
 namespace Jellyfish.Forms
 {
@@ -9,12 +8,7 @@ namespace Jellyfish.Forms
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CheckInputAttribute : Attribute, IFormInput<bool>
     {
-        public CheckInputAttribute(string text, Func<bool, bool> formatter)
-        {
-            Text = text;
-            Formatter = formatter;
-        }
-        public CheckInputAttribute(string text) : this(text, t => t)
+        public CheckInputAttribute(string text)
         {
             Text = text;
         }
@@ -22,7 +16,6 @@ namespace Jellyfish.Forms
         {
         }
 
-        public Func<bool, bool> Formatter { get; set; }
         public string Text { get; set; }
     }
 }

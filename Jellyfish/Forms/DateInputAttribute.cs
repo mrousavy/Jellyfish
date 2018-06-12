@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 
 namespace Jellyfish.Forms
 {
@@ -9,19 +8,14 @@ namespace Jellyfish.Forms
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class DateInputAttribute : Attribute, IFormInput<DateTime>
     {
-        public DateInputAttribute(string text, Func<DateTime, DateTime> formatter)
+        public DateInputAttribute(string text)
         {
             Text = text;
-            Formatter = formatter;
-        }
-        public DateInputAttribute(string text) : this(text, t => t)
-        {
         }
         public DateInputAttribute() : this("")
         {
         }
 
-        public Func<DateTime, DateTime> Formatter { get; set; }
         public string Text { get; set; }
     }
 }

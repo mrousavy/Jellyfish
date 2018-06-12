@@ -1,5 +1,4 @@
-﻿using Jellyfish.Annotations;
-using System;
+﻿using System;
 
 namespace Jellyfish.Forms
 {
@@ -9,19 +8,27 @@ namespace Jellyfish.Forms
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class IntInputAttribute : Attribute, IFormInput<int>
     {
-        public IntInputAttribute([NotNull] string text, [NotNull] Func<int, int> formatter)
+        public IntInputAttribute(string text, Func<int, string> formatter)
         {
             Text = text;
             Formatter = formatter;
         }
-        public IntInputAttribute([NotNull] string text) : this(text, t => t)
+        public IntInputAttribute(string text) : this(text, t => t.ToString())
         {
         }
         public IntInputAttribute() : this("")
         {
         }
 
-        public Func<int, int> Formatter { get; set; }
+        /// <summary>
+        ///     The formatter to use for custom formatting the field
+        /// </summary>
+        /// <example>
+        ///     You can define a formatter to display hours like this:
+        /// 
+        ///     var formatter = val => $"{val}h";
+        /// </example>
+        public Func<int, string> Formatter { get; set; }
         public string Text { get; set; }
     }
 }
