@@ -19,11 +19,11 @@ after_build:
 - cmd: >-
     nuget pack Jellyfish\Jellyfish.csproj
 artifacts:
-  - path: .\*.nupkg
+  - path: **\*.nupkg
     name: NupkgArtifact
 deploy:
   provider: NuGet
   api_key:
     secure: vc7rUEW84l4OwcpHh3cb+8CeSfkYRwzp7h1VFjfHeMtYve2r0erWtueexTARgvxr
   skip_symbols: true
-  artifact: /.*\.nupkg/
+  artifact: NupkgArtifact

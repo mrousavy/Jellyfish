@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Jellyfish</id>
-    <version>1.0.1</version>
+    <version>$version$</version>
     <title>Jellyfish</title>
     <authors>mrousavy</authors>
     <owners>mrousavy</owners>
