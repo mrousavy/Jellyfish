@@ -53,6 +53,7 @@
     <Compile Include="Exceptions\PreferencesFileNotFoundException.cs" />
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="Forms\IFormInput.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
