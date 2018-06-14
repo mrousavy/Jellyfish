@@ -9,7 +9,7 @@ namespace Jellyfish
     /// </summary>
     public class RelayCommand : ICommand
     {
-        private readonly Func<object, bool> _canExecute;
+        private readonly Predicate<object> _canExecute;
         private readonly Action<object> _execute;
 
         /// <summary>
@@ -28,13 +28,11 @@ namespace Jellyfish
         /// </summary>
         /// <param name="execute">The callback to execute on command execution</param>
         /// <param name="canExecute">The callback to check if this command can execute</param>
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute ?? throw new ArgumentNullException(nameof(canExecute));
         }
-
-        public event EventHandler CanExecuteChanged;
 
         /// <inheritdoc />
         /// <summary>
@@ -51,9 +49,14 @@ namespace Jellyfish
         /// <param name="o">The parameter object</param>
         public void Execute(object o) => _execute?.Invoke(o);
 
+        /// <inheritdoc />
         /// <summary>
-        ///     Raise the <see cref="CanExecuteChanged" /> event
+        ///     The <see cref="T:System.EventHandler" /> for requerying the <see cref="M:Jellyfish.RelayCommand`1.CanExecute(System.Object)" /> function
         /// </summary>
-        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, new EventArgs());
+        public event EventHandler CanExecuteChanged
+        {
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
+        }
     }
 }
