@@ -93,5 +93,12 @@ namespace Jellyfish
         public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : base(execute, canExecute)
         {
         }
+
+        /// <summary>
+        ///     Check if this command can execute with the given parameter (returns always <code>true</code>)
+        /// </summary>
+        /// <param name="o">The parameter object (not used)</param>
+        /// <returns>If this command can execute with this parameter (always <code>true</code>)</returns>
+        public new bool CanExecute(object o) => true;
     }
 }
