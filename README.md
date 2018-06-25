@@ -30,7 +30,7 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki).
 
-## View Models
+## View Models [📖](https://github.com/mrousavy/Jellyfish/wiki/ViewModels)
 Every ViewModel needs to implement the [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) class:
 
 ```cs
@@ -53,7 +53,7 @@ public string Username
 
 > If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/wiki/ReSharper-NPP-Template).
 
-## Commands
+## Commands [📖](https://github.com/mrousavy/Jellyfish/wiki/Commands)
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
 
 Allowing any parameter with [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx) being always true:
@@ -76,7 +76,7 @@ void LoginAction(MyObject parameter)
 }
 ```
 
-## Enums
+## Enums [📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
 The enum binding source extension allows for better binding support on enums.
 
 Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
@@ -97,7 +97,7 @@ enum Status
 }
 ```
 
-## Preferences
+## Preferences [📖](https://github.com/mrousavy/Jellyfish/wiki/Preferences)
 An abstract class definition for any application preferences.
 
 Create a new class that will hold your app preferences which inherits from the [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs) class:
