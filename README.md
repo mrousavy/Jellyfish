@@ -28,6 +28,8 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 # Usage
 
+For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki).
+
 ## View Models
 Every ViewModel needs to implement the [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) class:
 
@@ -49,18 +51,12 @@ public string Username
 }
 ```
 
-> If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/blob/master/NPPTemplate.md).
-
-Or even cleaner (work in progress):
-```cs
-[Property]
-public string Username { get; set; }
-```
+> If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/wiki/ReSharper-NPP-Template).
 
 ## Commands
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
 
-Allowing any parameter with [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx) always true:
+Allowing any parameter with [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx) being always true:
 ```cs
 ICommand LoginCommand = new RelayCommand(LoginAction);
 // ...
@@ -79,17 +75,6 @@ void LoginAction(MyObject parameter)
     // Login button clicked
 }
 ```
-
-Custom [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx):
-```cs
-ICommand LoginCommand = new RelayCommand<MyObject>(LoginAction, CanExecute);
-// ...
-bool CanExecute(MyObject parameter)
-{
-    return parameter.SomeValue == true;
-}
-```
-> Be sure to call [`RaiseCanExecuteChanged`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs#L65)
 
 ## Enums
 The enum binding source extension allows for better binding support on enums.
@@ -119,9 +104,6 @@ Create a new class that will hold your app preferences which inherits from the [
 ```cs
 public class DemoPreferences : Preferences
 {
-    public DemoPreferences(string path) : base(path)
-    { }
-
     public int SomeInt { get; set; } = 400;
     public string SomeString { get; set; } = "test string";
     public bool SomeBool { get; set; } = false;
@@ -133,21 +115,6 @@ public class DemoPreferences : Preferences
     };
 }
 ```
-
-Loading and saving is pretty trivial with the `Preferences` base:
-
-* Creating new Preferences
-```cs
-var prefs = new DemoPreferences(Preferences.RecommendedPath);
-prefs.Save();
-```
-
-* Loading Preferences
-```cs
-var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
-prefsLoaded.Save();
-```
-> Or `Preferences.LoadOrDefault`
 
 The generated `config.json` file looks like this:
 ```json
@@ -164,7 +131,7 @@ The generated `config.json` file looks like this:
 
 
 # Results
-> Clean code.
+### With Jellyfish
 ```cs
 public class LoginViewModel : ObservableObject
 {
@@ -172,8 +139,8 @@ public class LoginViewModel : ObservableObject
     public string Username { get; set; }
 }
 ```
-.. instead of
 
+### Without Jellyfish
 ```cs
 public class LoginViewModel : INotifyPropertyChanged
 {
