@@ -9,7 +9,7 @@
   </p>
   <blockquote align="center">
   	<p align="center">
-  		An incredibly <strong>light</strong> and type safe <strong>MVVM library</strong> for .NET WPF
+  		An incredibly <strong>light</strong> and type safe <strong>MVVM library</strong> for .NET WPF, Silverlight, Xamarin and UWP
 	  </p>
   </blockquote>
 </p>
