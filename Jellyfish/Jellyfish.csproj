@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EF165896-3579-4DAD-8EDD-B29AFEEA6236}</ProjectGuid>
+    <ProjectGuid>{263174AF-6A37-4B74-9046-DAC7C9CA0CBB}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>Jellyfish</RootNamespace>
     <AssemblyName>Jellyfish</AssemblyName>
@@ -61,6 +61,7 @@
     <Compile Include="Forms\IFormInput.cs" />
     <Compile Include="Forms\IntInputAttribute.cs" />
     <Compile Include="Forms\TextInputAttribute.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -82,6 +83,8 @@
     <Compile Include="Validation\EmailValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="ObservableObject.cs" />
+    <Compile Include="View.cs" />
+    <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -108,7 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Jellyfish\Jellyfish.csproj">
-      <Project>{ef165896-3579-4dad-8edd-b29afeea6236}</Project>
+      <Project>{263174af-6a37-4b74-9046-dac7c9ca0cbb}</Project>
       <Name>Jellyfish</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace Jellyfish.Demo.Main
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : ViewModel
     {
         private OperatingSystem _selectedOperatingSystem;
 
