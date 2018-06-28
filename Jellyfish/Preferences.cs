@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Jellyfish
         /// <summary>
         ///     The size of the buffer for the filestream in bytes
         /// </summary>
-        public static int WriteBufferSize = 4096;
+        public static int FileBufferSize = 4096;
 
         /// <summary>
         ///     Initialize the Preferences construct
@@ -70,6 +71,37 @@ namespace Jellyfish
         }
 
         /// <summary>
+        ///     Load a preferences instance from the given file asynchronously
+        /// </summary>
+        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
+        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath" />)</param>
+        /// <returns>A deserialized instance of the preferences</returns>
+        public static async Task<TPreferences> LoadAsync<TPreferences>(string path) where TPreferences : Preferences
+        {
+            if (!File.Exists(path))
+                throw new PreferencesFileNotFoundException(path);
+
+            // Read file async
+            var bytes = new List<byte>();
+            using (var sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None,
+                FileBufferSize, true))
+            {
+                int read;
+                do
+                {
+                    var buffer = new byte[1024];
+                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize);
+                    bytes.AddRange(buffer);
+                } while (read > 0);
+            }
+
+            string json = Encoding.Unicode.GetString(bytes.ToArray());
+            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
+            preferences.Path = path;
+            return preferences;
+        }
+
+        /// <summary>
         ///     Load a preferences instance from the given file or return null if not found
         /// </summary>
         /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
@@ -81,6 +113,37 @@ namespace Jellyfish
                 return default(TPreferences);
 
             string json = File.ReadAllText(path);
+            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
+            preferences.Path = path;
+            return preferences;
+        }
+
+        /// <summary>
+        ///     Load a preferences instance from the given file asynchronously or return null if not found
+        /// </summary>
+        /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
+        /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath" />)</param>
+        /// <returns>A deserialized instance of the preferences</returns>
+        public static async Task<TPreferences> LoadOrDefaultAsync<TPreferences>(string path) where TPreferences : Preferences
+        {
+            if (!File.Exists(path))
+                return default(TPreferences);
+
+            // Read file async
+            var bytes = new List<byte>();
+            using (var sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None,
+                FileBufferSize, true))
+            {
+                int read;
+                do
+                {
+                    var buffer = new byte[1024];
+                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize);
+                    bytes.AddRange(buffer);
+                } while (read > 0);
+            }
+
+            string json = Encoding.Unicode.GetString(bytes.ToArray());
             var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
             preferences.Path = path;
             return preferences;
@@ -106,7 +169,7 @@ namespace Jellyfish
             var content = Encoding.Unicode.GetBytes(json);
 
             using (var sourceStream = new FileStream(Path, FileMode.Append, FileAccess.Write, FileShare.None,
-                WriteBufferSize, true))
+                FileBufferSize, true))
             {
                 await sourceStream.WriteAsync(content, 0, content.Length);
             }
