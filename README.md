@@ -30,32 +30,27 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki) or the [Getting Started guide 📖](https://github.com/mrousavy/Jellyfish/wiki/Getting-started).
 
-## View Models [📖](https://github.com/mrousavy/Jellyfish/wiki/ViewModels)
+## View Models
+
 Every **ViewModel** needs to implement the [`ViewModel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModel.cs) class:
 
 ```cs
 public class LoginViewModel : ViewModel
 {
-    ...
-}
-```
-
-The `ViewModel` base class inherits from [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) (see: [View Models or Observable Objects 📖](https://github.com/mrousavy/Jellyfish/wiki/ViewModels-or-ObservableObjects)).
-
-Using the `ObservableObject` base class [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs#L37) function allows for quick notifying properties:
-
-```cs
-private User _user;
-public User User
-{
-    get => _user;
-    set => Set(ref _user, value);
+    private User _user;
+    public User User
+    {
+        get => _user;
+        set => Set(ref _user, value);
+    }
 }
 ```
 
 > If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/wiki/ReSharper-NPP-Template).
 
-## Commands [📖](https://github.com/mrousavy/Jellyfish/wiki/Commands)
+> See [View Models 📖](https://github.com/mrousavy/Jellyfish/wiki/View-Models)
+
+## Commands
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
 
 ```xaml
@@ -72,7 +67,9 @@ void LoginAction(object parameter)
 { ... }
 ```
 
-## Enums [📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
+> See [Commands 📖](https://github.com/mrousavy/Jellyfish/wiki/Commands)
+
+## Enums
 The enum binding source extension allows for better binding support on enums.
 
 Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
@@ -81,19 +78,9 @@ Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish
 	  SelectedItem="{Binding SelectedStatus}" />
 ```
 
-It even allows [Description](https://msdn.microsoft.com/en-us/library/system.componentmodel.descriptionattribute(v=vs.110).aspx) support:
-```cs
-[TypeConverter(typeof(EnumDescriptionTypeConverter))]
-enum Status
-{
-    [Description("Everything went fine")]
-    Ok,
-    [Description("Everything went horribly wrong")]
-    Error
-}
-```
+> See [Enums 📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
 
-## Preferences [📖](https://github.com/mrousavy/Jellyfish/wiki/Preferences)
+## Preferences
 An abstract class definition for any application preferences.
 
 Create a new class that will hold your app preferences which inherits from the [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs) class:
@@ -112,26 +99,16 @@ public class DemoPreferences : Preferences
 }
 ```
 
-The generated `config.json` file looks like this:
-```json
-{
-   "SomeInt":400,
-   "SomeString":"test string",
-   "SomeBool":false,
-   "SomeObject":{
-      "Name":"Marc",
-      "IsValid":true
-   }
-}
-```
+> See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/Preferences)
 
-## Message Channels [📖](https://github.com/mrousavy/Jellyfish/wiki/Message-Channels)
+## Message Channels
 The [`MessageChannel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/MessageChannel.cs) allows sending objects within the current application domain.
 
 ```cs
 var channel = MessageChannel<string>.Channel;
 channel.Notify("Hello other ViewModels!");
 ```
+> See [Message Channels 📖](https://github.com/mrousavy/Jellyfish/wiki/Message-Channels)
 
 
 # Results
