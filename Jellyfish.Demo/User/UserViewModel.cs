@@ -5,7 +5,6 @@ namespace Jellyfish.Demo.User
 {
     public class UserViewModel : ObservableObject
     {
-
         private string _username;
 
         [TextInput("Username")]
@@ -31,6 +30,19 @@ namespace Jellyfish.Demo.User
         {
             get => _birthday;
             set => Set(ref _birthday, value);
+        }
+
+        public UserViewModel()
+        {
+            // Open the `string` channel
+            var channel = MessageChannel<string>.Channel;
+            channel.MessageReceived += OnMessageReceived;
+            channel.Notify("hello world!");
+        }
+
+        private void OnMessageReceived(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

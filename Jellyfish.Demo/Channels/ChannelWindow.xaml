@@ -1,0 +1,46 @@
+﻿<Window
+    x:Class="Jellyfish.Demo.Channels.ChannelWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Jellyfish.Demo.Channels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ChannelWindow"
+    Width="500"
+    Height="350"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ChannelViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <ListView
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="15"
+            ItemsSource="{Binding Messages}" />
+
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="15"
+            Text="{Binding CurrentMessage}" />
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="15"
+            Command="{Binding NotifyCommand}"
+            Content="Notify" />
+    </Grid>
+</Window>

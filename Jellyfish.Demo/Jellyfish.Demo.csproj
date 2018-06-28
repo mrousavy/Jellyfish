@@ -54,11 +54,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Channels\ChannelModel.cs" />
+    <Compile Include="Channels\ChannelViewModel.cs" />
+    <Compile Include="Channels\ChannelWindow.xaml.cs">
+      <DependentUpon>ChannelWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User\UserModel.cs" />
     <Compile Include="User\UserViewModel.cs" />
     <Compile Include="User\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Channels\ChannelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
