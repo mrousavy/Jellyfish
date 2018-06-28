@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading;
 
-namespace Jellyfish.Demo
+namespace Jellyfish.Demo.Main
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow 
     {
         private readonly Random _random = new Random();
 

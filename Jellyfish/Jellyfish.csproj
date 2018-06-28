@@ -83,7 +83,6 @@
     <Compile Include="Validation\EmailValidationRule.cs" />
     <Compile Include="Validation\NotEmptyValidationRule.cs" />
     <Compile Include="ObservableObject.cs" />
-    <Compile Include="View.cs" />
     <Compile Include="ViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
