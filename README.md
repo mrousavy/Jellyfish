@@ -5,6 +5,8 @@
 	<a class="badge-align" href="https://www.codacy.com/app/mrousavy/Jellyfish?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mrousavy/Jellyfish&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/b677d8c1fa194835b42b7b6266a39b6b"/></a>
 	<a href="https://ci.appveyor.com/project/mrousavy/jellyfish/"><img src="https://ci.appveyor.com/api/projects/status/o7nxq777rlqmr082?svg=true" alt="AppVeyor badge"></a>
 	<a href="https://www.nuget.org/packages/Jellyfish/"><img src="https://img.shields.io/nuget/dt/Jellyfish.svg" alt="NuGet downloads badge"></a>
+	<br/>
+	<a href='https://ko-fi.com/F1F8CLXG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 	<h3 align="center">🐟</h3>
   </p>
   <blockquote align="center">
