@@ -61,7 +61,7 @@
     <Compile Include="Forms\IFormInput.cs" />
     <Compile Include="Forms\IntInputAttribute.cs" />
     <Compile Include="Forms\TextInputAttribute.cs" />
-    <Compile Include="Observer\ObservableNode.cs" />
+    <Compile Include="MessageChannel.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\Annotations.cs" />
