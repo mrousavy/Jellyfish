@@ -111,10 +111,14 @@ channel.Notify("Hello other ViewModels!");
 # Results
 ### With Jellyfish
 ```cs
-public class LoginViewModel : ObservableObject
+public class LoginViewModel : ViewModel
 {
-    [Property]
-    public string Username { get; set; }
+    private User _user;
+    public User User
+    {
+        get => _user;
+        set => Set(ref _user, value);
+    }
 }
 ```
 
