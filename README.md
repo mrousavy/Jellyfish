@@ -28,26 +28,28 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 # Usage
 
-For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki).
+For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki) or the [Getting Started guide 📖](https://github.com/mrousavy/Jellyfish/wiki/Getting-started).
 
 ## View Models [📖](https://github.com/mrousavy/Jellyfish/wiki/ViewModels)
-Every ViewModel needs to implement the [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) class:
+Every **ViewModel** needs to implement the [`ViewModel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModel.cs) class:
 
 ```cs
-public class LoginViewModel : ObservableObject
+public class LoginViewModel : ViewModel
 {
     ...
 }
 ```
 
-Using this base class' [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs#L37) function allows for quick notifying properties:
+The `ViewModel` base class inherits from [`ObservableObject`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs) (see: [View Models or Observable Objects 📖](https://github.com/mrousavy/Jellyfish/wiki/ViewModels-or-ObservableObjects)).
+
+Using the `ObservableObject` base class [`Set`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ObservableObject.cs#L37) function allows for quick notifying properties:
 
 ```cs
-private string _username;
-public string Username
+private User _user;
+public User User
 {
-    get => _username;
-    set => Set(ref _username, value);
+    get => _user;
+    set => Set(ref _user, value);
 }
 ```
 
@@ -56,24 +58,18 @@ public string Username
 ## Commands [📖](https://github.com/mrousavy/Jellyfish/wiki/Commands)
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
 
-Allowing any parameter with [`CanExecute`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand.canexecute(v=vs.110).aspx) being always true:
+```xaml
+<Window ...>
+    <Button Command="{Binding LoginCommand}" />
+</Window>
+```
+
+Initialize the `ICommand` with a non-generic `RelayCommand` instance and the given action/callback:
 ```cs
 ICommand LoginCommand = new RelayCommand(LoginAction);
 // ...
 void LoginAction(object parameter)
-{
-    // Login button clicked
-}
-```
-
-Allowing only parameters of type `MyObject`:
-```cs
-ICommand LoginCommand = new RelayCommand<MyObject>(LoginAction);
-// ...
-void LoginAction(MyObject parameter)
-{
-    // Login button clicked
-}
+{ ... }
 ```
 
 ## Enums [📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
@@ -127,6 +123,14 @@ The generated `config.json` file looks like this:
       "IsValid":true
    }
 }
+```
+
+## Message Channels [📖](https://github.com/mrousavy/Jellyfish/wiki/Message-Channels)
+The [`MessageChannel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/MessageChannel.cs) allows sending objects within the current application domain.
+
+```cs
+var channel = MessageChannel<string>.Channel;
+channel.Notify("Hello other ViewModels!");
 ```
 
 
