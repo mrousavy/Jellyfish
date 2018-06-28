@@ -46,8 +46,6 @@ public class LoginViewModel : ViewModel
 }
 ```
 
-> If you are using [ReSharper](https://www.jetbrains.com/resharper/) you can define a [notify-property-changed-property template](https://github.com/mrousavy/Jellyfish/wiki/ReSharper-NPP-Template).
-
 > See [View Models 📖](https://github.com/mrousavy/Jellyfish/wiki/View-Models)
 
 ## Commands
@@ -72,7 +70,7 @@ void LoginAction(object parameter)
 ## Enums
 The enum binding source extension allows for better binding support on enums.
 
-Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
+Just use the [`EnumBindingSource` extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
 ```xaml
 <ComboBox ItemsSource="{Binding Source={jellyfish:EnumBindingSource {x:Type local:Status}}}"
 	  SelectedItem="{Binding SelectedStatus}" />
@@ -81,9 +79,8 @@ Just use the [EnumBindingSource extension](https://github.com/mrousavy/Jellyfish
 > See [Enums 📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
 
 ## Preferences
-An abstract class definition for any application preferences.
+An abstract class definition for any application [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs).
 
-Create a new class that will hold your app preferences which inherits from the [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs) class:
 ```cs
 public class DemoPreferences : Preferences
 {
