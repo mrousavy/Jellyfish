@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="Attributes\ImplementationAttribute.cs" />
     <Compile Include="Attributes\DependencyAttribute.cs" />
+    <Compile Include="DependencyInjection\DictionaryExtensions.cs" />
     <Compile Include="DependencyInjection\Injector.cs" />
+    <Compile Include="DependencyInjection\InjectorStoreException.cs" />
     <Compile Include="Exceptions\PreferencesFileNotFoundException.cs" />
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />
