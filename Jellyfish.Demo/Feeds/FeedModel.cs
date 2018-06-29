@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jellyfish.Demo.Channels
+namespace Jellyfish.Demo.Feeds
 {
-    public class ChannelModel
+    public class FeedModel
     {
     }
 }

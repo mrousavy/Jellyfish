@@ -34,10 +34,10 @@ namespace Jellyfish.Demo.User
 
         public UserViewModel()
         {
-            // Open the `string` channel
-            var channel = MessageChannel<string>.Channel;
-            channel.MessageReceived += OnMessageReceived;
-            channel.Notify("hello world!");
+            // Open the `string` feed
+            var feed = MessageFeed<string>.Feed;
+            feed.MessageReceived += OnMessageReceived;
+            feed.Notify("hello world!");
         }
 
         private void OnMessageReceived(string message)

@@ -2,11 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Jellyfish.Demo.Channels
+namespace Jellyfish.Demo.Feeds
 {
-    public class ChannelViewModel : ViewModel
+    public class FeedViewModel : ViewModel
     {
-        private MessageChannel<string> Channel { get; }
+        private IFeed<string> Feed { get; }
 
         private string _currentMessage;
         public string CurrentMessage
@@ -29,13 +29,13 @@ namespace Jellyfish.Demo.Channels
             set => Set(ref _messages, value);
         }
 
-        public ChannelViewModel()
+        public FeedViewModel()
         {
-            Channel = MessageChannel<string>.Channel;
+            Feed = Model.FeedFor<string>();
             Messages = new ObservableCollection<string>();
 
             NotifyCommand = new RelayCommand(NotifyAction);
-            Channel.MessageReceived += OnMessageReceived;
+            Feed.MessageReceived += OnMessageReceived;
         }
 
         private void OnMessageReceived(string message)
@@ -45,7 +45,7 @@ namespace Jellyfish.Demo.Channels
 
         private void NotifyAction(object o)
         {
-            Channel.Notify(CurrentMessage);
+            Feed.Notify(CurrentMessage);
         }
     }
 }

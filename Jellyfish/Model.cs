@@ -6,10 +6,10 @@
     public abstract class Model
     {
         /// <summary>
-        ///     Get the channel for the given type `<see cref="TMessage"/>`
+        ///     Get the feed for the given type `<see cref="TMessage"/>`
         /// </summary>
-        /// <typeparam name="TMessage">The type of the messages this channel handles</typeparam>
-        /// <returns>The opened message channel</returns>
-        public MessageChannel<TMessage> ChannelFor<TMessage>() => MessageChannel<TMessage>.Channel;
+        /// <typeparam name="TMessage">The type of the messages this feed handles</typeparam>
+        /// <returns>The opened message feed</returns>
+        public static IFeed<TMessage> FeedFor<TMessage>() => MessageFeed<TMessage>.Feed;
     }
 }

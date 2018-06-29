@@ -1,16 +1,16 @@
 ﻿<Window
-    x:Class="Jellyfish.Demo.Channels.ChannelWindow"
+    x:Class="Jellyfish.Demo.Feeds.FeedWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Jellyfish.Demo.Channels"
+    xmlns:local="clr-namespace:Jellyfish.Demo.Feeds"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="ChannelWindow"
+    Title="Feeds"
     Width="500"
     Height="350"
     mc:Ignorable="d">
     <Window.DataContext>
-        <local:ChannelViewModel />
+        <local:FeedViewModel />
     </Window.DataContext>
 
     <Grid>

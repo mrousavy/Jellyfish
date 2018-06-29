@@ -39,8 +39,8 @@
             Margin="15">
             <Button
                 Margin="5"
-                Command="{Binding OpenChannelsCommand}"
-                Content="Open Channels" />
+                Command="{Binding OpenFeedsCommand}"
+                Content="Open Feeds" />
             <Button
                 Margin="5"
                 Command="{Binding OpenUserCommand}"

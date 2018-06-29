@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Input;
-using Jellyfish.Demo.Channels;
+using Jellyfish.Demo.Feeds;
 using Jellyfish.Demo.User;
 
 namespace Jellyfish.Demo.Main
@@ -26,12 +26,12 @@ namespace Jellyfish.Demo.Main
             set => Set(ref _openUserCommand, value);
         }
 
-        private ICommand _openChannelsCommand;
+        private ICommand _openFeedsCommand;
 
-        public ICommand OpenChannelsCommand
+        public ICommand OpenFeedsCommand
         {
-            get => _openChannelsCommand;
-            set => Set(ref _openChannelsCommand, value);
+            get => _openFeedsCommand;
+            set => Set(ref _openFeedsCommand, value);
         }
 
 
@@ -40,7 +40,7 @@ namespace Jellyfish.Demo.Main
 
         public MainViewModel()
         {
-            OpenChannelsCommand = new RelayCommand(OpenChannelsAction);
+            OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
 
             var timer = new Timer(TimerCallback);
@@ -53,10 +53,10 @@ namespace Jellyfish.Demo.Main
             var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
             prefsLoaded.Save();
 
-            // Open the `string` channel
-            var channel = MessageChannel<string>.Channel;
-            channel.MessageReceived += OnMessageReceived;
-            channel.Notify("hello world!");
+            // Open the `string` feed
+            var feed = MessageFeed<string>.Feed;
+            feed.MessageReceived += OnMessageReceived;
+            feed.Notify("hello world!");
         }
 
         private void OpenUserAction(object o)
@@ -64,9 +64,9 @@ namespace Jellyfish.Demo.Main
             new UserWindow().Show();
         }
 
-        private void OpenChannelsAction(object o)
+        private void OpenFeedsAction(object o)
         {
-            new ChannelWindow().Show();
+            new FeedWindow().Show();
         }
 
 
