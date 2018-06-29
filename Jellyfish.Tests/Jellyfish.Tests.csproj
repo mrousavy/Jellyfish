@@ -48,7 +48,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="TestInjector.cs" />
     <Compile Include="TestObservableObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Jellyfish.Tests
 {
-
     [TestClass]
     public class TestObservableObjects
     {
@@ -22,7 +21,7 @@ namespace Jellyfish.Tests
             // set `raised` to true on property changed
             User.PropertyChanged += (s, a) => { raisedCount++; };
             // change a property so effectively raise property changed event
-            User.Name = "Marc";
+            User.FirstName = "Marc";
 
             // not more than 1 and not less than 1
             Assert.IsTrue(raisedCount == 1);
@@ -36,8 +35,8 @@ namespace Jellyfish.Tests
             User.PropertyChanged += (s, a) => { raisedCount++; };
             // assign the property twice
             const string value = "Test";
-            User.Name = value;
-            User.Name = value;
+            User.FirstName = value;
+            User.FirstName = value;
 
             // not more than 1 and not less than 1
             Assert.IsTrue(raisedCount == 1);
@@ -50,7 +49,7 @@ namespace Jellyfish.Tests
             // set `raised` to true on property changed
             User.PropertyChanged += (s, a) => { raisedCount++; };
             // change a property to null so effectively raise property changed event
-            User.Name = null;
+            User.FirstName = null;
 
             // not more than 1 and not less than 1
             Assert.IsTrue(raisedCount == 1);

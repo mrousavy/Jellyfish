@@ -125,5 +125,14 @@ namespace Jellyfish.DependencyInjection
             throw new ArgumentException(
                 $"No implementations for the type {type.Name} could be found in the {nameof(Injector)}!");
         }
+
+        /// <summary>
+        ///     Clear all templates, definitions and bindings in this <see cref="Injector"/>
+        /// </summary>
+        public static void Clear()
+        {
+            Templates.Clear();
+            Instances.Clear();
+        }
     }
 }
