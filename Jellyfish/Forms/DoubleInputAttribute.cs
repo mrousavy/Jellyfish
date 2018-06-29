@@ -16,12 +16,10 @@ namespace Jellyfish.Forms
         }
 
         public DoubleInputAttribute(string text) : this(text, t => t.ToString(CultureInfo.InvariantCulture))
-        {
-        }
+        { }
 
         public DoubleInputAttribute() : this("")
-        {
-        }
+        { }
 
         /// <summary>
         ///     The formatter to use for custom formatting the field

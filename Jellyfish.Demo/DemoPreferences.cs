@@ -3,8 +3,7 @@
     public class DemoPreferences : Preferences
     {
         public DemoPreferences(string path) : base(path)
-        {
-        }
+        { }
 
 
         public int SomeInt { get; set; } = 400;

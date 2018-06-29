@@ -14,6 +14,8 @@ namespace Jellyfish.Demo.Main
 
         private ICommand _openFeedsCommand;
 
+        private ICommand _openInjectionCommand;
+
         private ICommand _openUserCommand;
 
         private OperatingSystem _selectedOperatingSystem;
@@ -40,11 +42,6 @@ namespace Jellyfish.Demo.Main
             feed.Notify("hello world!");
         }
 
-        private void OpenInjectionAction(object o)
-        {
-            new InjectionWindow().Show();
-        }
-
         public OperatingSystem SelectedOperatingSystem
         {
             get => _selectedOperatingSystem;
@@ -56,8 +53,6 @@ namespace Jellyfish.Demo.Main
             get => _openUserCommand;
             set => Set(ref _openUserCommand, value);
         }
-
-        private ICommand _openInjectionCommand;
 
         public ICommand OpenInjectionCommand
         {
@@ -74,6 +69,11 @@ namespace Jellyfish.Demo.Main
 
         [Implementation(typeof(MessageFeed<string>))]
         public IFeed<string> TestProperty { get; set; }
+
+        private void OpenInjectionAction(object o)
+        {
+            new InjectionWindow().Show();
+        }
 
         private void OpenUserAction(object o)
         {

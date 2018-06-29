@@ -15,11 +15,6 @@ namespace Jellyfish
     public abstract class Preferences
     {
         /// <summary>
-        ///     The size of the buffer for the filestream in bytes
-        /// </summary>
-        public static int FileBufferSize { get; set; } = 4096;
-
-        /// <summary>
         ///     Initialize the Preferences construct
         /// </summary>
         /// <param name="path">The Path to the preferences file (See <see cref="RecommendedPath" /></param>
@@ -27,6 +22,11 @@ namespace Jellyfish
         {
             Path = path;
         }
+
+        /// <summary>
+        ///     The size of the buffer for the filestream in bytes
+        /// </summary>
+        public static int FileBufferSize { get; set; } = 4096;
 
         /// <summary>
         ///     Path to the Application Data directory (%AppData%)
@@ -43,7 +43,8 @@ namespace Jellyfish
         /// </summary>
         public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
 
-        [JsonIgnore] private string Path { get; set; }
+        [JsonIgnore]
+        private string Path { get; set; }
 
         /// <summary>
         ///     Load a preferences instance from the given file

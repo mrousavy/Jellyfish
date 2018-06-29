@@ -40,10 +40,7 @@ namespace Jellyfish
         /// </summary>
         /// <param name="o">The parameter object</param>
         /// <returns>If this command can execute with this parameter</returns>
-        public bool CanExecute(object o)
-        {
-            return _canExecute?.Invoke(o) ?? false;
-        }
+        public bool CanExecute(object o) => _canExecute?.Invoke(o) ?? false;
 
         /// <inheritdoc />
         /// <summary>

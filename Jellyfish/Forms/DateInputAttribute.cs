@@ -14,8 +14,7 @@ namespace Jellyfish.Forms
         }
 
         public DateInputAttribute() : this("")
-        {
-        }
+        { }
 
         public string Text { get; set; }
     }

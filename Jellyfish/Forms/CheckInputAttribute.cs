@@ -14,8 +14,7 @@ namespace Jellyfish.Forms
         }
 
         public CheckInputAttribute() : this("")
-        {
-        }
+        { }
 
         public string Text { get; set; }
     }

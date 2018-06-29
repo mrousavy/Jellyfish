@@ -51,8 +51,7 @@ namespace Jellyfish.Properties
         AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
         AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
     public sealed class CanBeNullAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that the value of the marked element could never be <c>null</c>.
@@ -69,8 +68,7 @@ namespace Jellyfish.Properties
         AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event |
         AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.GenericParameter)]
     public sealed class NotNullAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
@@ -81,8 +79,7 @@ namespace Jellyfish.Properties
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
         AttributeTargets.Delegate | AttributeTargets.Field)]
     public sealed class ItemNotNullAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
@@ -93,8 +90,7 @@ namespace Jellyfish.Properties
         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
         AttributeTargets.Delegate | AttributeTargets.Field)]
     public sealed class ItemCanBeNullAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that the marked method builds string by format pattern and (optional) arguments.
@@ -124,7 +120,8 @@ namespace Jellyfish.Properties
             FormatParameterName = formatParameterName;
         }
 
-        [NotNull] public string FormatParameterName { get; }
+        [NotNull]
+        public string FormatParameterName { get; }
     }
 
     /// <summary>
@@ -141,7 +138,8 @@ namespace Jellyfish.Properties
             Name = name;
         }
 
-        [NotNull] public string Name { get; }
+        [NotNull]
+        public string Name { get; }
     }
 
     /// <summary>
@@ -159,8 +157,7 @@ namespace Jellyfish.Properties
     /// </example>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class InvokerParameterNameAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that the method is contained in a type that implements
@@ -223,15 +220,15 @@ namespace Jellyfish.Properties
     public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
         public NotifyPropertyChangedInvocatorAttribute()
-        {
-        }
+        { }
 
         public NotifyPropertyChangedInvocatorAttribute([NotNull] string parameterName)
         {
             ParameterName = parameterName;
         }
 
-        [CanBeNull] public string ParameterName { get; }
+        [CanBeNull]
+        public string ParameterName { get; }
     }
 
     /// <summary>
@@ -295,8 +292,7 @@ namespace Jellyfish.Properties
     {
         public ContractAnnotationAttribute([NotNull] string contract)
             : this(contract, false)
-        {
-        }
+        { }
 
         public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
         {
@@ -304,7 +300,8 @@ namespace Jellyfish.Properties
             ForceFullStates = forceFullStates;
         }
 
-        [NotNull] public string Contract { get; }
+        [NotNull]
+        public string Contract { get; }
 
         public bool ForceFullStates { get; }
     }
@@ -324,8 +321,7 @@ namespace Jellyfish.Properties
     public sealed class LocalizationRequiredAttribute : Attribute
     {
         public LocalizationRequiredAttribute() : this(true)
-        {
-        }
+        { }
 
         public LocalizationRequiredAttribute(bool required)
         {
@@ -359,8 +355,7 @@ namespace Jellyfish.Properties
     /// </example>
     [AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct)]
     public sealed class CannotApplyEqualityOperatorAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     When applied to a target attribute, specifies a requirement for any type marked
@@ -384,7 +379,8 @@ namespace Jellyfish.Properties
             BaseType = baseType;
         }
 
-        [NotNull] public Type BaseType { get; }
+        [NotNull]
+        public Type BaseType { get; }
     }
 
     /// <summary>
@@ -396,18 +392,15 @@ namespace Jellyfish.Properties
     {
         public UsedImplicitlyAttribute()
             : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default)
-        {
-        }
+        { }
 
         public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags)
             : this(useKindFlags, ImplicitUseTargetFlags.Default)
-        {
-        }
+        { }
 
         public UsedImplicitlyAttribute(ImplicitUseTargetFlags targetFlags)
             : this(ImplicitUseKindFlags.Default, targetFlags)
-        {
-        }
+        { }
 
         public UsedImplicitlyAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
         {
@@ -429,18 +422,15 @@ namespace Jellyfish.Properties
     {
         public MeansImplicitUseAttribute()
             : this(ImplicitUseKindFlags.Default, ImplicitUseTargetFlags.Default)
-        {
-        }
+        { }
 
         public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags)
             : this(useKindFlags, ImplicitUseTargetFlags.Default)
-        {
-        }
+        { }
 
         public MeansImplicitUseAttribute(ImplicitUseTargetFlags targetFlags)
             : this(ImplicitUseKindFlags.Default, targetFlags)
-        {
-        }
+        { }
 
         public MeansImplicitUseAttribute(ImplicitUseKindFlags useKindFlags, ImplicitUseTargetFlags targetFlags)
         {
@@ -448,9 +438,11 @@ namespace Jellyfish.Properties
             TargetFlags = targetFlags;
         }
 
-        [UsedImplicitly] public ImplicitUseKindFlags UseKindFlags { get; private set; }
+        [UsedImplicitly]
+        public ImplicitUseKindFlags UseKindFlags { get; }
 
-        [UsedImplicitly] public ImplicitUseTargetFlags TargetFlags { get; private set; }
+        [UsedImplicitly]
+        public ImplicitUseTargetFlags TargetFlags { get; }
     }
 
     [Flags]
@@ -499,15 +491,15 @@ namespace Jellyfish.Properties
     public sealed class PublicAPIAttribute : Attribute
     {
         public PublicAPIAttribute()
-        {
-        }
+        { }
 
         public PublicAPIAttribute([NotNull] string comment)
         {
             Comment = comment;
         }
 
-        [CanBeNull] public string Comment { get; }
+        [CanBeNull]
+        public string Comment { get; }
     }
 
     /// <summary>
@@ -517,8 +509,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class InstantHandleAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that a method does not make any observable state changes.
@@ -535,8 +526,7 @@ namespace Jellyfish.Properties
     /// </example>
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class PureAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that the return value of method invocation must be used.
@@ -545,15 +535,15 @@ namespace Jellyfish.Properties
     public sealed class MustUseReturnValueAttribute : Attribute
     {
         public MustUseReturnValueAttribute()
-        {
-        }
+        { }
 
         public MustUseReturnValueAttribute([NotNull] string justification)
         {
             Justification = justification;
         }
 
-        [CanBeNull] public string Justification { get; }
+        [CanBeNull]
+        public string Justification { get; }
     }
 
     /// <summary>
@@ -578,8 +568,7 @@ namespace Jellyfish.Properties
         AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct |
         AttributeTargets.GenericParameter)]
     public sealed class ProvidesContextAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that a parameter is a path to a file or a folder within a web project.
@@ -589,15 +578,15 @@ namespace Jellyfish.Properties
     public sealed class PathReferenceAttribute : Attribute
     {
         public PathReferenceAttribute()
-        {
-        }
+        { }
 
         public PathReferenceAttribute([NotNull] [PathReference] string basePath)
         {
             BasePath = basePath;
         }
 
-        [CanBeNull] public string BasePath { get; }
+        [CanBeNull]
+        public string BasePath { get; }
     }
 
     /// <summary>
@@ -625,8 +614,7 @@ namespace Jellyfish.Properties
     /// </example>
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class SourceTemplateAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Allows specifying a macro for a parameter of a <see cref="SourceTemplateAttribute">source template</see>.
@@ -694,7 +682,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple =
@@ -706,7 +695,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple =
@@ -718,7 +708,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple =
@@ -730,7 +721,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple =
@@ -742,7 +734,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple =
@@ -754,7 +747,8 @@ namespace Jellyfish.Properties
             Format = format;
         }
 
-        [NotNull] public string Format { get; }
+        [NotNull]
+        public string Format { get; }
     }
 
     /// <summary>
@@ -767,15 +761,15 @@ namespace Jellyfish.Properties
     public sealed class AspMvcActionAttribute : Attribute
     {
         public AspMvcActionAttribute()
-        {
-        }
+        { }
 
         public AspMvcActionAttribute([NotNull] string anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        [CanBeNull] public string AnonymousProperty { get; }
+        [CanBeNull]
+        public string AnonymousProperty { get; }
     }
 
     /// <summary>
@@ -787,15 +781,15 @@ namespace Jellyfish.Properties
     public sealed class AspMvcAreaAttribute : Attribute
     {
         public AspMvcAreaAttribute()
-        {
-        }
+        { }
 
         public AspMvcAreaAttribute([NotNull] string anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        [CanBeNull] public string AnonymousProperty { get; }
+        [CanBeNull]
+        public string AnonymousProperty { get; }
     }
 
     /// <summary>
@@ -808,15 +802,15 @@ namespace Jellyfish.Properties
     public sealed class AspMvcControllerAttribute : Attribute
     {
         public AspMvcControllerAttribute()
-        {
-        }
+        { }
 
         public AspMvcControllerAttribute([NotNull] string anonymousProperty)
         {
             AnonymousProperty = anonymousProperty;
         }
 
-        [CanBeNull] public string AnonymousProperty { get; }
+        [CanBeNull]
+        public string AnonymousProperty { get; }
     }
 
     /// <summary>
@@ -825,8 +819,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcMasterAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
@@ -834,8 +827,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcModelTypeAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
@@ -845,16 +837,14 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     public sealed class AspMvcPartialViewAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public sealed class AspMvcSuppressViewErrorAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
@@ -863,8 +853,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcDisplayTemplateAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
@@ -873,8 +862,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcEditorTemplateAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
@@ -883,8 +871,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcTemplateAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
@@ -894,8 +881,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     public sealed class AspMvcViewAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
@@ -903,8 +889,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class AspMvcViewComponentAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
@@ -912,8 +897,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     public sealed class AspMvcViewComponentViewAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     ASP.NET MVC attribute. When applied to a parameter of an attribute,
@@ -930,22 +914,21 @@ namespace Jellyfish.Properties
     /// </example>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
     public sealed class AspMvcActionSelectorAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
     public sealed class HtmlElementAttributesAttribute : Attribute
     {
         public HtmlElementAttributesAttribute()
-        {
-        }
+        { }
 
         public HtmlElementAttributesAttribute([NotNull] string name)
         {
             Name = name;
         }
 
-        [CanBeNull] public string Name { get; }
+        [CanBeNull]
+        public string Name { get; }
     }
 
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field | AttributeTargets.Property)]
@@ -956,7 +939,8 @@ namespace Jellyfish.Properties
             Name = name;
         }
 
-        [NotNull] public string Name { get; }
+        [NotNull]
+        public string Name { get; }
     }
 
     /// <summary>
@@ -966,8 +950,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Method)]
     public sealed class RazorSectionAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates how method, constructor invocation or property access
@@ -1007,8 +990,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class AssertionMethodAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates the condition parameter of the assertion method. The method itself should be
@@ -1052,8 +1034,7 @@ namespace Jellyfish.Properties
     [Obsolete("Use [ContractAnnotation('=> halt')] instead")]
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class TerminatesProgramAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
@@ -1062,24 +1043,21 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class LinqTunnelAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that IEnumerable, passed as parameter, is not enumerated.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class NoEnumerationAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Indicates that parameter is regular expression pattern.
     /// </summary>
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class RegexPatternAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     Prevents the Member Reordering feature from tossing members of the marked class.
@@ -1090,8 +1068,7 @@ namespace Jellyfish.Properties
     [AttributeUsage(
         AttributeTargets.Class | AttributeTargets.Interface | AttributeTargets.Struct | AttributeTargets.Enum)]
     public sealed class NoReorderAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
@@ -1099,8 +1076,7 @@ namespace Jellyfish.Properties
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class XamlItemsControlAttribute : Attribute
-    {
-    }
+    { }
 
     /// <summary>
     ///     XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
@@ -1113,8 +1089,7 @@ namespace Jellyfish.Properties
     /// </remarks>
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class XamlItemBindingOfItemsControlAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class AspChildControlTypeAttribute : Attribute
@@ -1125,25 +1100,24 @@ namespace Jellyfish.Properties
             ControlType = controlType;
         }
 
-        [NotNull] public string TagName { get; }
+        [NotNull]
+        public string TagName { get; }
 
-        [NotNull] public Type ControlType { get; }
+        [NotNull]
+        public Type ControlType { get; }
     }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
     public sealed class AspDataFieldAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
     public sealed class AspDataFieldsAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class AspMethodPropertyAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public sealed class AspRequiredAttributeAttribute : Attribute
@@ -1153,7 +1127,8 @@ namespace Jellyfish.Properties
             Attribute = attribute;
         }
 
-        [NotNull] public string Attribute { get; }
+        [NotNull]
+        public string Attribute { get; }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
@@ -1175,7 +1150,8 @@ namespace Jellyfish.Properties
             Name = name;
         }
 
-        [NotNull] public string Name { get; }
+        [NotNull]
+        public string Name { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
@@ -1187,9 +1163,11 @@ namespace Jellyfish.Properties
             FieldName = fieldName;
         }
 
-        [NotNull] public string Type { get; }
+        [NotNull]
+        public string Type { get; }
 
-        [NotNull] public string FieldName { get; }
+        [NotNull]
+        public string FieldName { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
@@ -1200,7 +1178,8 @@ namespace Jellyfish.Properties
             Directive = directive;
         }
 
-        [NotNull] public string Directive { get; }
+        [NotNull]
+        public string Directive { get; }
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
@@ -1217,33 +1196,30 @@ namespace Jellyfish.Properties
             PageName = pageName;
         }
 
-        [NotNull] public string BaseType { get; }
+        [NotNull]
+        public string BaseType { get; }
 
-        [CanBeNull] public string PageName { get; }
+        [CanBeNull]
+        public string PageName { get; }
     }
 
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class RazorHelperCommonAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class RazorLayoutAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class RazorWriteLiteralMethodAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class RazorWriteMethodAttribute : Attribute
-    {
-    }
+    { }
 
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class RazorWriteMethodParameterAttribute : Attribute
-    {
-    }
+    { }
 }

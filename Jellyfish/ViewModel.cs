@@ -1,4 +1,5 @@
 ﻿using Jellyfish.Attributes;
+using Jellyfish.DependencyInjection;
 
 namespace Jellyfish
 {
@@ -13,6 +14,11 @@ namespace Jellyfish
         {
             var type = GetType();
             var properties = type.PropertiesWithAttribute(typeof(ImplementationAttribute));
+            foreach (var property in properties)
+            {
+                var val = Injector.Initialize(property.PropertyType);
+                property.SetValue(this, val);
+            }
         }
     }
 }

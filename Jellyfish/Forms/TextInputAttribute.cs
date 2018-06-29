@@ -15,12 +15,10 @@ namespace Jellyfish.Forms
         }
 
         public TextInputAttribute(string text) : this(text, t => t)
-        {
-        }
+        { }
 
         public TextInputAttribute() : this("")
-        {
-        }
+        { }
 
         /// <summary>
         ///     The formatter to use for custom formatting the field

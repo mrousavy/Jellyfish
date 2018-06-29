@@ -29,14 +29,17 @@ namespace Jellyfish.Demo.Injection
         {
             User = null;
         }
+
         private void TemplateAction(object o)
         {
             User = Model.TemplateUser();
         }
+
         private void DefineAction(object o)
         {
             User = Model.DefineUser();
         }
+
         private void BindAction(object o)
         {
             User = Model.BindUser();

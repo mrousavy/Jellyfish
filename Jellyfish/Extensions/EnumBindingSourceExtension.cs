@@ -9,8 +9,7 @@ namespace Jellyfish.Extensions
         private Type _enumType;
 
         public EnumBindingSourceExtension()
-        {
-        }
+        { }
 
         public EnumBindingSourceExtension(Type enumType)
         {

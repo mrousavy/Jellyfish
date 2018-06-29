@@ -15,8 +15,7 @@ namespace Jellyfish.Forms
         }
 
         public ToggleInputAttribute() : this("")
-        {
-        }
+        { }
 
         public string Text { get; set; }
     }

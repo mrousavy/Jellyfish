@@ -4,13 +4,13 @@
     {
         private string _firstName = "John";
 
+        private string _lastName = "Smith";
+
         public string FirstName
         {
             get => _firstName;
             set => Set(ref _firstName, value);
         }
-
-        private string _lastName = "Smith";
 
         public string LastName
         {

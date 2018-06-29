@@ -9,8 +9,7 @@ namespace Jellyfish.Extensions
     {
         public EnumDescriptionTypeConverter(Type type)
             : base(type)
-        {
-        }
+        { }
 
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
             Type destinationType)
