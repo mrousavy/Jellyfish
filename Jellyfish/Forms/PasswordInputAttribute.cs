@@ -13,6 +13,7 @@ namespace Jellyfish.Forms
         {
             Text = text;
         }
+
         public PasswordInputAttribute() : this("")
         {
         }

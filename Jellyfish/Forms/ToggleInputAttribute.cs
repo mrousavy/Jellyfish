@@ -13,6 +13,7 @@ namespace Jellyfish.Forms
         {
             Text = text;
         }
+
         public ToggleInputAttribute() : this("")
         {
         }

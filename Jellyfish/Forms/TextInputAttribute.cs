@@ -13,9 +13,11 @@ namespace Jellyfish.Forms
             Text = text;
             Formatter = formatter;
         }
+
         public TextInputAttribute(string text) : this(text, t => t)
         {
         }
+
         public TextInputAttribute() : this("")
         {
         }
@@ -25,10 +27,10 @@ namespace Jellyfish.Forms
         /// </summary>
         /// <example>
         ///     You can define a formatter to display hours like this:
-        /// 
         ///     var formatter = val => $"{val}h";
         /// </example>
         public Func<string, string> Formatter { get; set; }
+
         public string Text { get; set; }
     }
 }

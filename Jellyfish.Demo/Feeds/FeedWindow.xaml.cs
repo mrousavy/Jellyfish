@@ -3,7 +3,7 @@
 namespace Jellyfish.Demo.Feeds
 {
     /// <summary>
-    /// Interaction logic for FeedWindow.xaml
+    ///     Interaction logic for FeedWindow.xaml
     /// </summary>
     public partial class FeedWindow : Window
     {

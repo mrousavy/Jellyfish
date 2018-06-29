@@ -1,33 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Jellyfish.Demo.Feeds
 {
     public class FeedViewModel : ViewModel
     {
-        private IFeed<string> Feed { get; }
-
         private string _currentMessage;
-        public string CurrentMessage
-        {
-            get => _currentMessage;
-            set => Set(ref _currentMessage, value);
-        }
-
-        private ICommand _notifyCommand;
-        public ICommand NotifyCommand
-        {
-            get => _notifyCommand;
-            set => Set(ref _notifyCommand, value);
-        }
 
         private ObservableCollection<string> _messages;
-        public ObservableCollection<string> Messages
-        {
-            get => _messages;
-            set => Set(ref _messages, value);
-        }
+
+        private ICommand _notifyCommand;
 
         public FeedViewModel()
         {
@@ -36,6 +18,26 @@ namespace Jellyfish.Demo.Feeds
 
             NotifyCommand = new RelayCommand(NotifyAction);
             Feed.MessageReceived += OnMessageReceived;
+        }
+
+        private IFeed<string> Feed { get; }
+
+        public string CurrentMessage
+        {
+            get => _currentMessage;
+            set => Set(ref _currentMessage, value);
+        }
+
+        public ICommand NotifyCommand
+        {
+            get => _notifyCommand;
+            set => Set(ref _notifyCommand, value);
+        }
+
+        public ObservableCollection<string> Messages
+        {
+            get => _messages;
+            set => Set(ref _messages, value);
         }
 
         private void OnMessageReceived(string message)

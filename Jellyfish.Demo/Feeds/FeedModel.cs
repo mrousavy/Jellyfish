@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Jellyfish.Demo.Feeds
+﻿namespace Jellyfish.Demo.Feeds
 {
     public class FeedModel
     {

@@ -1,11 +1,22 @@
-﻿using Jellyfish.Forms;
-using System;
+﻿using System;
+using Jellyfish.Forms;
 
 namespace Jellyfish.Demo.User
 {
     public class UserViewModel : ObservableObject
     {
+        private DateTime _birthday;
+
+        private bool _receiveUpdates;
         private string _username;
+
+        public UserViewModel()
+        {
+            // Open the `string` feed
+            var feed = MessageFeed<string>.Feed;
+            feed.MessageReceived += OnMessageReceived;
+            feed.Notify("hello world!");
+        }
 
         [TextInput("Username")]
         public string Username
@@ -14,8 +25,6 @@ namespace Jellyfish.Demo.User
             set => Set(ref _username, value);
         }
 
-        private bool _receiveUpdates;
-
         [CheckInput("Receive daily updates")]
         public bool ReceiveUpdates
         {
@@ -23,21 +32,11 @@ namespace Jellyfish.Demo.User
             set => Set(ref _receiveUpdates, value);
         }
 
-        private DateTime _birthday;
-
         [DateInput("Birthday")]
         public DateTime Birthday
         {
             get => _birthday;
             set => Set(ref _birthday, value);
-        }
-
-        public UserViewModel()
-        {
-            // Open the `string` feed
-            var feed = MessageFeed<string>.Feed;
-            feed.MessageReceived += OnMessageReceived;
-            feed.Notify("hello world!");
         }
 
         private void OnMessageReceived(string message)

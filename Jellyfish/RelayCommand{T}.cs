@@ -61,7 +61,8 @@ namespace Jellyfish
 
         /// <inheritdoc />
         /// <summary>
-        ///     The <see cref="T:System.EventHandler" /> for requerying the <see cref="M:Jellyfish.RelayCommand`1.CanExecute(System.Object)" /> function
+        ///     The <see cref="T:System.EventHandler" /> for requerying the
+        ///     <see cref="M:Jellyfish.RelayCommand`1.CanExecute(System.Object)" /> function
         /// </summary>
         public event EventHandler CanExecuteChanged
         {

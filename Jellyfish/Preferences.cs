@@ -29,13 +29,6 @@ namespace Jellyfish
         }
 
         /// <summary>
-        ///     Initialize the Preferences construct
-        /// </summary>
-        protected Preferences()
-        {
-        }
-
-        /// <summary>
         ///     Path to the Application Data directory (%AppData%)
         /// </summary>
         public static string AppData => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -50,8 +43,7 @@ namespace Jellyfish
         /// </summary>
         public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
 
-        [JsonIgnore]
-        private string Path { get; set; }
+        [JsonIgnore] private string Path { get; set; }
 
         /// <summary>
         ///     Load a preferences instance from the given file
@@ -124,7 +116,8 @@ namespace Jellyfish
         /// <typeparam name="TPreferences">The type of the Preferences (must inherit from <see cref="Preferences" />)</typeparam>
         /// <param name="path">The path to the preferences file (See <see cref="RecommendedPath" />)</param>
         /// <returns>A deserialized instance of the preferences</returns>
-        public static async Task<TPreferences> LoadOrDefaultAsync<TPreferences>(string path) where TPreferences : Preferences
+        public static async Task<TPreferences> LoadOrDefaultAsync<TPreferences>(string path)
+            where TPreferences : Preferences
         {
             if (!File.Exists(path))
                 return default(TPreferences);

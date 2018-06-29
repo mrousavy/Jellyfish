@@ -40,18 +40,25 @@ namespace Jellyfish
         /// </summary>
         /// <param name="o">The parameter object</param>
         /// <returns>If this command can execute with this parameter</returns>
-        public bool CanExecute(object o) => _canExecute?.Invoke(o) ?? false;
+        public bool CanExecute(object o)
+        {
+            return _canExecute?.Invoke(o) ?? false;
+        }
 
         /// <inheritdoc />
         /// <summary>
         ///     Execute the command with the given parameter
         /// </summary>
         /// <param name="o">The parameter object</param>
-        public void Execute(object o) => _execute?.Invoke(o);
+        public void Execute(object o)
+        {
+            _execute?.Invoke(o);
+        }
 
         /// <inheritdoc />
         /// <summary>
-        ///     The <see cref="T:System.EventHandler" /> for requerying the <see cref="M:Jellyfish.RelayCommand`1.CanExecute(System.Object)" /> function
+        ///     The <see cref="T:System.EventHandler" /> for requerying the
+        ///     <see cref="M:Jellyfish.RelayCommand`1.CanExecute(System.Object)" /> function
         /// </summary>
         public event EventHandler CanExecuteChanged
         {

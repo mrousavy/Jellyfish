@@ -44,7 +44,7 @@ namespace Jellyfish
         }
 
         /// <summary>
-        ///     Force invoke the <see cref="PropertyChanged"/> event on the calling property
+        ///     Force invoke the <see cref="PropertyChanged" /> event on the calling property
         /// </summary>
         /// <param name="callerName">The caller member name of the property (auto-set)</param>
         protected void Notify([CallerMemberName] string callerName = null)

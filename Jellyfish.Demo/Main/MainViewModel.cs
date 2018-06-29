@@ -10,33 +10,11 @@ namespace Jellyfish.Demo.Main
     {
         private readonly Random _random = new Random();
 
-        private OperatingSystem _selectedOperatingSystem;
-
-        public OperatingSystem SelectedOperatingSystem
-        {
-            get => _selectedOperatingSystem;
-            set => Set(ref _selectedOperatingSystem, value);
-        }
+        private ICommand _openFeedsCommand;
 
         private ICommand _openUserCommand;
 
-        public ICommand OpenUserCommand
-        {
-            get => _openUserCommand;
-            set => Set(ref _openUserCommand, value);
-        }
-
-        private ICommand _openFeedsCommand;
-
-        public ICommand OpenFeedsCommand
-        {
-            get => _openFeedsCommand;
-            set => Set(ref _openFeedsCommand, value);
-        }
-
-
-        [Property]
-        public string TestProperty { get; set; }
+        private OperatingSystem _selectedOperatingSystem;
 
         public MainViewModel()
         {
@@ -58,6 +36,27 @@ namespace Jellyfish.Demo.Main
             feed.MessageReceived += OnMessageReceived;
             feed.Notify("hello world!");
         }
+
+        public OperatingSystem SelectedOperatingSystem
+        {
+            get => _selectedOperatingSystem;
+            set => Set(ref _selectedOperatingSystem, value);
+        }
+
+        public ICommand OpenUserCommand
+        {
+            get => _openUserCommand;
+            set => Set(ref _openUserCommand, value);
+        }
+
+        public ICommand OpenFeedsCommand
+        {
+            get => _openFeedsCommand;
+            set => Set(ref _openFeedsCommand, value);
+        }
+
+
+        [Property] public string TestProperty { get; set; }
 
         private void OpenUserAction(object o)
         {
