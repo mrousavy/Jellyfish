@@ -50,6 +50,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyAttribute.cs" />
     <Compile Include="Exceptions\PreferencesFileNotFoundException.cs" />
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />

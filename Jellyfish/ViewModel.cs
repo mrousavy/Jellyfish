@@ -7,5 +7,10 @@
     /// </summary>
     public abstract class ViewModel : ObservableObject
     {
+        protected ViewModel()
+        {
+
+            var attributes = typeof(ViewModel).GetCustomAttributes(true);
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Jellyfish.Demo.Main
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
 
-            var timer = new Timer(TimerCallback);
+            var timer = new Timer(TimerCallback, null, 0, 1000);
 
             // Load preferences from %AppData%/.../...json
             var prefs = new DemoPreferences(Preferences.RecommendedPath);
@@ -56,7 +56,8 @@ namespace Jellyfish.Demo.Main
         }
 
 
-        [Property] public string TestProperty { get; set; }
+        [Dependency]
+        public string TestProperty { get; set; }
 
         private void OpenUserAction(object o)
         {
@@ -73,6 +74,7 @@ namespace Jellyfish.Demo.Main
         {
             int random = _random.Next(1);
             TestProperty = random == 0 ? "zero" : "one";
+            Console.WriteLine(TestProperty);
         }
 
         private void OnMessageReceived(object message)
