@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows.Input;
 using Jellyfish.Attributes;
 using Jellyfish.Demo.Feeds;
+using Jellyfish.Demo.Injection;
 using Jellyfish.Demo.User;
 
 namespace Jellyfish.Demo.Main
@@ -21,6 +22,7 @@ namespace Jellyfish.Demo.Main
         {
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
+            OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
 
             var timer = new Timer(TimerCallback, null, 0, 1000);
 
@@ -38,6 +40,11 @@ namespace Jellyfish.Demo.Main
             feed.Notify("hello world!");
         }
 
+        private void OpenInjectionAction(object o)
+        {
+            new InjectionWindow().Show();
+        }
+
         public OperatingSystem SelectedOperatingSystem
         {
             get => _selectedOperatingSystem;
@@ -48,6 +55,14 @@ namespace Jellyfish.Demo.Main
         {
             get => _openUserCommand;
             set => Set(ref _openUserCommand, value);
+        }
+
+        private ICommand _openInjectionCommand;
+
+        public ICommand OpenInjectionCommand
+        {
+            get => _openInjectionCommand;
+            set => Set(ref _openInjectionCommand, value);
         }
 
         public ICommand OpenFeedsCommand

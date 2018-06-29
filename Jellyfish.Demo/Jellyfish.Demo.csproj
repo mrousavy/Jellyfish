@@ -59,12 +59,23 @@
     <Compile Include="Feeds\FeedWindow.xaml.cs">
       <DependentUpon>FeedWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Injection\InjectionModel.cs" />
+    <Compile Include="Injection\InjectionWindow.xaml.cs">
+      <DependentUpon>InjectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Injection\IUser.cs" />
+    <Compile Include="Injection\InjectionViewModel.cs" />
+    <Compile Include="Injection\User.cs" />
     <Compile Include="User\UserModel.cs" />
     <Compile Include="User\UserViewModel.cs" />
     <Compile Include="User\UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Feeds\FeedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Injection\InjectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -45,6 +45,10 @@
                 Margin="5"
                 Command="{Binding OpenUserCommand}"
                 Content="Open User" />
+            <Button
+                Margin="5"
+                Command="{Binding OpenInjectionCommand}"
+                Content="Open Injection" />
         </StackPanel>
     </Grid>
 </Window>

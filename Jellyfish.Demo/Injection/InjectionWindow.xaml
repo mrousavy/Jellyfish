@@ -1,0 +1,89 @@
+﻿<Window
+    x:Class="Jellyfish.Demo.Injection.InjectionWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Jellyfish.Demo.Injection"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="InjectionWindow"
+    Width="400"
+    Height="220"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:InjectionViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            Content="Initialize with:" />
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            Orientation="Horizontal">
+            <Button
+                Margin="5"
+                Command="{Binding TemplateCommand}"
+                Content="Template()" />
+            <Button
+                Margin="5"
+                Command="{Binding DefineCommand}"
+                Content="Define()" />
+            <Button
+                Margin="5"
+                Command="{Binding BindCommand}"
+                Content="Bind()" />
+            <Button
+                Margin="5"
+                Command="{Binding ResetCommand}"
+                Content="Reset" />
+        </StackPanel>
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="5"
+            Text="First Name:" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5"
+            Text="{Binding User.FirstName}" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="5"
+            Text="Last Name:" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="5"
+            Text="{Binding User.LastName}" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="5"
+            Text="Memory Address:" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="5"
+            Text="{Binding MemoryAddress}" />
+    </Grid>
+</Window>
