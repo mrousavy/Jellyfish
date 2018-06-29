@@ -100,14 +100,15 @@ public class DemoPreferences : Preferences
 
 > See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/Preferences)
 
-## Message Channels
-The [`MessageChannel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/MessageChannel.cs) allows sending objects within the current application domain.
+## Message Feeds
+The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
 
 ```cs
-var channel = MessageChannel<string>.Channel;
-channel.Notify("Hello other ViewModels!");
+var feed = MessageFeed<string>.Feed;
+feed.Notify("Hello other ViewModels!");
 ```
-> See [Message Channels 📖](https://github.com/mrousavy/Jellyfish/wiki/Message-Channels)
+
+> See [Message Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/Feeds)
 
 
 # Results
