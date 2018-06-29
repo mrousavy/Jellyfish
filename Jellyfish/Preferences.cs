@@ -17,7 +17,7 @@ namespace Jellyfish
         /// <summary>
         ///     The size of the buffer for the filestream in bytes
         /// </summary>
-        public static int FileBufferSize = 4096;
+        public static int FileBufferSize { get; set; } = 4096;
 
         /// <summary>
         ///     Initialize the Preferences construct
@@ -82,7 +82,7 @@ namespace Jellyfish
                 do
                 {
                     var buffer = new byte[1024];
-                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize);
+                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize).ConfigureAwait(false);
                     bytes.AddRange(buffer);
                 } while (read > 0);
             }
@@ -131,7 +131,7 @@ namespace Jellyfish
                 do
                 {
                     var buffer = new byte[1024];
-                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize);
+                    read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize).ConfigureAwait(false);
                     bytes.AddRange(buffer);
                 } while (read > 0);
             }

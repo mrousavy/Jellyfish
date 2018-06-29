@@ -6,8 +6,10 @@ namespace Jellyfish
 {
     /// <inheritdoc />
     /// <summary>
-    ///     The observable base class for every view model providing a rich
-    ///     <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> wrapper
+    ///     The observable base class for every object that needs to update subscribers about certain changes using
+    ///     <see cref="T:System.ComponentModel.INotifyPropertyChanged" />
+    ///     <para/>
+    ///     (For ViewModels use <see cref="ViewModel"/>)
     /// </summary>
     public abstract class ObservableObject : INotifyPropertyChanged
     {
@@ -44,12 +46,12 @@ namespace Jellyfish
         }
 
         /// <summary>
-        ///     Force invoke the <see cref="PropertyChanged" /> event on the calling property
+        ///     Force invoke the <see cref="PropertyChanged" /> event on a property
         /// </summary>
-        /// <param name="callerName">The caller member name of the property (auto-set)</param>
-        protected void Notify([CallerMemberName] string callerName = null)
+        /// <param name="propertyName">The name of the property to raise <see cref="PropertyChanged"/> on</param>
+        protected void Notify(string propertyName)
         {
-            OnPropertyChanged(callerName);
+            OnPropertyChanged(propertyName);
         }
     }
 }
