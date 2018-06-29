@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Demo", "Jellyfish
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish", "Jellyfish\Jellyfish.csproj", "{263174AF-6A37-4B74-9046-DAC7C9CA0CBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Tests", "Jellyfish.Tests\Jellyfish.Tests.csproj", "{318667C3-1F25-411A-83FE-5D6C4E92945D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{263174AF-6A37-4B74-9046-DAC7C9CA0CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263174AF-6A37-4B74-9046-DAC7C9CA0CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263174AF-6A37-4B74-9046-DAC7C9CA0CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{318667C3-1F25-411A-83FE-5D6C4E92945D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{318667C3-1F25-411A-83FE-5D6C4E92945D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{318667C3-1F25-411A-83FE-5D6C4E92945D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{318667C3-1F25-411A-83FE-5D6C4E92945D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
