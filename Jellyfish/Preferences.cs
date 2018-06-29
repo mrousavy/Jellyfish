@@ -164,7 +164,7 @@ namespace Jellyfish
             using (var sourceStream = new FileStream(Path, FileMode.Append, FileAccess.Write, FileShare.None,
                 FileBufferSize, true))
             {
-                await sourceStream.WriteAsync(content, 0, content.Length);
+                await sourceStream.WriteAsync(content, 0, content.Length).ConfigureAwait(false);
             }
         }
 

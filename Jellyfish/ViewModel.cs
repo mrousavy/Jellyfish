@@ -1,4 +1,6 @@
-﻿namespace Jellyfish
+﻿using Jellyfish.Attributes;
+
+namespace Jellyfish
 {
     /// <inheritdoc />
     /// <summary>
@@ -9,8 +11,8 @@
     {
         protected ViewModel()
         {
-
-            var attributes = typeof(ViewModel).GetCustomAttributes(true);
+            var type = GetType();
+            var properties = type.PropertiesWithAttribute(typeof(ImplementationAttribute));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Input;
+using Jellyfish.Attributes;
 using Jellyfish.Demo.Feeds;
 using Jellyfish.Demo.User;
 
@@ -56,8 +57,8 @@ namespace Jellyfish.Demo.Main
         }
 
 
-        [Dependency]
-        public string TestProperty { get; set; }
+        [Implementation(typeof(MessageFeed<string>))]
+        public IFeed<string> TestProperty { get; set; }
 
         private void OpenUserAction(object o)
         {
@@ -73,8 +74,8 @@ namespace Jellyfish.Demo.Main
         private void TimerCallback(object state)
         {
             int random = _random.Next(1);
-            TestProperty = random == 0 ? "zero" : "one";
-            Console.WriteLine(TestProperty);
+            //TestProperty = random == 0 ? "zero" : "one";
+            //Console.WriteLine(TestProperty);
         }
 
         private void OnMessageReceived(object message)

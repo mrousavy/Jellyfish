@@ -13,7 +13,7 @@ namespace Jellyfish.Demo.Feeds
 
         public FeedViewModel()
         {
-            Feed = Model.FeedFor<string>();
+            Feed = MessageFeed<string>.Feed;
             Messages = new ObservableCollection<string>();
 
             NotifyCommand = new RelayCommand(NotifyAction);

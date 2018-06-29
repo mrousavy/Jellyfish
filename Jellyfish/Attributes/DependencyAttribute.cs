@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Jellyfish
+namespace Jellyfish.Attributes
 {
     [AttributeUsage(AttributeTargets.All)]
     public class DependencyAttribute : Attribute
