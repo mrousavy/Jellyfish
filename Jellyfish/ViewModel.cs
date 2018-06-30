@@ -1,5 +1,4 @@
-﻿using Jellyfish.Attributes;
-using Jellyfish.DependencyInjection;
+﻿using Jellyfish.DependencyInjection;
 
 namespace Jellyfish
 {
@@ -12,13 +11,8 @@ namespace Jellyfish
     {
         protected ViewModel()
         {
-            var type = GetType();
-            var properties = type.PropertiesWithAttribute(typeof(ImplementationAttribute));
-            foreach (var property in properties)
-            {
-                var val = Injector.Initialize(property.PropertyType);
-                property.SetValue(this, val);
-            }
+            InjectionResolver.InjectProperties(this);
+            InjectionResolver.InjectFields(this);
         }
     }
 }

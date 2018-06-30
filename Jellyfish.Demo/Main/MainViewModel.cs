@@ -26,7 +26,7 @@ namespace Jellyfish.Demo.Main
             OpenUserCommand = new RelayCommand(OpenUserAction);
             OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
 
-            var timer = new Timer(TimerCallback, null, 0, 1000);
+            var _ = new Timer(TimerCallback, null, 0, 1000);
 
             // Load preferences from %AppData%/.../...json
             var prefs = new DemoPreferences(Preferences.RecommendedPath);
@@ -66,9 +66,11 @@ namespace Jellyfish.Demo.Main
             set => Set(ref _openFeedsCommand, value);
         }
 
-
-        [Implementation(typeof(MessageFeed<string>))]
+        [Dependency(typeof(MessageFeed<string>))]
         public IFeed<string> TestProperty { get; set; }
+
+        [Dependency(typeof(MessageFeed<string>))]
+        private IFeed<string> TestField;
 
         private void OpenInjectionAction(object o)
         {

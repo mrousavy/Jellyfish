@@ -21,7 +21,7 @@ namespace Jellyfish
         /// <summary>
         ///     Initialize a new instance of the Message Feed
         /// </summary>
-        private MessageFeed()
+        public MessageFeed()
         {
             Messages = new List<TMessage>();
         }

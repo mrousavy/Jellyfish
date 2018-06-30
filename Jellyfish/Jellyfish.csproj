@@ -52,7 +52,8 @@
   <ItemGroup>
     <Compile Include="Attributes\ImplementationAttribute.cs" />
     <Compile Include="Attributes\DependencyAttribute.cs" />
-    <Compile Include="DependencyInjection\DictionaryExtensions.cs" />
+    <Compile Include="DependencyInjection\InjectionResolver.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="DependencyInjection\Injector.cs" />
     <Compile Include="DependencyInjection\InjectorStoreException.cs" />
     <Compile Include="Exceptions\PreferencesFileNotFoundException.cs" />
@@ -84,7 +85,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Reflection.cs" />
+    <Compile Include="Extensions\AttributeReflector.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="RelayCommand{T}.cs" />
     <Compile Include="Validation\EmailValidationRule.cs" />

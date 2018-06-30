@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Jellyfish.Extensions;
 
 namespace Jellyfish.DependencyInjection
 {
