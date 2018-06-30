@@ -58,8 +58,8 @@ namespace Jellyfish.Tests
             // define a template/macro for user creation
             Injector.Template<IUser>(() => new User(firstName, lastName));
             var user = Injector.Initialize<IUser>();
-            Assert.Equals(user.FirstName, firstName);
-            Assert.Equals(user.LastName, lastName);
+            Assert.AreEqual(firstName, user.FirstName);
+            Assert.AreEqual(lastName, user.LastName);
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace Jellyfish.Tests
 
             // compare user from injector to original
             var user = Injector.Initialize<IUser>();
-            Assert.Equals(user, definedUser);
+            Assert.AreEqual(definedUser, user);
         }
     }
 }

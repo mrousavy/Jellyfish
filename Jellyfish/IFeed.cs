@@ -1,4 +1,6 @@
-﻿namespace Jellyfish
+﻿using System.Collections.Generic;
+
+namespace Jellyfish
 {
     /// <summary>
     ///     A method delegate representing a message received event handler
@@ -14,6 +16,11 @@
     /// <typeparam name="TMessage">The type of the messages this feed handles</typeparam>
     public interface IFeed<TMessage>
     {
+        /// <summary>
+        ///     A list of all sent messages in this feed
+        /// </summary>
+        IList<TMessage> Messages { get; }
+
         /// <summary>
         ///     Notify all <see cref="MessageReceived" /> subscribers in this feed with the given <see cref="message" />
         /// </summary>

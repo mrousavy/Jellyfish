@@ -1,4 +1,6 @@
-﻿namespace Jellyfish
+﻿using System.Collections.Generic;
+
+namespace Jellyfish
 {
     /// <inheritdoc />
     /// <summary>
@@ -14,6 +16,16 @@
         ///     Get the feed for the given type `<see cref="TMessage" />`
         /// </summary>
         public static MessageFeed<TMessage> Feed => _instance ?? (_instance = new MessageFeed<TMessage>());
+        public IList<TMessage> Messages { get; }
+
+        /// <summary>
+        ///     Initialize a new instance of the Message Feed
+        /// </summary>
+        private MessageFeed()
+        {
+            Messages = new List<TMessage>();
+        }
+
 
         /// <inheritdoc />
         /// <summary>
@@ -23,6 +35,7 @@
         /// <param name="message">The message to notify all subscribers about</param>
         public void Notify(TMessage message)
         {
+            Messages.Add(message);
             MessageReceived?.Invoke(message);
         }
 
