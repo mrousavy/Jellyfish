@@ -15,10 +15,6 @@
     <iconUrl>https://raw.githubusercontent.com/mrousavy/Jellyfish/master/Images/jellyfish.png</iconUrl>
     <licenseUrl>https://github.com/mrousavy/Jellyfish/blob/master/LICENSE</licenseUrl>
     <tags>jellyfish fish mvvm wpf library light csharp dotnet</tags>
-    
-    <dependencies>
-        <dependency id="Newtonsoft.Json" version="11.0.0.0" />
-    </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Jellyfish.dll" target="lib"/>
