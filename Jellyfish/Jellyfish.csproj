@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Attributes\ImplementationAttribute.cs" />
     <Compile Include="Attributes\DependencyAttribute.cs" />
+    <Compile Include="DependencyInjection\InjectionExtensions.cs" />
     <Compile Include="DependencyInjection\InjectionResolver.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="DependencyInjection\Injector.cs" />

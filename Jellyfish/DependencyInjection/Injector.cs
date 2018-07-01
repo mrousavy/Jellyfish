@@ -10,14 +10,17 @@ namespace Jellyfish.DependencyInjection
     /// </summary>
     public class Injector
     {
-        static Injector()
+        /// <summary>
+        ///     Initialize a new <see cref="Injector"/> instance
+        /// </summary>
+        public Injector()
         {
             Instances = new Dictionary<Type, object>();
             Templates = new Dictionary<Type, Func<object>>();
         }
 
-        private static Dictionary<Type, object> Instances { get; }
-        private static Dictionary<Type, Func<object>> Templates { get; }
+        private Dictionary<Type, object> Instances { get; }
+        private Dictionary<Type, Func<object>> Templates { get; }
 
         /// <summary>
         ///     Set the base type `<see cref="baseType" />` to use implementations of type `<see cref="subType" />`
@@ -32,7 +35,7 @@ namespace Jellyfish.DependencyInjection
         ///     Thrown if the type `<see cref="baseType" />`/`<see cref="subType" />` could
         ///     not be bound
         /// </exception>
-        public static void Bind(Type baseType, Type subType, params object[] arguments)
+        public void Bind(Type baseType, Type subType, params object[] arguments)
         {
             if (!baseType.IsAssignableFrom(subType))
                 throw new ArgumentException($"The type {subType.Name} does not inherit from/implement {baseType.Name}");
@@ -47,30 +50,42 @@ namespace Jellyfish.DependencyInjection
         }
 
         /// <summary>
-        ///     Set the base type `<see cref="TBase" />` to use implementations of type `<see cref="TSubclass" />`
+        ///     Set the base type `<see cref="TBase" />` to use implementations of type `<see cref="TSubtype" />`
         /// </summary>
         /// <typeparam name="TBase">The type of the base ([abstract] class or interface)</typeparam>
-        /// <typeparam name="TSubclass">The type of the sub-class (has to inherit from <see cref="TBase" />)</typeparam>
+        /// <typeparam name="TSubtype">The type of the sub-class (has to inherit from <see cref="TBase" />)</typeparam>
         /// <param name="arguments">
-        ///     The arguments to use for the `<see cref="TSubclass" />` constructor call (or <code>null</code>
+        ///     The arguments to use for the `<see cref="TSubtype" />` constructor call (or <code>null</code>
         ///     if none)
         /// </param>
         /// <exception cref="InjectorStoreException">
-        ///     Thrown if the type `<see cref="TBase" />`/`<see cref="TSubclass" />` could not
+        ///     Thrown if the type `<see cref="TBase" />`/`<see cref="TSubtype" />` could not
         ///     be bound
         /// </exception>
-        public static void Bind<TBase, TSubclass>(params object[] arguments) where TSubclass : TBase =>
-            Bind(typeof(TBase), typeof(TSubclass), arguments);
+        public void Bind<TBase, TSubtype>(params object[] arguments) where TSubtype : TBase =>
+            Bind(typeof(TBase), typeof(TSubtype), arguments);
 
         /// <summary>
         ///     Declare a template for the given type `<see cref="TBase" />` on how to initialize a variable spontaneously
         /// </summary>
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
+        /// <typeparam name="TSubtype">The `<see cref="TBase"/>`'s sub type to be used for initialization of the base</typeparam>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
         /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be templated</exception>
-        public static void Template<TBase>(Func<TBase> initializer)
+        public void Template<TBase, TSubtype>(Func<TSubtype> initializer) where TSubtype : TBase
         {
             Templates.AddOrUpdate(typeof(TBase), initializer as Func<object>);
+        }
+
+        /// <summary>
+        ///     Declare a template for the given type `<see cref="baseType" />` on how to initialize a variable spontaneously
+        /// </summary>
+        /// <param name="baseType">The type of the property or field that gets injected</param>
+        /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
+        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="baseType" />` could not be templated</exception>
+        public void Template(Type baseType, Func<object> initializer)
+        {
+            Templates.AddOrUpdate(baseType, initializer);
         }
 
         /// <summary>
@@ -80,20 +95,20 @@ namespace Jellyfish.DependencyInjection
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
         /// <param name="instance">The static instance to initialize all variables of type `<see cref="TBase" />` with</param>
         /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be defined</exception>
-        public static void Define<TBase>(TBase instance)
+        public void Define<TBase>(TBase instance)
         {
             Instances.AddOrUpdate(typeof(TBase), instance);
         }
 
         /// <summary>
-        ///     Declare a fixed variable for the given type `<see cref="TBase" />` to set all variables of type `
+        ///     Declare a fixed variable for the given type `<see cref="TSubtype" />` to set all variables of type `
         ///     <see cref="TBase" />` to
         /// </summary>
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
         /// <typeparam name="TSubtype">The type of the value to inject the property or field with</typeparam>
         /// <param name="instance">The static instance to initialize all variables of type `<see cref="TBase" />` with</param>
         /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be defined</exception>
-        public static void Define<TBase, TSubtype>(TSubtype instance) where TSubtype : TBase
+        public void Define<TBase, TSubtype>(TSubtype instance) where TSubtype : TBase
         {
             Instances.AddOrUpdate(typeof(TBase), instance);
         }
@@ -107,16 +122,10 @@ namespace Jellyfish.DependencyInjection
         ///     the <see cref="Injector" />
         /// </exception>
         /// <returns>An initialized instance of type `<see cref="TBase" />`</returns>
-        public static TBase Initialize<TBase>() where TBase : class
+        public TBase Initialize<TBase>()
         {
             var type = typeof(TBase);
-
-            if (Instances.ContainsKey(type))
-                return Instances[type] as TBase;
-            if (Templates.ContainsKey(type))
-                return Templates[type]() as TBase;
-            throw new ArgumentException(
-                $"No implementations for the type {type.Name} could be found in the {nameof(Injector)}!");
+            return (TBase) Initialize(type);
         }
 
         /// <summary>
@@ -128,7 +137,7 @@ namespace Jellyfish.DependencyInjection
         ///     the <see cref="Injector" />
         /// </exception>
         /// <returns>An initialized instance of type `<see cref="type" />`</returns>
-        public static object Initialize(Type type)
+        public object Initialize(Type type)
         {
             if (Instances.ContainsKey(type))
                 return Instances[type];
@@ -141,7 +150,7 @@ namespace Jellyfish.DependencyInjection
         /// <summary>
         ///     Clear all templates, definitions and bindings in this <see cref="Injector"/>
         /// </summary>
-        public static void Clear()
+        public void Clear()
         {
             Templates.Clear();
             Instances.Clear();

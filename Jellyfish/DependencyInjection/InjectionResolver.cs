@@ -12,7 +12,8 @@ namespace Jellyfish.DependencyInjection
         /// </summary>
         /// <typeparam name="T">The type to inject properties into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static properties)</param>
-        public static void InjectProperties<T>(T reference)
+        /// <param name="injector">The injector instance to use</param>
+        public static void InjectProperties<T>(T reference, Injector injector)
         {
             var type = typeof(T);
             var attributeType = typeof(DependencyAttribute);
@@ -28,8 +29,8 @@ namespace Jellyfish.DependencyInjection
                     var subType = typeArgument.Value as Type;
                     var parameters = paramsArgument.Value as object[];
 
-                    Injector.Bind(property.PropertyType, subType, parameters);
-                    var val = Injector.Initialize(property.PropertyType);
+                    injector.Bind(property.PropertyType, subType, parameters);
+                    var val = injector.Initialize(property.PropertyType);
                     property.SetValue(reference, val);
                 }
             }
@@ -40,7 +41,8 @@ namespace Jellyfish.DependencyInjection
         /// </summary>
         /// <typeparam name="T">The type to inject fields into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static fields)</param>
-        public static void InjectFields<T>(T reference)
+        /// <param name="injector">The injector instance to use</param>
+        public static void InjectFields<T>(T reference, Injector injector)
         {
             var type = typeof(T);
             var attributeType = typeof(DependencyAttribute);
@@ -56,8 +58,8 @@ namespace Jellyfish.DependencyInjection
                     var subType = typeArgument.Value as Type;
                     var parameters = paramsArgument.Value as object[];
 
-                    Injector.Bind(field.FieldType, subType, parameters);
-                    var val = Injector.Initialize(field.FieldType);
+                    injector.Bind(field.FieldType, subType, parameters);
+                    var val = injector.Initialize(field.FieldType);
                     field.SetValue(reference, val);
                 }
             }
