@@ -66,10 +66,10 @@ namespace Jellyfish.Demo.Main
             set => Set(ref _openFeedsCommand, value);
         }
 
-        [Dependency(typeof(MessageFeed<string>))]
+        [Dependency]
         public IFeed<string> TestProperty { get; set; }
 
-        [Dependency(typeof(MessageFeed<string>))]
+        [Dependency]
         private IFeed<string> TestField;
 
         private void OpenInjectionAction(object o)

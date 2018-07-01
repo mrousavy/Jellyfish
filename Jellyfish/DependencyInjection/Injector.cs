@@ -43,8 +43,6 @@ namespace Jellyfish.DependencyInjection
                 throw new ArgumentException(
                     $"The type {subType.Name} does not have a public constructor with {types.Length} parameters to call!");
 
-            if (Templates.ContainsKey(baseType))
-                Templates.Remove(baseType);
             Templates.AddOrUpdate(baseType, () => ctor.Invoke(arguments));
         }
 
@@ -83,6 +81,19 @@ namespace Jellyfish.DependencyInjection
         /// <param name="instance">The static instance to initialize all variables of type `<see cref="TBase" />` with</param>
         /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be defined</exception>
         public static void Define<TBase>(TBase instance)
+        {
+            Instances.AddOrUpdate(typeof(TBase), instance);
+        }
+
+        /// <summary>
+        ///     Declare a fixed variable for the given type `<see cref="TBase" />` to set all variables of type `
+        ///     <see cref="TBase" />` to
+        /// </summary>
+        /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
+        /// <typeparam name="TSubtype">The type of the value to inject the property or field with</typeparam>
+        /// <param name="instance">The static instance to initialize all variables of type `<see cref="TBase" />` with</param>
+        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be defined</exception>
+        public static void Define<TBase, TSubtype>(TSubtype instance) where TSubtype : TBase
         {
             Instances.AddOrUpdate(typeof(TBase), instance);
         }
