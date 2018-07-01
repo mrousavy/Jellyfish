@@ -4,6 +4,13 @@ namespace Jellyfish.Demo.Injection
 {
     public class InjectionModel
     {
+        private Injector Injector { get; }
+
+        public InjectionModel()
+        {
+            Injector = new Injector();
+        }
+
         public IUser TemplateUser()
         {
             Injector.Template<IUser>(() => new User());

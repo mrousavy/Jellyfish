@@ -11,8 +11,8 @@ namespace Jellyfish
     {
         protected ViewModel()
         {
-            InjectionResolver.InjectProperties(this);
-            InjectionResolver.InjectFields(this);
+            //InjectionResolver.InjectProperties(this);
+            //InjectionResolver.InjectFields(this);
         }
     }
 }

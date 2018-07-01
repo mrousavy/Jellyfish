@@ -69,10 +69,9 @@ namespace Jellyfish.DependencyInjection
         ///     Declare a template for the given type `<see cref="TBase" />` on how to initialize a variable spontaneously
         /// </summary>
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
-        /// <typeparam name="TSubtype">The `<see cref="TBase"/>`'s sub type to be used for initialization of the base</typeparam>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
         /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be templated</exception>
-        public void Template<TBase, TSubtype>(Func<TSubtype> initializer) where TSubtype : TBase
+        public void Template<TBase>(Func<TBase> initializer)
         {
             Templates.AddOrUpdate(typeof(TBase), initializer as Func<object>);
         }
@@ -100,18 +99,8 @@ namespace Jellyfish.DependencyInjection
             Instances.AddOrUpdate(typeof(TBase), instance);
         }
 
-        /// <summary>
-        ///     Declare a fixed variable for the given type `<see cref="TSubtype" />` to set all variables of type `
-        ///     <see cref="TBase" />` to
-        /// </summary>
-        /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
-        /// <typeparam name="TSubtype">The type of the value to inject the property or field with</typeparam>
-        /// <param name="instance">The static instance to initialize all variables of type `<see cref="TBase" />` with</param>
-        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be defined</exception>
-        public void Define<TBase, TSubtype>(TSubtype instance) where TSubtype : TBase
-        {
-            Instances.AddOrUpdate(typeof(TBase), instance);
-        }
+
+
 
         /// <summary>
         ///     Initialize the given type `<see cref="TBase" />` with either a templated function to call or a pre-defined instance
