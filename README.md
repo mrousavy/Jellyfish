@@ -48,7 +48,7 @@ public class LoginViewModel : ViewModel
 }
 ```
 
-> See [View Models 📖](https://github.com/mrousavy/Jellyfish/wiki/View-Models)
+> See [View Models 📖](https://github.com/mrousavy/Jellyfish/wiki/📝-View-Models)
 
 ## Commands
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
@@ -67,7 +67,7 @@ void LoginAction(object parameter)
 { ... }
 ```
 
-> See [Commands 📖](https://github.com/mrousavy/Jellyfish/wiki/Commands)
+> See [Commands 📖](https://github.com/mrousavy/Jellyfish/wiki/⚡-Commands)
 
 ## Enums
 The enum binding source extension allows for better binding support on enums.
@@ -78,7 +78,7 @@ Just use the [`EnumBindingSource` extension](https://github.com/mrousavy/Jellyfi
 	  SelectedItem="{Binding SelectedStatus}" />
 ```
 
-> See [Enums 📖](https://github.com/mrousavy/Jellyfish/wiki/Enums)
+> See [Enums 📖](https://github.com/mrousavy/Jellyfish/wiki/💾-Enums)
 
 ## Preferences
 An abstract class definition for any application [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs).
@@ -98,7 +98,7 @@ public class DemoPreferences : Preferences
 }
 ```
 
-> See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/Preferences)
+> See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/⚙️-Preferences)
 
 ## Message Feeds
 The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
@@ -108,7 +108,7 @@ var feed = MessageFeed<string>.Feed;
 feed.Notify("Hello other ViewModels!");
 ```
 
-> See [Message Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/Feeds)
+> See [Message Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/🔔-Feeds)
 
 
 # Results
