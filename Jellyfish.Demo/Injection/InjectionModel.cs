@@ -4,7 +4,7 @@ namespace Jellyfish.Demo.Injection
 {
     public class InjectionModel
     {
-        private Injector Injector { get; }
+        private IInjector Injector { get; }
 
         public InjectionModel()
         {

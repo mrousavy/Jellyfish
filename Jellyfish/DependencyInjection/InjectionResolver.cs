@@ -13,7 +13,7 @@ namespace Jellyfish.DependencyInjection
         /// <typeparam name="T">The type to inject properties into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static properties)</param>
         /// <param name="injector">The injector instance to use</param>
-        public static void InjectProperties<T>(T reference, Injector injector)
+        public static void InjectProperties<T>(T reference, IInjector injector)
         {
             var type = typeof(T);
             var attributeType = typeof(DependencyAttribute);
@@ -42,7 +42,7 @@ namespace Jellyfish.DependencyInjection
         /// <typeparam name="T">The type to inject fields into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static fields)</param>
         /// <param name="injector">The injector instance to use</param>
-        public static void InjectFields<T>(T reference, Injector injector)
+        public static void InjectFields<T>(T reference, IInjector injector)
         {
             var type = typeof(T);
             var attributeType = typeof(DependencyAttribute);

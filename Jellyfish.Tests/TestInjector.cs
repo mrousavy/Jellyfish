@@ -7,7 +7,7 @@ namespace Jellyfish.Tests
     [TestClass]
     public class TestInjector
     {
-        private Injector Injector { get; set; }
+        private IInjector Injector { get; set; }
 
         [TestInitialize]
         public void Initialize()
