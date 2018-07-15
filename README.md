@@ -30,7 +30,7 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 # Usage
 
-For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki) or the [Getting Started guide 📖](https://github.com/mrousavy/Jellyfish/wiki/Getting-started).
+For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki) or the [Getting Started guide 📖](https://github.com/mrousavy/Jellyfish/wiki/Getting-started). For usage-example projects, please see [Jellyfish.Demo](https://github.com/mrousavy/Jellyfish/tree/master/Jellyfish.Demo) or [GameFinder](https://github.com/mrousavy/GameFinder).
 
 ## View Models
 
