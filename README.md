@@ -32,7 +32,7 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 
 For description, documentation and usage, please view the [Jellyfish wiki 📖](https://github.com/mrousavy/Jellyfish/wiki) or the [Getting Started guide 📖](https://github.com/mrousavy/Jellyfish/wiki/Getting-started). For usage-example projects, please see [Jellyfish.Demo](https://github.com/mrousavy/Jellyfish/tree/master/Jellyfish.Demo) or [GameFinder](https://github.com/mrousavy/GameFinder).
 
-## View Models
+## 📝 View Models
 
 Every **ViewModel** needs to implement the [`ViewModel`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/ViewModel.cs) class:
 
@@ -50,7 +50,7 @@ public class LoginViewModel : ViewModel
 
 > See [View Models 📖](https://github.com/mrousavy/Jellyfish/wiki/📝-View-Models)
 
-## Commands
+## ⚡ Commands
 The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/RelayCommand.cs) is an [`ICommand`](https://msdn.microsoft.com/en-us/library/system.windows.input.icommand(v=vs.110).aspx) implementation.
 
 ```xaml
@@ -61,15 +61,17 @@ The [`RelayCommand`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish
 
 Initialize the `ICommand` with a non-generic `RelayCommand` instance and the given action/callback:
 ```cs
-ICommand LoginCommand = new RelayCommand(LoginAction);
+ICommand LoginCommand = new RelayCommand(LoginAction, CanLogin);
 // ...
 void LoginAction(object parameter)
+{ ... }
+bool CanLogin(object parameter)
 { ... }
 ```
 
 > See [Commands 📖](https://github.com/mrousavy/Jellyfish/wiki/⚡-Commands)
 
-## Enums
+## 💾 Enums
 The enum binding source extension allows for better binding support on enums.
 
 Just use the [`EnumBindingSource` extension](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Extensions/EnumBindingSourceExtension.cs) to bind an enum to any `ItemsSource`:
@@ -80,7 +82,7 @@ Just use the [`EnumBindingSource` extension](https://github.com/mrousavy/Jellyfi
 
 > See [Enums 📖](https://github.com/mrousavy/Jellyfish/wiki/💾-Enums)
 
-## Preferences
+## ⚙️ Preferences
 An abstract class definition for any application [`Preferences`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Preferences.cs).
 
 ```cs
@@ -100,7 +102,7 @@ public class DemoPreferences : Preferences
 
 > See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/⚙️-Preferences)
 
-## Message Feeds
+## 🔔 Feeds
 The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Feeds/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
 
 ```cs
@@ -108,7 +110,7 @@ Feed.Notify("Hello other ViewModels!");
 Feed.Notify(NotifyReason.RefreshView);
 ```
 
-> See [Message Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/🔔-Feeds)
+> See [Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/🔔-Feeds)
 
 
 # Results
