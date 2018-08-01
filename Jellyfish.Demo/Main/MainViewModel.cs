@@ -21,6 +21,8 @@ namespace Jellyfish.Demo.Main
 
         private OperatingSystem _selectedOperatingSystem;
 
+        [Dependency] private IFeed<string> TestField;
+
         public MainViewModel()
         {
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
@@ -68,9 +70,6 @@ namespace Jellyfish.Demo.Main
 
         [Dependency]
         public IFeed<string> TestProperty { get; set; }
-
-        [Dependency]
-        private IFeed<string> TestField;
 
         private void OpenInjectionAction(object o)
         {

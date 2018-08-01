@@ -12,6 +12,7 @@ namespace Jellyfish.Extensions
             var properties = classType.GetProperties();
             return properties.Where(p => p.CustomAttributes.Any(a => a.AttributeType == attributeType));
         }
+
         public static IEnumerable<FieldInfo> FieldsWithAttribute(this Type classType, Type attributeType)
         {
             var fields = classType.GetFields();

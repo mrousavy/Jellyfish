@@ -8,7 +8,7 @@ namespace Jellyfish.DependencyInjection
     public class Injector : IInjector
     {
         /// <summary>
-        ///     Initialize a new <see cref="Injector"/> instance
+        ///     Initialize a new <see cref="Injector" /> instance
         /// </summary>
         public Injector()
         {
@@ -54,7 +54,6 @@ namespace Jellyfish.DependencyInjection
         }
 
 
-
         public TBase Initialize<TBase>()
         {
             var type = typeof(TBase);
@@ -74,7 +73,9 @@ namespace Jellyfish.DependencyInjection
             {
                 return result;
             }
-            throw new InjectorException($"Could not initialize type `{type.Name}`, the lambda returned an invalid type! ({result?.GetType()})");
+
+            throw new InjectorException(
+                $"Could not initialize type `{type.Name}`, the lambda returned an invalid type! ({result?.GetType()})");
         }
 
         public void Clear()

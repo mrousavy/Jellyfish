@@ -19,9 +19,9 @@
         }
 
         /// <summary>
-        ///     Create a new <see cref="IInjector"/> instance
+        ///     Create a new <see cref="IInjector" /> instance
         /// </summary>
-        /// <returns>The newly initialized <see cref="IInjector"/> instance</returns>
+        /// <returns>The newly initialized <see cref="IInjector" /> instance</returns>
         public static IInjector NewInjector() => new Injector();
     }
 }

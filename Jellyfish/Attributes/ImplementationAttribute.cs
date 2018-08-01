@@ -13,10 +13,14 @@ namespace Jellyfish.Attributes
     {
         /// <inheritdoc />
         /// <summary>
-        ///     Initialize a new dependency using automatic injector binding initialization by calling the constructor with the given <see cref="parameters"/> (or none for default)
+        ///     Initialize a new dependency using automatic injector binding initialization by calling the constructor with the
+        ///     given <see cref="parameters" /> (or none for default)
         /// </summary>
         /// <param name="implementationType">The type to use for automatically initializing this dependency</param>
-        /// <param name="parameters">The parameters to use for calling the <see cref="implementationType"/>'s constructor (or none for default)</param>
+        /// <param name="parameters">
+        ///     The parameters to use for calling the <see cref="implementationType" />'s constructor (or none
+        ///     for default)
+        /// </param>
         public ImplementationAttribute(Type implementationType, params object[] parameters)
         {
             ImplementationType = implementationType;

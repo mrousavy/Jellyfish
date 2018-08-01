@@ -5,13 +5,13 @@ namespace Jellyfish.Tests.Data
 {
     public class UsersWindow
     {
-        public IList<IUser> Users { get; }
-
         public UsersWindow()
         {
             Users = new List<IUser>();
             Feed<IUser>.Instance.MessageReceived += MessageReceived;
         }
+
+        public IList<IUser> Users { get; }
 
         private void MessageReceived(IUser message)
         {

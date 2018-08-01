@@ -1,14 +1,14 @@
-﻿using Jellyfish.Attributes;
-using Jellyfish.Extensions;
-using System;
+﻿using System;
 using System.Linq;
+using Jellyfish.Attributes;
+using Jellyfish.Extensions;
 
 namespace Jellyfish.DependencyInjection
 {
     public class InjectionResolver
     {
         /// <summary>
-        ///     Inject all properties for the type `<see cref="T"/>` with the found injections
+        ///     Inject all properties for the type `<see cref="T" />` with the found injections
         /// </summary>
         /// <typeparam name="T">The type to inject properties into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static properties)</param>
@@ -37,7 +37,7 @@ namespace Jellyfish.DependencyInjection
         }
 
         /// <summary>
-        ///     Inject all fields for the type `<see cref="T"/>` with the found injections
+        ///     Inject all fields for the type `<see cref="T" />` with the found injections
         /// </summary>
         /// <typeparam name="T">The type to inject fields into</typeparam>
         /// <param name="reference">A reference to the type to inject into (or null if static fields)</param>

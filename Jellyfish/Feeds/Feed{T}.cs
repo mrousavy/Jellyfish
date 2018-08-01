@@ -13,18 +13,19 @@ namespace Jellyfish.Feeds
         private static IFeed<TMessage> _instance;
 
         /// <summary>
-        ///     Get the feed for the given type `<see cref="TMessage" />`
-        /// </summary>
-        public static IFeed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
-        public IList<TMessage> Messages { get; }
-
-        /// <summary>
         ///     Initialize a new instance of the Message Feed
         /// </summary>
         public Feed()
         {
             Messages = new List<TMessage>();
         }
+
+        /// <summary>
+        ///     Get the feed for the given type `<see cref="TMessage" />`
+        /// </summary>
+        public static IFeed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
+
+        public IList<TMessage> Messages { get; }
 
         public void Notify(TMessage message)
         {

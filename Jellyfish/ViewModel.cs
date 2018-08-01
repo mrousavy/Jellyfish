@@ -1,6 +1,4 @@
-﻿using Jellyfish.DependencyInjection;
-
-namespace Jellyfish
+﻿namespace Jellyfish
 {
     /// <inheritdoc />
     /// <summary>
@@ -8,11 +6,5 @@ namespace Jellyfish
     ///     <see cref="ObservableObject" />)
     /// </summary>
     public abstract class ViewModel : ObservableObject
-    {
-        protected ViewModel()
-        {
-            //InjectionResolver.InjectProperties(this);
-            //InjectionResolver.InjectFields(this);
-        }
-    }
+    { }
 }

@@ -4,10 +4,15 @@ namespace Jellyfish.Tests.Data
 {
     public class User : ObservableObject, IUser
     {
+        private string _firstName;
+
+        private string _lastName;
+
         public User()
         {
             Debug.WriteLine("ctor: User()");
         }
+
         public User(string firstName, string lastName)
         {
             Debug.WriteLine("ctor: User(string, string)");
@@ -15,14 +20,12 @@ namespace Jellyfish.Tests.Data
             LastName = lastName;
         }
 
-        private string _firstName;
         public string FirstName
         {
             get => _firstName;
             set => Set(ref _firstName, value);
         }
 
-        private string _lastName;
         public string LastName
         {
             get => _lastName;
@@ -41,9 +44,7 @@ namespace Jellyfish.Tests.Data
 
         protected bool Equals(IUser other) => FirstName == other.FirstName && LastName == other.LastName;
 
-        public override int GetHashCode()
-        {
-            return ((FirstName != null ? FirstName.GetHashCode() : 0) * 397) ^ (LastName != null ? LastName.GetHashCode() : 0);
-        }
+        public override int GetHashCode() => ((FirstName != null ? FirstName.GetHashCode() : 0) * 397) ^
+                                             (LastName != null ? LastName.GetHashCode() : 0);
     }
 }

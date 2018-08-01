@@ -8,7 +8,8 @@ namespace Jellyfish.DependencyInjection
     public interface IInjector
     {
         /// <summary>
-        ///     Register the type `<see cref="baseType" />` to use new instances of type `<see cref="subType" />` for injection (binding)
+        ///     Register the type `<see cref="baseType" />` to use new instances of type `<see cref="subType" />` for injection
+        ///     (binding)
         /// </summary>
         /// <param name="baseType">The type of the base ([abstract] class or interface)</param>
         /// <param name="subType">The type of the sub-class (has to inherit from <see cref="baseType" />)</param>
@@ -23,7 +24,8 @@ namespace Jellyfish.DependencyInjection
         void Register(Type baseType, Type subType, params object[] arguments);
 
         /// <summary>
-        ///     Register the type `<see cref="TBase" />` to use new instances of type `<see cref="TSubtype" />` for injection (binding)
+        ///     Register the type `<see cref="TBase" />` to use new instances of type `<see cref="TSubtype" />` for injection
+        ///     (binding)
         /// </summary>
         /// <typeparam name="TBase">The type of the base ([abstract] class or interface)</typeparam>
         /// <typeparam name="TSubtype">The type of the sub-class (has to inherit from <see cref="TBase" />)</typeparam>
@@ -38,7 +40,8 @@ namespace Jellyfish.DependencyInjection
         void Register<TBase, TSubtype>(params object[] arguments) where TSubtype : TBase;
 
         /// <summary>
-        ///     Register the type `<see cref="TBase" />` to use the result of the `<see cref="initializer"/>` function for injection (templating)
+        ///     Register the type `<see cref="TBase" />` to use the result of the `<see cref="initializer" />` function for
+        ///     injection (templating)
         /// </summary>
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
@@ -46,7 +49,8 @@ namespace Jellyfish.DependencyInjection
         void Register<TBase>(Func<TBase> initializer);
 
         /// <summary>
-        ///     Register the type `<see cref="baseType" />` to use the result of the `<see cref="initializer"/>` function for injection (templating)
+        ///     Register the type `<see cref="baseType" />` to use the result of the `<see cref="initializer" />` function for
+        ///     injection (templating)
         /// </summary>
         /// <param name="baseType">The type of the property or field that gets injected</param>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
@@ -54,14 +58,13 @@ namespace Jellyfish.DependencyInjection
         void Register(Type baseType, Func<object> initializer);
 
         /// <summary>
-        ///     Register the type `<see cref="T"/>` to always use the pre-defined variable `<see cref="instance"/>` for injection (defining)
+        ///     Register the type `<see cref="T" />` to always use the pre-defined variable `<see cref="instance" />` for injection
+        ///     (defining)
         /// </summary>
         /// <typeparam name="T">The type of the property or field that gets injected</typeparam>
         /// <param name="instance">The static instance to initialize all variables of type `<see cref="T" />` with</param>
         /// <exception cref="InjectorException">Thrown if the type `<see cref="T" />` could not be defined</exception>
         void Register<T>(T instance);
-
-
 
 
         /// <summary>
@@ -87,7 +90,7 @@ namespace Jellyfish.DependencyInjection
         object Initialize(Type type);
 
         /// <summary>
-        ///     Clear all registered types in this <see cref="IInjector"/> instance
+        ///     Clear all registered types in this <see cref="IInjector" /> instance
         /// </summary>
         void Clear();
     }
