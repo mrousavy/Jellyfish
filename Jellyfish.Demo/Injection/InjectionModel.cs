@@ -13,19 +13,19 @@ namespace Jellyfish.Demo.Injection
 
         public IUser TemplateUser()
         {
-            Injector.Template<IUser>(() => new User());
+            Injector.Register<IUser>(() => new User());
             return Injector.Initialize<IUser>();
         }
 
         public IUser DefineUser()
         {
-            Injector.Define<IUser>(new User());
+            Injector.Register<IUser>(new User());
             return Injector.Initialize<IUser>();
         }
 
         public IUser BindUser()
         {
-            Injector.Bind<IUser, User>();
+            Injector.Register<IUser, User>();
             return Injector.Initialize<IUser>();
         }
     }

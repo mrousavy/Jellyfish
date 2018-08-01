@@ -29,7 +29,7 @@ namespace Jellyfish.DependencyInjection
                     var subType = typeArgument.Value as Type;
                     var parameters = paramsArgument.Value as object[];
 
-                    injector.Bind(property.PropertyType, subType, parameters);
+                    injector.Register(property.PropertyType, subType, parameters);
                     var val = injector.Initialize(property.PropertyType);
                     property.SetValue(reference, val);
                 }
@@ -58,7 +58,7 @@ namespace Jellyfish.DependencyInjection
                     var subType = typeArgument.Value as Type;
                     var parameters = paramsArgument.Value as object[];
 
-                    injector.Bind(field.FieldType, subType, parameters);
+                    injector.Register(field.FieldType, subType, parameters);
                     var val = injector.Initialize(field.FieldType);
                     field.SetValue(reference, val);
                 }

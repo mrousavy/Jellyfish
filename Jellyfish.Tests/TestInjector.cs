@@ -21,7 +21,7 @@ namespace Jellyfish.Tests
             Injector.Clear();
 
             // define a binding which will locate the default ctor
-            Injector.Bind<IUser, User>();
+            Injector.Register<IUser, User>();
             var user = Injector.Initialize<IUser>();
             Assert.IsNotNull(user);
         }
@@ -32,7 +32,7 @@ namespace Jellyfish.Tests
             Injector.Clear();
 
             // define a binding which will locate the default ctor
-            Injector.Bind<IUser, User>();
+            Injector.Register<IUser, User>();
             var user = Injector.Initialize<IUser>();
 
             // because the default ctor was called, these fields should be null
@@ -46,7 +46,7 @@ namespace Jellyfish.Tests
             Injector.Clear();
 
             // define a template/macro for user creation
-            Injector.Template<IUser>(() => new User());
+            Injector.Register<IUser>(() => new User());
             var user = Injector.Initialize<IUser>();
             Assert.IsNotNull(user);
         }
@@ -59,7 +59,7 @@ namespace Jellyfish.Tests
             const string firstName = "John";
             const string lastName = "Smith";
             // define a template/macro for user creation
-            Injector.Template<IUser>(() => new User(firstName, lastName));
+            Injector.Register<IUser>(() => new User(firstName, lastName));
             var user = Injector.Initialize<IUser>();
             Assert.AreEqual(firstName, user.FirstName);
             Assert.AreEqual(lastName, user.LastName);
@@ -72,7 +72,7 @@ namespace Jellyfish.Tests
 
             // define static user in injector
             var definedUser = new User("John", "Smith");
-            Injector.Define<IUser>(definedUser);
+            Injector.Register<IUser>(definedUser);
 
             // get user from injector
             var user = Injector.Initialize<IUser>();
@@ -86,7 +86,7 @@ namespace Jellyfish.Tests
 
             // define static user in injector
             var definedUser = new User("John", "Smith");
-            Injector.Define<IUser>(definedUser);
+            Injector.Register<IUser>(definedUser);
 
             // compare user from injector to original
             var user = Injector.Initialize<IUser>();
