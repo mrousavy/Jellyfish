@@ -32,7 +32,10 @@ namespace Jellyfish.Tests.Data
         public override bool Equals(object obj)
         {
             if (!(obj is IUser user))
+            {
                 return false;
+            }
+
             return FirstName == user.FirstName && LastName == user.LastName;
         }
 

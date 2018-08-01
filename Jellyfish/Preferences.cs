@@ -55,7 +55,9 @@ namespace Jellyfish
         public static TPreferences Load<TPreferences>(string path) where TPreferences : Preferences
         {
             if (!File.Exists(path))
+            {
                 throw new PreferencesFileNotFoundException(path);
+            }
 
             string json = File.ReadAllText(path);
             var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
@@ -72,7 +74,9 @@ namespace Jellyfish
         public static async Task<TPreferences> LoadAsync<TPreferences>(string path) where TPreferences : Preferences
         {
             if (!File.Exists(path))
+            {
                 throw new PreferencesFileNotFoundException(path);
+            }
 
             // Read file async
             var bytes = new List<byte>();
@@ -103,7 +107,9 @@ namespace Jellyfish
         public static TPreferences LoadOrDefault<TPreferences>(string path) where TPreferences : Preferences
         {
             if (!File.Exists(path))
+            {
                 return default(TPreferences);
+            }
 
             string json = File.ReadAllText(path);
             var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
@@ -121,7 +127,9 @@ namespace Jellyfish
             where TPreferences : Preferences
         {
             if (!File.Exists(path))
+            {
                 return default(TPreferences);
+            }
 
             // Read file async
             var bytes = new List<byte>();
@@ -175,8 +183,12 @@ namespace Jellyfish
             var directory = file.Directory;
 
             if (directory != null)
+            {
                 if (!directory.Exists)
+                {
                     directory.Create();
+                }
+            }
         }
     }
 }

@@ -7,9 +7,9 @@ namespace Jellyfish.DependencyInjection
     ///     An exception that is thrown when the <see cref="T:Jellyfish.DependencyInjection.Injector" /> cannot successfully
     ///     template, bind or define a type
     /// </summary>
-    public class InjectorStoreException : Exception
+    public class InjectorException : Exception
     {
-        public InjectorStoreException(string message) : base(message)
+        public InjectorException(string message) : base(message)
         { }
     }
 }

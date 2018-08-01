@@ -16,7 +16,7 @@ namespace Jellyfish.DependencyInjection
         ///     The arguments to use for the `<see cref="subType" />` constructor call (or <code>null</code> if
         ///     none)
         /// </param>
-        /// <exception cref="InjectorStoreException">
+        /// <exception cref="InjectorException">
         ///     Thrown if the type `<see cref="baseType" />`/`<see cref="subType" />` could
         ///     not be bound
         /// </exception>
@@ -31,7 +31,7 @@ namespace Jellyfish.DependencyInjection
         ///     The arguments to use for the `<see cref="TSubtype" />` constructor call (or <code>null</code>
         ///     if none)
         /// </param>
-        /// <exception cref="InjectorStoreException">
+        /// <exception cref="InjectorException">
         ///     Thrown if the type `<see cref="TBase" />`/`<see cref="TSubtype" />` could not
         ///     be bound
         /// </exception>
@@ -42,7 +42,7 @@ namespace Jellyfish.DependencyInjection
         /// </summary>
         /// <typeparam name="TBase">The type of the property or field that gets injected</typeparam>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
-        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="TBase" />` could not be templated</exception>
+        /// <exception cref="InjectorException">Thrown if the type `<see cref="TBase" />` could not be templated</exception>
         void Register<TBase>(Func<TBase> initializer);
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Jellyfish.DependencyInjection
         /// </summary>
         /// <param name="baseType">The type of the property or field that gets injected</param>
         /// <param name="initializer">The function to call everytime a property or field has to get initialized</param>
-        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="baseType" />` could not be templated</exception>
+        /// <exception cref="InjectorException">Thrown if the type `<see cref="baseType" />` could not be templated</exception>
         void Register(Type baseType, Func<object> initializer);
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Jellyfish.DependencyInjection
         /// </summary>
         /// <typeparam name="T">The type of the property or field that gets injected</typeparam>
         /// <param name="instance">The static instance to initialize all variables of type `<see cref="T" />` with</param>
-        /// <exception cref="InjectorStoreException">Thrown if the type `<see cref="T" />` could not be defined</exception>
+        /// <exception cref="InjectorException">Thrown if the type `<see cref="T" />` could not be defined</exception>
         void Register<T>(T instance);
 
 

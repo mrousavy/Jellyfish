@@ -44,7 +44,10 @@ namespace Jellyfish
         public bool CanExecute(object o)
         {
             if (o is T parameter)
+            {
                 return _canExecute?.Invoke(parameter) ?? false;
+            }
+
             return false;
         }
 
@@ -56,7 +59,9 @@ namespace Jellyfish
         public void Execute(object o)
         {
             if (o is T parameter)
+            {
                 _execute?.Invoke(parameter);
+            }
         }
 
         /// <inheritdoc />

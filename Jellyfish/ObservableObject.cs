@@ -39,7 +39,9 @@ namespace Jellyfish
         protected void Set<T>(ref T field, T value, [CallerMemberName] string callerName = null)
         {
             if (field?.Equals(value) == true)
+            {
                 return;
+            }
 
             field = value;
             OnPropertyChanged(callerName);

@@ -11,7 +11,7 @@
         /// <typeparam name="T">The type of the object</typeparam>
         /// <param name="reference">A reference of the object, or null if static</param>
         /// <param name="injector">The injector to use for resolving types</param>
-        /// <exception cref="InjectorStoreException">Thrown if some dependencies could not be resolved</exception>
+        /// <exception cref="InjectorException">Thrown if some dependencies could not be resolved</exception>
         public static void Inject<T>(this T reference, IInjector injector)
         {
             InjectionResolver.InjectProperties(reference, injector);
