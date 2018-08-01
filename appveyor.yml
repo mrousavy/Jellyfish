@@ -22,7 +22,7 @@ before_build:
 build:
   verbosity: minimal
 artifacts:
-  - path: '**\*.nupkg'
+  - path: '**\Release\**\*.nupkg'
     name: NupkgArtifact
 deploy:
   provider: NuGet
