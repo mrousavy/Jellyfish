@@ -5,6 +5,7 @@ using Jellyfish.Attributes;
 using Jellyfish.Demo.Feeds;
 using Jellyfish.Demo.Injection;
 using Jellyfish.Demo.User;
+using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Main
 {

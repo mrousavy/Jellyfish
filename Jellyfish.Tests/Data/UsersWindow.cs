@@ -3,16 +3,17 @@ using Jellyfish.Feeds;
 
 namespace Jellyfish.Tests.Data
 {
-    public class UsersWindow : FeedNode<IUser>
+    public class UsersWindow : IFeedNode<IUser>
     {
         public IList<IUser> Users { get; }
 
         public UsersWindow()
         {
             Users = new List<IUser>();
+            this.Subscribe();
         }
 
-        protected override void MessageReceived(IUser message)
+        public void MessageReceived(IUser message)
         {
             Users.Add(message);
         }

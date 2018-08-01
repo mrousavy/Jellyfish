@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Jellyfish.Tests
 {
     [TestClass]
-    public class TestFeeds : FeedNode<IUser>
+    public class TestFeeds : IFeedNode<IUser>
     {
         [TestMethod]
         public void TestAddUser()
@@ -16,7 +16,7 @@ namespace Jellyfish.Tests
             int countBefore = usersWindow.Users.Count;
 
             var newUser = new User("John", "Smith");
-            Notify(newUser);
+            this.Notify(newUser);
 
             int countAfter = usersWindow.Users.Count;
             Assert.IsTrue(countAfter > countBefore);
@@ -30,7 +30,7 @@ namespace Jellyfish.Tests
             int countBefore = usersWindow.Users.Count;
 
             IUser newUser = new User("John", "Smith");
-            Notify(newUser);
+            this.Notify(newUser);
 
             int countAfter = usersWindow.Users.Count;
             Assert.IsTrue(countAfter > countBefore);
@@ -60,7 +60,7 @@ namespace Jellyfish.Tests
             int countBefore2 = usersWindow2.Users.Count;
 
             var newUser = new User("John", "Smith");
-            Notify(newUser);
+            this.Notify(newUser);
 
             int countAfter1 = usersWindow1.Users.Count;
             int countAfter2 = usersWindow2.Users.Count;
@@ -70,8 +70,9 @@ namespace Jellyfish.Tests
             Assert.IsTrue(countAfter1 > countBefore1);
         }
 
-        protected override void MessageReceived(IUser message)
+        public void MessageReceived(IUser message)
         {
+            // do nothing
         }
     }
 }

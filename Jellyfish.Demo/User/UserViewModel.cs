@@ -1,4 +1,5 @@
 ﻿using System;
+using Jellyfish.Feeds;
 using Jellyfish.Forms;
 
 namespace Jellyfish.Demo.User

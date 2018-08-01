@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Feeds
 {
