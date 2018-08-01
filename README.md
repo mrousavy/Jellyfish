@@ -101,11 +101,11 @@ public class DemoPreferences : Preferences
 > See [Preferences 📖](https://github.com/mrousavy/Jellyfish/wiki/⚙️-Preferences)
 
 ## Message Feeds
-The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
+The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Feeds/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
 
 ```cs
-var feed = MessageFeed<string>.Feed;
-feed.Notify("Hello other ViewModels!");
+Feed.Notify("Hello other ViewModels!");
+Feed.Notify(NotifyReason.RefreshView);
 ```
 
 > See [Message Feeds 📖](https://github.com/mrousavy/Jellyfish/wiki/🔔-Feeds)

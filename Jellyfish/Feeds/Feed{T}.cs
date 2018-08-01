@@ -10,12 +10,12 @@ namespace Jellyfish.Feeds
     /// <typeparam name="TMessage">The type of the messages this feed handles</typeparam>
     public class Feed<TMessage> : IFeed<TMessage>
     {
-        private static Feed<TMessage> _instance;
+        private static IFeed<TMessage> _instance;
 
         /// <summary>
         ///     Get the feed for the given type `<see cref="TMessage" />`
         /// </summary>
-        public static Feed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
+        public static IFeed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
         public IList<TMessage> Messages { get; }
 
         /// <summary>
