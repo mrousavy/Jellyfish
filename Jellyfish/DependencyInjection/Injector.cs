@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Jellyfish.Extensions;
 
 namespace Jellyfish.DependencyInjection
 {
@@ -19,6 +18,11 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Type subType, params object[] arguments)
         {
+            if (Templates.ContainsKey(baseType))
+            {
+                throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
+            }
+
             if (!baseType.IsAssignableFrom(subType))
             {
                 throw new ArgumentException($"The type {baseType.Name} is not assignable from {baseType.Name}!");
@@ -32,25 +36,41 @@ namespace Jellyfish.DependencyInjection
                     $"The type {subType.Name} does not have a public constructor with {types.Length} parameters to call!");
             }
 
-            Templates.AddOrUpdate(baseType, () => ctor.Invoke(arguments));
+            Templates.Add(baseType, () => ctor.Invoke(arguments));
         }
 
         public void Register<TBase, TSubtype>(params object[] arguments) where TSubtype : TBase =>
             Register(typeof(TBase), typeof(TSubtype), arguments);
 
-        public void Register<TBase>(Func<TBase> initializer)
-        {
-            Templates.AddOrUpdate(typeof(TBase), initializer as Func<object>);
-        }
-
         public void Register(Type baseType, Func<object> initializer)
         {
-            Templates.AddOrUpdate(baseType, initializer);
+            if (Templates.ContainsKey(baseType))
+            {
+                throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
+            }
+
+            Templates.Add(baseType, initializer);
         }
+
+        public void Register<TBase>(Func<TBase> initializer) =>
+            Register(typeof(TBase), initializer as Func<object>);
 
         public void Register<TBase>(TBase instance)
         {
-            Templates.AddOrUpdate(typeof(TBase), () => instance);
+            var type = typeof(TBase);
+            if (Templates.ContainsKey(type))
+            {
+                throw new InjectorException($"This Injector already contains the type {type.Name}!");
+            }
+
+            Templates.Add(type, () => instance);
+        }
+
+        public void Remove<T>() => Remove(typeof(T));
+
+        public void Remove(Type type)
+        {
+            Templates.Remove(type);
         }
 
 

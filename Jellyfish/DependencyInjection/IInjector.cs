@@ -68,6 +68,19 @@ namespace Jellyfish.DependencyInjection
 
 
         /// <summary>
+        ///     Remove the registered type `<see cref="T" />` from this <see cref="IInjector" /> instance
+        /// </summary>
+        /// <typeparam name="T">The type to remove</typeparam>
+        void Remove<T>();
+
+        /// <summary>
+        ///     Remove the registered type `<see cref="type" />` from this <see cref="IInjector" /> instance
+        /// </summary>
+        /// <param name="type">The type to remove</param>
+        void Remove(Type type);
+
+
+        /// <summary>
         ///     Initialize the given type `<see cref="TBase" />` with either a templated function to call or a pre-defined instance
         /// </summary>
         /// <typeparam name="TBase">The type of the object to initialize</typeparam>
