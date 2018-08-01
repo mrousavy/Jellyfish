@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UsersWindow.cs" />
+    <Compile Include="TestFeeds.cs" />
     <Compile Include="TestInjector.cs" />
     <Compile Include="TestObservableObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

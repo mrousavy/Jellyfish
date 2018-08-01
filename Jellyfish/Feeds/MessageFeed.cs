@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Jellyfish
+namespace Jellyfish.Feeds
 {
     /// <inheritdoc />
     /// <summary>

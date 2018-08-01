@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Jellyfish
+namespace Jellyfish.Feeds
 {
     /// <summary>
     ///     A method delegate representing a message received event handler

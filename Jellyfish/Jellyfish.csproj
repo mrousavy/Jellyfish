@@ -62,6 +62,7 @@
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Feeds\FeedNode.cs" />
     <Compile Include="Forms\CheckInputAttribute.cs" />
     <Compile Include="Forms\DoubleInputAttribute.cs" />
     <Compile Include="Forms\PasswordInputAttribute.cs" />
@@ -70,8 +71,8 @@
     <Compile Include="Forms\IFormInput.cs" />
     <Compile Include="Forms\IntInputAttribute.cs" />
     <Compile Include="Forms\TextInputAttribute.cs" />
-    <Compile Include="IFeed.cs" />
-    <Compile Include="MessageFeed.cs" />
+    <Compile Include="Feeds\IFeed.cs" />
+    <Compile Include="Feeds\MessageFeed.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\Annotations.cs" />
