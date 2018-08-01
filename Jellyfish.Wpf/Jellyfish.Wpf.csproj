@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>jellyfish.ico</ApplicationIcon>
+    <Description>WPF Extensions for Jellyfish (including auto-building forms and more)</Description>
+    <Version>1.0.1.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright ©  2018</Copyright>
+    <PackageLicenseUrl>https://github.com/mrousavy/Jellyfish/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mrousavy/Jellyfish</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/mrousavy/Jellyfish/master/Images/jellyfish.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/mrousavy/Jellyfish</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>jellyfish fish mvvm wpf library light csharp dotnet enum preferences modern notifying-properties silverlight uwp xamarin</PackageTags>
+    <Company>mrousavy</Company>
   </PropertyGroup>
 
 </Project>
