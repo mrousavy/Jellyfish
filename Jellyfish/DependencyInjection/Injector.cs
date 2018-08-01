@@ -18,6 +18,16 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Type subType, params object[] arguments)
         {
+            if (baseType == null)
+            {
+                throw new ArgumentNullException(nameof(baseType));
+            }
+
+            if (subType == null)
+            {
+                throw new ArgumentNullException(nameof(subType));
+            }
+
             if (Templates.ContainsKey(baseType))
             {
                 throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
@@ -44,6 +54,16 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Func<object> initializer)
         {
+            if (baseType == null)
+            {
+                throw new ArgumentNullException(nameof(baseType));
+            }
+
+            if (initializer == null)
+            {
+                throw new ArgumentNullException(nameof(initializer));
+            }
+
             if (Templates.ContainsKey(baseType))
             {
                 throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
@@ -70,18 +90,24 @@ namespace Jellyfish.DependencyInjection
 
         public void Remove(Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             Templates.Remove(type);
         }
 
 
-        public TBase Initialize<TBase>()
-        {
-            var type = typeof(TBase);
-            return (TBase) Initialize(type);
-        }
+        public TBase Initialize<TBase>() => (TBase) Initialize(typeof(TBase));
 
         public object Initialize(Type type)
         {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
             if (!Templates.ContainsKey(type))
             {
                 throw new ArgumentException(

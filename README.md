@@ -71,6 +71,30 @@ bool CanLogin(object parameter)
 
 > See [Commands 📖](https://github.com/mrousavy/Jellyfish/wiki/⚡-Commands)
 
+## 💉 Dependency Injection
+Provide dependencies for types using the [`IInjector`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/DependencyInjection/IInjector.cs)
+
+At app startup:
+```cs
+Injector.Register<IUser>(() => new User("John", "Smith"));
+Injector.Register<IDatabaseService>(() => OpenDatabaseService(username, password));
+```
+Some ViewModel:
+```cs
+class LoginViewModel
+{
+    IUser User { get; set; }
+    IDatabaseService _service;
+
+    LoginViewModel()
+    {
+        this.Inject();
+    }
+}
+```
+
+> See [Dependency Injection 📖](https://github.com/mrousavy/Jellyfish/wiki/%F0%9F%92%89-Dependency-Injection)
+
 ## 💾 Enums
 The enum binding source extension allows for better binding support on enums.
 
