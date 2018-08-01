@@ -16,7 +16,7 @@ namespace Jellyfish.Tests
             int countBefore = usersWindow.Users.Count;
 
             var newUser = new User("John", "Smith");
-            this.Notify(newUser);
+            Feed.Notify(newUser);
 
             int countAfter = usersWindow.Users.Count;
             Assert.IsTrue(countAfter > countBefore);
@@ -30,7 +30,7 @@ namespace Jellyfish.Tests
             int countBefore = usersWindow.Users.Count;
 
             IUser newUser = new User("John", "Smith");
-            this.Notify(newUser);
+            Feed.Notify(newUser);
 
             int countAfter = usersWindow.Users.Count;
             Assert.IsTrue(countAfter > countBefore);
@@ -44,7 +44,7 @@ namespace Jellyfish.Tests
             int countBefore = usersWindow.Users.Count;
 
             var newUser = new Tuple<string, string>("John", "Smith");
-            MessageFeed<Tuple<string, string>>.Feed.Notify(newUser);
+            Feed.Notify(newUser);
 
             int countAfter = usersWindow.Users.Count;
             Assert.AreEqual(countAfter, countBefore);
@@ -60,7 +60,7 @@ namespace Jellyfish.Tests
             int countBefore2 = usersWindow2.Users.Count;
 
             var newUser = new User("John", "Smith");
-            this.Notify(newUser);
+            Feed.Notify(newUser);
 
             int countAfter1 = usersWindow1.Users.Count;
             int countAfter2 = usersWindow2.Users.Count;

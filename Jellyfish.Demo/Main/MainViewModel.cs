@@ -9,7 +9,7 @@ using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Main
 {
-    public class MainViewModel : ViewModel
+    public class MainViewModel : ViewModel, IFeedNode<string>
     {
         private readonly Random _random = new Random();
 
@@ -23,6 +23,7 @@ namespace Jellyfish.Demo.Main
 
         public MainViewModel()
         {
+            this.Subscribe();
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
             OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
@@ -37,10 +38,8 @@ namespace Jellyfish.Demo.Main
             var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
             prefsLoaded.Save();
 
-            // Open the `string` feed
-            var feed = MessageFeed<string>.Feed;
-            feed.MessageReceived += OnMessageReceived;
-            feed.Notify("hello world!");
+            // Send to the `string` feed
+            Feed.Notify("hello world!");
         }
 
         public OperatingSystem SelectedOperatingSystem
@@ -96,7 +95,7 @@ namespace Jellyfish.Demo.Main
             //Console.WriteLine(TestProperty);
         }
 
-        private void OnMessageReceived(object message)
+        public void MessageReceived(string message)
         {
             Console.WriteLine(message);
         }

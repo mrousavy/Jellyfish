@@ -8,20 +8,20 @@ namespace Jellyfish.Feeds
     ///     <see cref="!:TMessage" />`
     /// </summary>
     /// <typeparam name="TMessage">The type of the messages this feed handles</typeparam>
-    public class MessageFeed<TMessage> : IFeed<TMessage>
+    public class Feed<TMessage> : IFeed<TMessage>
     {
-        private static MessageFeed<TMessage> _instance;
+        private static Feed<TMessage> _instance;
 
         /// <summary>
         ///     Get the feed for the given type `<see cref="TMessage" />`
         /// </summary>
-        public static MessageFeed<TMessage> Feed => _instance ?? (_instance = new MessageFeed<TMessage>());
+        public static Feed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
         public IList<TMessage> Messages { get; }
 
         /// <summary>
         ///     Initialize a new instance of the Message Feed
         /// </summary>
-        public MessageFeed()
+        public Feed()
         {
             Messages = new List<TMessage>();
         }
@@ -29,7 +29,7 @@ namespace Jellyfish.Feeds
 
         /// <inheritdoc />
         /// <summary>
-        ///     Notify all <see cref="E:Jellyfish.MessageFeed`1.MessageReceived" /> subscribers in this feed with the given
+        ///     Notify all <see cref="Feed{TMessage}.MessageReceived" /> subscribers in this feed with the given
         ///     <see cref="!:message" />
         /// </summary>
         /// <param name="message">The message to notify all subscribers about</param>
@@ -41,7 +41,7 @@ namespace Jellyfish.Feeds
 
         /// <inheritdoc />
         /// <summary>
-        ///     The handleable event for messages received from a sender's <see cref="M:Jellyfish.MessageFeed`1.Notify(`0)" /> call
+        ///     The handleable event for messages received from a sender's <see cref="Notify" /> call
         /// </summary>
         public event MessageReceivedHandler<TMessage> MessageReceived;
     }
