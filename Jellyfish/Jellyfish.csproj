@@ -63,8 +63,6 @@
     <Compile Include="Extensions\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Feeds\Feed.cs" />
-    <Compile Include="Feeds\FeedExtensions.cs" />
-    <Compile Include="Feeds\FeedNode.cs" />
     <Compile Include="Forms\CheckInputAttribute.cs" />
     <Compile Include="Forms\DoubleInputAttribute.cs" />
     <Compile Include="Forms\PasswordInputAttribute.cs" />

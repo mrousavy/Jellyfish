@@ -4,7 +4,7 @@ using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Feeds
 {
-    public class FeedViewModel : ViewModel, IFeedNode<string>
+    public class FeedViewModel : ViewModel
     {
         private string _currentMessage;
 
@@ -14,8 +14,8 @@ namespace Jellyfish.Demo.Feeds
 
         public FeedViewModel()
         {
-            this.Subscribe();
             Messages = new ObservableCollection<string>();
+            Feed<string>.Instance.MessageReceived += MessageReceived;
 
             NotifyCommand = new RelayCommand(NotifyAction);
         }
@@ -38,7 +38,7 @@ namespace Jellyfish.Demo.Feeds
             set => Set(ref _messages, value);
         }
 
-        public void MessageReceived(string message)
+        private void MessageReceived(string message)
         {
             Messages.Add(message);
         }

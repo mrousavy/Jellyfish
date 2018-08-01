@@ -4,7 +4,7 @@ using Jellyfish.Forms;
 
 namespace Jellyfish.Demo.User
 {
-    public class UserViewModel : ObservableObject, IFeedNode<string>
+    public class UserViewModel : ObservableObject
     {
         private DateTime _birthday;
 
@@ -13,8 +13,8 @@ namespace Jellyfish.Demo.User
 
         public UserViewModel()
         {
-            this.Subscribe();
             // Send to the `string` feed
+            Feed<string>.Instance.MessageReceived += MessageReceived;
             Feed.Notify("hello world!");
         }
 

@@ -26,23 +26,12 @@ namespace Jellyfish.Feeds
             Messages = new List<TMessage>();
         }
 
-
-        /// <inheritdoc />
-        /// <summary>
-        ///     Notify all <see cref="Feed{TMessage}.MessageReceived" /> subscribers in this feed with the given
-        ///     <see cref="!:message" />
-        /// </summary>
-        /// <param name="message">The message to notify all subscribers about</param>
         public void Notify(TMessage message)
         {
             Messages.Add(message);
             MessageReceived?.Invoke(message);
         }
 
-        /// <inheritdoc />
-        /// <summary>
-        ///     The handleable event for messages received from a sender's <see cref="Notify" /> call
-        /// </summary>
         public event MessageReceivedHandler<TMessage> MessageReceived;
     }
 }

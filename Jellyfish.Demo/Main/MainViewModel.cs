@@ -9,7 +9,7 @@ using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Main
 {
-    public class MainViewModel : ViewModel, IFeedNode<string>
+    public class MainViewModel : ViewModel
     {
         private readonly Random _random = new Random();
 
@@ -23,7 +23,6 @@ namespace Jellyfish.Demo.Main
 
         public MainViewModel()
         {
-            this.Subscribe();
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
             OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
@@ -39,6 +38,7 @@ namespace Jellyfish.Demo.Main
             prefsLoaded.Save();
 
             // Send to the `string` feed
+            Feed<string>.Instance.MessageReceived += MessageReceived;
             Feed.Notify("hello world!");
         }
 
