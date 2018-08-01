@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <ApplicationIcon>jellyfish.ico</ApplicationIcon>
     <Description>An incredibly lightweight and type safe MVVM library for .NET WPF, Silverlight, Xamarin and UWP</Description>
     <Company>mrousavy</Company>
@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Update="PlaceholderToConvinceThisProjectToGetTransitivePackageReferenceFromProjectReferences"/>
+    <PackageReference Update="PlaceholderToConvinceThisProjectToGetTransitivePackageReferenceFromProjectReferences" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 

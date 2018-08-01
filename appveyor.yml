@@ -5,12 +5,14 @@ branches:
 skip_non_tags: true
 image: Visual Studio 2017
 configuration: Release
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: Jellyfish\Properties\AssemblyInfo.cs
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
   assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}-rc1'
+  file_version: '{version}'
+  informational_version: '{version}'
 cache:
   - packages -> **\packages.config
 
@@ -19,11 +21,8 @@ before_build:
     nuget restore
 build:
   verbosity: minimal
-after_build:
-- cmd: >-
-    nuget pack Jellyfish\Jellyfish.csproj
 artifacts:
-  - path: .\*.nupkg
+  - path: '**\*.nupkg'
     name: NupkgArtifact
 deploy:
   provider: NuGet
