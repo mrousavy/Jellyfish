@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Globalization;
 
-namespace Jellyfish.Forms
+namespace Jellyfish.Wpf.Forms
 {
     /// <summary>
     ///     NOT IMPLEMENTED
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class DoubleInputAttribute : Attribute, IFormInput<double>
+    public class IntInputAttribute : Attribute, IFormInput<int>
     {
-        public DoubleInputAttribute(string text, Func<double, string> formatter)
+        public IntInputAttribute(string text, Func<int, string> formatter)
         {
             Text = text;
             Formatter = formatter;
         }
 
-        public DoubleInputAttribute(string text) : this(text, t => t.ToString(CultureInfo.InvariantCulture))
+        public IntInputAttribute(string text) : this(text, t => t.ToString())
         { }
 
-        public DoubleInputAttribute() : this("")
+        public IntInputAttribute() : this("")
         { }
 
         /// <summary>
@@ -28,7 +27,7 @@ namespace Jellyfish.Forms
         ///     You can define a formatter to display hours like this:
         ///     var formatter = val => $"{val}h";
         /// </example>
-        public Func<double, string> Formatter { get; set; }
+        public Func<int, string> Formatter { get; set; }
 
         public string Text { get; set; }
     }

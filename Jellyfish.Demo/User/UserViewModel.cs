@@ -1,6 +1,6 @@
 ﻿using System;
 using Jellyfish.Feeds;
-using Jellyfish.Forms;
+using Jellyfish.Wpf.Forms;
 
 namespace Jellyfish.Demo.User
 {

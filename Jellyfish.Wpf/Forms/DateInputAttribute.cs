@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jellyfish.Forms
+namespace Jellyfish.Wpf.Forms
 {
     /// <summary>
     ///     An Attribute applied on <see cref="DateTime" /> objects generating a <see cref="DatePicker" />

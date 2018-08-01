@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security;
 
-namespace Jellyfish.Forms
+namespace Jellyfish.Wpf.Forms
 {
     /// <summary>
     ///     An Attribute applied on <see cref="SecureString" /> objects (Passwords) generating a <see cref="PasswordBox" />

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Jellyfish.Properties;
+using Jellyfish.Annotations;
 
 namespace Jellyfish
 {

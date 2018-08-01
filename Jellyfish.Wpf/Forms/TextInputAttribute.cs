@@ -1,23 +1,23 @@
 ﻿using System;
 
-namespace Jellyfish.Forms
+namespace Jellyfish.Wpf.Forms
 {
     /// <summary>
-    ///     NOT IMPLEMENTED
+    ///     An Attribute applied on <see cref="string" /> objects generating a <see cref="TextBox" />
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class IntInputAttribute : Attribute, IFormInput<int>
+    public class TextInputAttribute : Attribute, IFormInput<string>
     {
-        public IntInputAttribute(string text, Func<int, string> formatter)
+        public TextInputAttribute(string text, Func<string, string> formatter)
         {
             Text = text;
             Formatter = formatter;
         }
 
-        public IntInputAttribute(string text) : this(text, t => t.ToString())
+        public TextInputAttribute(string text) : this(text, t => t)
         { }
 
-        public IntInputAttribute() : this("")
+        public TextInputAttribute() : this("")
         { }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Jellyfish.Forms
         ///     You can define a formatter to display hours like this:
         ///     var formatter = val => $"{val}h";
         /// </example>
-        public Func<int, string> Formatter { get; set; }
+        public Func<string, string> Formatter { get; set; }
 
         public string Text { get; set; }
     }

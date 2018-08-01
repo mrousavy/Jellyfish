@@ -1,4 +1,4 @@
-﻿namespace Jellyfish.Forms
+﻿namespace Jellyfish.Wpf.Forms
 {
     /// <summary>
     ///     Any user input form's input field

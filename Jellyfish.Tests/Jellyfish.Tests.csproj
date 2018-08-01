@@ -57,13 +57,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jellyfish\Jellyfish.csproj">
-      <Project>{263174af-6a37-4b74-9046-dac7c9ca0cbb}</Project>
-      <Name>Jellyfish</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Jellyfish\Jellyfish.csproj">
+      <Project>{90c05d61-b9d1-4cc7-a3ae-0f0e39105c2b}</Project>
+      <Name>Jellyfish</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

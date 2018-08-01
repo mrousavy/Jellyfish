@@ -127,8 +127,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jellyfish.Wpf\Jellyfish.Wpf.csproj">
+      <Project>{206239a8-5850-4157-8c9c-80d41fcbeb6e}</Project>
+      <Name>Jellyfish.Wpf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jellyfish\Jellyfish.csproj">
-      <Project>{263174af-6a37-4b74-9046-dac7c9ca0cbb}</Project>
+      <Project>{90c05d61-b9d1-4cc7-a3ae-0f0e39105c2b}</Project>
       <Name>Jellyfish</Name>
     </ProjectReference>
   </ItemGroup>
