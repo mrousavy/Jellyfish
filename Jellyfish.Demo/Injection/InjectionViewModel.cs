@@ -28,6 +28,7 @@ namespace Jellyfish.Demo.Injection
         private void ResetAction(object o)
         {
             User = null;
+            Model.ClearInjector();
         }
 
         private void TemplateAction(object o)

@@ -11,21 +11,29 @@ namespace Jellyfish.Demo.Injection
 
         private IInjector Injector { get; }
 
+        public void ClearInjector()
+        {
+            Injector.Clear();
+        }
+
         public IUser TemplateUser()
         {
+            ClearInjector();
             Injector.Register<IUser>(() => new User());
             return Injector.Initialize<IUser>();
         }
 
         public IUser DefineUser()
         {
+            ClearInjector();
             Injector.Register<IUser>(new User());
             return Injector.Initialize<IUser>();
         }
 
         public IUser BindUser()
         {
-            Injector.Register<IUser, User>();
+            ClearInjector();
+            Injector.Register<IUser, User>("John", "Smith");
             return Injector.Initialize<IUser>();
         }
     }

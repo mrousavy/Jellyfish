@@ -115,7 +115,7 @@ namespace Jellyfish.DependencyInjection
             }
 
             var result = Templates[type]();
-            if (result?.GetType() == type)
+            if (result != null && type.IsInstanceOfType(result))
             {
                 return result;
             }

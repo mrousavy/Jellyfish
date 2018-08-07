@@ -17,5 +17,13 @@
             get => _lastName;
             set => Set(ref _lastName, value);
         }
+
+        public User() { }
+
+        public User(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }
