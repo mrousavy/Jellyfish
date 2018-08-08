@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
+using Jellyfish.Extensions;
 using Jellyfish.Feeds;
 
 namespace Jellyfish.Tests.Data
 {
-    public class UsersWindow
+    public class UsersWindow : INode<IUser>
     {
         public UsersWindow()
         {
+            this.Register();
             Users = new List<IUser>();
-            Feed<IUser>.Instance.MessageReceived += MessageReceived;
         }
 
         public IList<IUser> Users { get; }
 
-        private void MessageReceived(IUser message)
+        public void MessageReceived(IUser message)
         {
             Users.Add(message);
         }

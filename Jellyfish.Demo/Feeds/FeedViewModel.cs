@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Jellyfish.Extensions;
 using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Feeds
 {
-    public class FeedViewModel : ViewModel
+    public class FeedViewModel : ViewModel, INode<string>
     {
         private string _currentMessage;
 
@@ -14,8 +15,8 @@ namespace Jellyfish.Demo.Feeds
 
         public FeedViewModel()
         {
+            this.Register();
             Messages = new ObservableCollection<string>();
-            Feed<string>.Instance.MessageReceived += MessageReceived;
 
             NotifyCommand = new RelayCommand(NotifyAction);
         }
@@ -38,7 +39,7 @@ namespace Jellyfish.Demo.Feeds
             set => Set(ref _messages, value);
         }
 
-        private void MessageReceived(string message)
+        public void MessageReceived(string message)
         {
             Messages.Add(message);
         }

@@ -1,10 +1,11 @@
 ﻿using System;
+using Jellyfish.Extensions;
 using Jellyfish.Feeds;
 using Jellyfish.Wpf.Forms;
 
 namespace Jellyfish.Demo.User
 {
-    public class UserViewModel : ObservableObject
+    public class UserViewModel : ObservableObject, INode<string>
     {
         private DateTime _birthday;
 
@@ -13,8 +14,8 @@ namespace Jellyfish.Demo.User
 
         public UserViewModel()
         {
+            this.Register();
             // Send to the `string` feed
-            Feed<string>.Instance.MessageReceived += MessageReceived;
             Feed.Notify("hello world!");
         }
 

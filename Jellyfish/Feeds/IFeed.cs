@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Jellyfish.Feeds
 {
@@ -22,14 +23,21 @@ namespace Jellyfish.Feeds
         IList<TMessage> Messages { get; }
 
         /// <summary>
-        ///     Notify all <see cref="MessageReceived" /> subscribers in this feed with the given <see cref="message" />
+        ///     Notify all nodes in this feed with the given <see cref="message" />
         /// </summary>
-        /// <param name="message">The message to notify all subscribers about</param>
+        /// <param name="message">The message to notify all nodes about</param>
         void Notify(TMessage message);
 
         /// <summary>
-        ///     The handleable event for messages received from a sender's <see cref="Notify" /> call
+        ///     Register a new node in this <see cref="IFeed{TMessage}"/> network
         /// </summary>
-        event MessageReceivedHandler<TMessage> MessageReceived;
+        /// <param name="node">The node to register</param>
+        /// <exception cref="ArgumentException">
+        ///     Thrown if the given node is already registered in this network
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if the node is null
+        /// </exception>
+        void RegisterNode(INode<TMessage> node);
     }
 }

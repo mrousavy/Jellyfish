@@ -5,11 +5,12 @@ using Jellyfish.Attributes;
 using Jellyfish.Demo.Feeds;
 using Jellyfish.Demo.Injection;
 using Jellyfish.Demo.User;
+using Jellyfish.Extensions;
 using Jellyfish.Feeds;
 
 namespace Jellyfish.Demo.Main
 {
-    public class MainViewModel : ViewModel
+    public class MainViewModel : ViewModel, INode<string>
     {
         private readonly Random _random = new Random();
 
@@ -21,10 +22,9 @@ namespace Jellyfish.Demo.Main
 
         private OperatingSystem _selectedOperatingSystem;
 
-        [Dependency] private IFeed<string> TestField;
-
         public MainViewModel()
         {
+            this.Register();
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
             OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
@@ -40,7 +40,6 @@ namespace Jellyfish.Demo.Main
             prefsLoaded.Save();
 
             // Send to the `string` feed
-            Feed<string>.Instance.MessageReceived += MessageReceived;
             Feed.Notify("hello world!");
         }
 
