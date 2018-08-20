@@ -25,6 +25,7 @@ Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net
 * as light as possible
 * using modern best-practices
 * using modern code style
+* using little to no runtime reflection to be as fast as possible
 * exactly fitting my needs
 
 
