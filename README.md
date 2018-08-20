@@ -130,8 +130,17 @@ public class DemoPreferences : Preferences
 The [`IFeed<T>`](https://github.com/mrousavy/Jellyfish/blob/master/Jellyfish/Feeds/IFeed.cs) allows notifying any subscribers in this feed about sudden changes within the application domain in realtime.
 
 ```cs
-Feed<string>.Instance.MessageReceived += OnMessageReceived;
-Feed.Notify("Hello other ViewModels!");
+class CustomViewModel : INode<NotifyReason>
+{
+    public CustomViewModel
+    {
+        this.Register();
+    }
+
+    public void MessageReceived(NotifyReason reason)
+    { ... }
+}
+
 Feed.Notify(NotifyReason.RefreshView);
 ```
 
