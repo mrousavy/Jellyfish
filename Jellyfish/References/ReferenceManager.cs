@@ -14,14 +14,24 @@ namespace Jellyfish.References
 
         public void Register(TReference reference)
         {
-            if (Has(reference))
+            lock (References)
             {
-                throw new ArgumentException($"The Reference Manager already contains a reference to {reference}!");
+                if (Has(reference))
+                {
+                    throw new ArgumentException($"The Reference Manager already contains a reference to {reference}!");
+                }
+
+                References.Add(new Reference<TReference>(reference));
             }
-            References.Add(new Reference<TReference>(reference));
         }
 
-        private bool Has(TReference reference) => References.Any(r => r.Value == reference);
+        private bool Has(TReference reference)
+        {
+            lock (References)
+            {
+                return References.Any(r => r.Value == reference);
+            }
+        }
 
         public IList<IReference<TReference>> References { get; }
 

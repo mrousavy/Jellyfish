@@ -15,23 +15,26 @@ namespace Jellyfish.DependencyInjection
         /// <param name="injector">The injector instance to use</param>
         public static void InjectProperties<T>(T reference, IInjector injector)
         {
-            var type = typeof(T);
-            var attributeType = typeof(DependencyAttribute);
-            var properties = type.PropertiesWithAttribute(attributeType);
-            foreach (var property in properties)
+            lock (injector)
             {
-                var attribute = property.CustomAttributes.SingleOrDefault(a => a.AttributeType == attributeType);
-                if (attribute != null)
+                var type = typeof(T);
+                var attributeType = typeof(DependencyAttribute);
+                var properties = type.PropertiesWithAttribute(attributeType);
+                foreach (var property in properties)
                 {
-                    var arguments = attribute.ConstructorArguments;
-                    var typeArgument = arguments.Single(a => a.ArgumentType == typeof(Type));
-                    var paramsArgument = arguments.Single(a => a.ArgumentType == typeof(object[]));
-                    var subType = typeArgument.Value as Type;
-                    var parameters = paramsArgument.Value as object[];
+                    var attribute = property.CustomAttributes.SingleOrDefault(a => a.AttributeType == attributeType);
+                    if (attribute != null)
+                    {
+                        var arguments = attribute.ConstructorArguments;
+                        var typeArgument = arguments.Single(a => a.ArgumentType == typeof(Type));
+                        var paramsArgument = arguments.Single(a => a.ArgumentType == typeof(object[]));
+                        var subType = typeArgument.Value as Type;
+                        var parameters = paramsArgument.Value as object[];
 
-                    injector.Register(property.PropertyType, subType, parameters);
-                    var val = injector.Initialize(property.PropertyType);
-                    property.SetValue(reference, val);
+                        injector.Register(property.PropertyType, subType, parameters);
+                        var val = injector.Initialize(property.PropertyType);
+                        property.SetValue(reference, val);
+                    }
                 }
             }
         }
@@ -44,23 +47,26 @@ namespace Jellyfish.DependencyInjection
         /// <param name="injector">The injector instance to use</param>
         public static void InjectFields<T>(T reference, IInjector injector)
         {
-            var type = typeof(T);
-            var attributeType = typeof(DependencyAttribute);
-            var fields = type.FieldsWithAttribute(attributeType);
-            foreach (var field in fields)
+            lock (injector)
             {
-                var attribute = field.CustomAttributes.SingleOrDefault(a => a.AttributeType == attributeType);
-                if (attribute != null)
+                var type = typeof(T);
+                var attributeType = typeof(DependencyAttribute);
+                var fields = type.FieldsWithAttribute(attributeType);
+                foreach (var field in fields)
                 {
-                    var arguments = attribute.ConstructorArguments;
-                    var typeArgument = arguments.Single(a => a.ArgumentType == typeof(Type));
-                    var paramsArgument = arguments.Single(a => a.ArgumentType == typeof(object[]));
-                    var subType = typeArgument.Value as Type;
-                    var parameters = paramsArgument.Value as object[];
+                    var attribute = field.CustomAttributes.SingleOrDefault(a => a.AttributeType == attributeType);
+                    if (attribute != null)
+                    {
+                        var arguments = attribute.ConstructorArguments;
+                        var typeArgument = arguments.Single(a => a.ArgumentType == typeof(Type));
+                        var paramsArgument = arguments.Single(a => a.ArgumentType == typeof(object[]));
+                        var subType = typeArgument.Value as Type;
+                        var parameters = paramsArgument.Value as object[];
 
-                    injector.Register(field.FieldType, subType, parameters);
-                    var val = injector.Initialize(field.FieldType);
-                    field.SetValue(reference, val);
+                        injector.Register(field.FieldType, subType, parameters);
+                        var val = injector.Initialize(field.FieldType);
+                        field.SetValue(reference, val);
+                    }
                 }
             }
         }

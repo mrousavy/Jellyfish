@@ -18,35 +18,38 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Type subType, params object[] arguments)
         {
-            if (baseType == null)
+            lock (this)
             {
-                throw new ArgumentNullException(nameof(baseType));
-            }
+                if (baseType == null)
+                {
+                    throw new ArgumentNullException(nameof(baseType));
+                }
 
-            if (subType == null)
-            {
-                throw new ArgumentNullException(nameof(subType));
-            }
+                if (subType == null)
+                {
+                    throw new ArgumentNullException(nameof(subType));
+                }
 
-            if (Templates.ContainsKey(baseType))
-            {
-                throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
-            }
+                if (Templates.ContainsKey(baseType))
+                {
+                    throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
+                }
 
-            if (!baseType.IsAssignableFrom(subType))
-            {
-                throw new ArgumentException($"The type {baseType.Name} is not assignable from {baseType.Name}!");
-            }
+                if (!baseType.IsAssignableFrom(subType))
+                {
+                    throw new ArgumentException($"The type {baseType.Name} is not assignable from {baseType.Name}!");
+                }
 
-            var types = arguments?.Select(a => a.GetType()).ToArray() ?? Type.EmptyTypes;
-            var ctor = subType.GetConstructor(types);
-            if (ctor == null)
-            {
-                throw new ArgumentException(
-                    $"The type {subType.Name} does not have a public constructor with {types.Length} parameters to call!");
-            }
+                var types = arguments?.Select(a => a.GetType()).ToArray() ?? Type.EmptyTypes;
+                var ctor = subType.GetConstructor(types);
+                if (ctor == null)
+                {
+                    throw new ArgumentException(
+                        $"The type {subType.Name} does not have a public constructor with {types.Length} parameters to call!");
+                }
 
-            Templates.Add(baseType, () => ctor.Invoke(arguments));
+                Templates.Add(baseType, () => ctor.Invoke(arguments));
+            }
         }
 
         public void Register<TBase, TSubtype>(params object[] arguments) where TSubtype : TBase =>
@@ -54,22 +57,25 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Func<object> initializer)
         {
-            if (baseType == null)
+            lock (this)
             {
-                throw new ArgumentNullException(nameof(baseType));
-            }
+                if (baseType == null)
+                {
+                    throw new ArgumentNullException(nameof(baseType));
+                }
 
-            if (initializer == null)
-            {
-                throw new ArgumentNullException(nameof(initializer));
-            }
+                if (initializer == null)
+                {
+                    throw new ArgumentNullException(nameof(initializer));
+                }
 
-            if (Templates.ContainsKey(baseType))
-            {
-                throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
-            }
+                if (Templates.ContainsKey(baseType))
+                {
+                    throw new InjectorException($"This Injector already contains the type {baseType.Name}!");
+                }
 
-            Templates.Add(baseType, initializer);
+                Templates.Add(baseType, initializer);
+            }
         }
 
         public void Register<TBase>(Func<TBase> initializer) =>
@@ -77,25 +83,31 @@ namespace Jellyfish.DependencyInjection
 
         public void Register<TBase>(TBase instance)
         {
-            var type = typeof(TBase);
-            if (Templates.ContainsKey(type))
+            lock (this)
             {
-                throw new InjectorException($"This Injector already contains the type {type.Name}!");
-            }
+                var type = typeof(TBase);
+                if (Templates.ContainsKey(type))
+                {
+                    throw new InjectorException($"This Injector already contains the type {type.Name}!");
+                }
 
-            Templates.Add(type, () => instance);
+                Templates.Add(type, () => instance);
+            }
         }
 
         public void Remove<T>() => Remove(typeof(T));
 
         public void Remove(Type type)
         {
-            if (type == null)
+            lock (this)
             {
-                throw new ArgumentNullException(nameof(type));
-            }
+                if (type == null)
+                {
+                    throw new ArgumentNullException(nameof(type));
+                }
 
-            Templates.Remove(type);
+                Templates.Remove(type);
+            }
         }
 
 
@@ -103,30 +115,36 @@ namespace Jellyfish.DependencyInjection
 
         public object Initialize(Type type)
         {
-            if (type == null)
+            lock (this)
             {
-                throw new ArgumentNullException(nameof(type));
-            }
+                if (type == null)
+                {
+                    throw new ArgumentNullException(nameof(type));
+                }
 
-            if (!Templates.ContainsKey(type))
-            {
-                throw new ArgumentException(
-                    $"No implementations for the type {type.Name} could be found in the {nameof(Injector)}!");
-            }
+                if (!Templates.ContainsKey(type))
+                {
+                    throw new ArgumentException(
+                        $"No implementations for the type {type.Name} could be found in the {nameof(Injector)}!");
+                }
 
-            var result = Templates[type]();
-            if (result != null && type.IsInstanceOfType(result))
-            {
-                return result;
-            }
+                var result = Templates[type]();
+                if (result != null && type.IsInstanceOfType(result))
+                {
+                    return result;
+                }
 
-            throw new InjectorException(
-                $"Could not initialize type `{type.Name}`, the lambda returned an invalid type! ({result?.GetType()})");
+                throw new InjectorException(
+                    $"Could not initialize type `{type.Name}`, the lambda returned an invalid type! ({result?.GetType()})");
+            }
         }
 
         public void Clear()
         {
-            Templates.Clear();
+            lock (this)
+            {
+                Templates.Clear();
+            }
         }
     }
 }
