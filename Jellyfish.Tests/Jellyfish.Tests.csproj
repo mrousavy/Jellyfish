@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CustomViewModel.cs" />
     <Compile Include="Data\IUser.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UsersWindow.cs" />

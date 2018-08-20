@@ -12,13 +12,15 @@ namespace Jellyfish.DependencyInjection
         public Injector()
         {
             Templates = new Dictionary<Type, Func<object>>();
+            Lock = new object();
         }
 
         private Dictionary<Type, Func<object>> Templates { get; }
+        private object Lock { get; }
 
         public void Register(Type baseType, Type subType, params object[] arguments)
         {
-            lock (this)
+            lock (Lock)
             {
                 if (baseType == null)
                 {
@@ -57,7 +59,7 @@ namespace Jellyfish.DependencyInjection
 
         public void Register(Type baseType, Func<object> initializer)
         {
-            lock (this)
+            lock (Lock)
             {
                 if (baseType == null)
                 {
@@ -83,7 +85,7 @@ namespace Jellyfish.DependencyInjection
 
         public void Register<TBase>(TBase instance)
         {
-            lock (this)
+            lock (Lock)
             {
                 var type = typeof(TBase);
                 if (Templates.ContainsKey(type))
@@ -99,7 +101,7 @@ namespace Jellyfish.DependencyInjection
 
         public void Remove(Type type)
         {
-            lock (this)
+            lock (Lock)
             {
                 if (type == null)
                 {
@@ -115,7 +117,7 @@ namespace Jellyfish.DependencyInjection
 
         public object Initialize(Type type)
         {
-            lock (this)
+            lock (Lock)
             {
                 if (type == null)
                 {
@@ -141,7 +143,7 @@ namespace Jellyfish.DependencyInjection
 
         public void Clear()
         {
-            lock (this)
+            lock (Lock)
             {
                 Templates.Clear();
             }

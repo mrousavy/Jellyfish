@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Jellyfish.DependencyInjection;
 
 namespace Jellyfish.Demo.Injection
 {

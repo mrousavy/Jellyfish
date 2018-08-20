@@ -92,5 +92,33 @@ namespace Jellyfish.Tests
             var user = Injector.Initialize<IUser>();
             Assert.AreEqual(definedUser, user);
         }
+
+        [TestMethod]
+        public void TestInjectorConstructorNotNull()
+        {
+            Injector.Clear();
+
+            // define static user in injector
+            var definedUser = new User("John", "Smith");
+            Injector.Register<IUser>(definedUser);
+
+            // compare user from injector to original
+            var viewModel = InjectionResolver.InjectConstructor<CustomViewModel>(Injector);
+            Assert.IsNotNull(viewModel);
+        }
+
+        [TestMethod]
+        public void TestInjectorConstructorDependenciesEqualsDefined()
+        {
+            Injector.Clear();
+
+            // define static user in injector
+            var definedUser = new User("John", "Smith");
+            Injector.Register<IUser>(definedUser);
+
+            // compare user from injector to original
+            var viewModel = InjectionResolver.InjectConstructor<CustomViewModel>(Injector);
+            Assert.AreEqual(viewModel.User, definedUser);
+        }
     }
 }
