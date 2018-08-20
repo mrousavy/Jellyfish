@@ -39,5 +39,17 @@ namespace Jellyfish.Feeds
         ///     Thrown if the node is null
         /// </exception>
         void RegisterNode(INode<TMessage> node);
+
+        /// <summary>
+        ///     Unregister a node in this <see cref="IFeed{TMessage}"/> network
+        /// </summary>
+        /// <param name="node">The node to unregister</param>
+        /// <exception cref="ArgumentException">
+        ///     Thrown if the given node is not registered in this network
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if the node is null
+        /// </exception>
+        void UnregisterNode(INode<TMessage> node);
     }
 }

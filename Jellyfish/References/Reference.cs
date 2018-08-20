@@ -11,12 +11,9 @@ namespace Jellyfish.References
                 bool valid = WeakReference.TryGetTarget(out var reference);
                 return reference;
             }
-            set
-            {
-                // TODO: this is wrong
-                WeakReference.SetTarget(value);
-            }
         }
+
+        public bool IsValid => WeakReference.TryGetTarget(out var _);
 
         private WeakReference<TReference> WeakReference { get; }
 

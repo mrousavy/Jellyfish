@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jellyfish.References;
+using System;
 using System.Collections.Generic;
 
 namespace Jellyfish.Feeds
@@ -19,7 +20,7 @@ namespace Jellyfish.Feeds
         public Feed()
         {
             Messages = new List<TMessage>();
-            References = new List<WeakReference<INode<TMessage>>>();
+            References = new List<IReference<INode<TMessage>>>();
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Jellyfish.Feeds
 
         public IList<TMessage> Messages { get; }
         private IList<INode<TMessage>> Nodes => GetReferences();
-        private IList<WeakReference<INode<TMessage>>> References { get; }
+        private IList<IReference<INode<TMessage>>> References { get; }
 
         public void Notify(TMessage message)
         {
@@ -42,32 +43,70 @@ namespace Jellyfish.Feeds
 
         public void RegisterNode(INode<TMessage> node)
         {
-            if (node == null)
+            lock (References)
             {
-                throw new ArgumentNullException(nameof(node));
-            }
-            if (Nodes.Contains(node))
-            {
-                throw new ArgumentException($"The feed for type {typeof(TMessage).Name} already contains this node!");
-            }
+                if (node == null)
+                {
+                    throw new ArgumentNullException(nameof(node));
+                }
 
-            var weakRef = new WeakReference<INode<TMessage>>(node);
-            References.Add(weakRef);
+                if (Nodes.Contains(node))
+                {
+                    throw new ArgumentException(
+                        $"The feed for type {typeof(TMessage).Name} already contains this node!");
+                }
+
+                var reference = new Reference<INode<TMessage>>(node);
+                References.Add(reference);
+            }
+        }
+
+        public void UnregisterNode(INode<TMessage> node)
+        {
+            lock (References)
+            {
+                if (node == null)
+                {
+                    throw new ArgumentNullException(nameof(node));
+                }
+
+                if (!Nodes.Contains(node))
+                {
+                    throw new ArgumentException(
+                        $"The feed for type {typeof(TMessage).Name} does not contain this node!");
+                }
+
+                for (int i = 0; i < References.Count; i++)
+                {
+                    if (References[i].Value == node)
+                    {
+                        References.RemoveAt(i);
+                        return;
+                    }
+                }
+            }
         }
 
         private IList<INode<TMessage>> GetReferences()
         {
-            var nodes = new List<INode<TMessage>>();
-            foreach (var reference in References)
+            lock (References)
             {
-                bool received = reference.TryGetTarget(out var node);
-                if (received)
+                var nodes = new List<INode<TMessage>>();
+                foreach (var reference in References)
                 {
-                    nodes.Add(node);
+                    if (reference.IsValid)
+                    {
+                        // add to return value
+                        nodes.Add(reference.Value);
+                    } else
+                    {
+                        // remove dead reference
+                        References.Remove(reference);
+                    }
                 }
-            }
 
-            return nodes;
+                return nodes;
+            }
         }
     }
 }
