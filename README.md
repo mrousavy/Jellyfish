@@ -84,7 +84,7 @@ Injector.Register<IDatabaseService>(() => OpenDatabaseService(username, password
 ```
 Some ViewModel:
 ```cs
-class LoginViewModel
+class LoginViewModel : ViewModel
 {
     IUser User { get; set; }
     IDatabaseService _service;
