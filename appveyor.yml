@@ -22,10 +22,10 @@ before_build:
 build:
   verbosity: minimal
 artifacts:
-  - path: 'Jellyfish\**\*.nupkg'
+  - path: 'src\Jellyfish\**\*.nupkg'
     name: NupkgArtifact
 
-  - path: 'Jellyfish.Wpf\**\*.nupkg'
+  - path: 'src\Jellyfish.Wpf\**\*.nupkg'
     name: NupkgArtifact
 deploy:
   provider: NuGet
