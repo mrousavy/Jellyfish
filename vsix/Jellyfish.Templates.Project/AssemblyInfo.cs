@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("$projectname$")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("$projectname$ WPF MVVM Application")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("$registeredorganization$")]
 [assembly: AssemblyProduct("$projectname$")]
 [assembly: AssemblyCopyright("Copyright © $registeredorganization$ $year$")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("$username$")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
