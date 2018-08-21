@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Jellyfish.DependencyInjection
 {
-    public class InjectionResolver
+    public static class InjectionResolver
     {
         /// <summary>
         ///     Inject all properties for the type `<see cref="T" />` with the found injections
