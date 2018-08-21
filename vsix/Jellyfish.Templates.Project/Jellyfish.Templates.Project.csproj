@@ -63,7 +63,7 @@
     </None>
     <None Include="Preferences.cs" />
     <None Include="Main\MainModel.cs" />
-    <None Include="Main\MainViewModel.cs" />
+    <Content Include="Main\MainViewModel.cs" />
     <None Include="Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </None>

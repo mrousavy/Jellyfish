@@ -9,7 +9,7 @@
     <SortOrder>1000</SortOrder>
     <TemplateID>3f153f6e-386a-42e9-9c4f-4d923a02a904</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>Jellyfish.Project</DefaultName>
+    <DefaultName>Jellyfish Project</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
   </TemplateData>
   <TemplateContent>
@@ -17,7 +17,7 @@
       <Folder Name="Main" TargetFolderName="Main">
         <ProjectItem ReplaceParameters="true" TargetFileName="MainModel.cs">MainModel.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MainViewModel.cs">MainViewModel.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml">MainWindow.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml" SubType="UserControl">MainWindow.xaml</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml.cs">MainWindow.xaml.cs</ProjectItem>
       </Folder>
 
