@@ -1,8 +1,8 @@
 ﻿using Jellyfish;
 
-namespace $rootnamespace$.$safeitemname$
+namespace $rootnamespace$.$fileinputname$
 {
-    public class $safeitemname$Model : Model
+    public class $safeitemname$ : Model
     {
 
     }

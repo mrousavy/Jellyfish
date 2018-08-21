@@ -1,11 +1,11 @@
-﻿namespace $rootnamespace$.$safeitemname$
+﻿namespace $rootnamespace$.$fileinputname$
 {
     /// <summary>
-    ///     Interaction logic for $safeitemname$View.xaml
+    ///     Interaction logic for $safeitemname$.xaml
     /// </summary>
-    public partial class $safeitemname$View
+    public partial class $safeitemname$
     {
-        public $safeitemname$View()
+        public $safeitemname$()
         {
             InitializeComponent();
         }

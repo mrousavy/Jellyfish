@@ -1,6 +1,6 @@
 ﻿using Jellyfish.DependencyInjection;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
     public static class Instances
     {

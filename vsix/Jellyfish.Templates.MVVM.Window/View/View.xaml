@@ -1,16 +1,16 @@
 ﻿<Window
-    x:Class="$rootnamespace$.$safeitemname$.$safeitemname$View"
+    x:Class="$rootnamespace$.$fileinputname$.$safeitemname$"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:$rootnamespace$.$safeitemname$"
+    xmlns:local="clr-namespace:$rootnamespace$.$fileinputname$"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="$projectname$ - $safeitemname$"
-    Width="600"
-    Height="400"
-    d:DataContext="{d:DesignInstance Type=local:$safeitemname$ViewModel,
+    Title="$projectname$ - $fileinputname$"
+    Width="800"
+    Height="500"
+    d:DataContext="{d:DesignInstance Type=local:$fileinputname$ViewModel,
                                      IsDesignTimeCreatable=True}"
-    DataContext="{Binding $safeitemname$ViewModel, Source={StaticResource ViewModelLocator}}"
+    DataContext="{Binding $fileinputname$ViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d">
     <Grid />
 </Window>

@@ -1,14 +1,14 @@
 ﻿using Jellyfish;
 
-namespace $rootnamespace$.$safeitemname$
+namespace $rootnamespace$.$fileinputname$
 {
-	public class $safeitemname$ViewModel : ViewModel
+	public class $safeitemname$ : ViewModel
 	{
-        private $safeitemname$Model $safeitemname$Model { get; set; }
+        private $fileinputname$Model $fileinputname$Model { get; set; }
 
-        public $safeitemname$ViewModel()
+        public $safeitemname$()
         {
-            $safeitemname$Model = new $safeitemname$Model();
+            $fileinputname$Model = new $fileinputname$Model();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Jellyfish;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
     public class $safeprojectname$Preferences : Preferences
     {

@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using Jellyfish.DependencyInjection;
-using $rootnamespace$.Main;
+using $safeprojectname$.Main;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
     /// <summary>
     ///     Interaction logic for App.xaml

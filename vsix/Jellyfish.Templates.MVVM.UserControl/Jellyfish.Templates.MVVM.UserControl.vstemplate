@@ -11,12 +11,10 @@
     <DefaultName>Main</DefaultName>
   </TemplateData>
   <TemplateContent>
-    <Folder Name="View" TargetFolderName="$fileinputname$">
-      <ProjectItem ReplaceParameters="true" SubType="UserControl" TargetFileName="$fileinputname$View.xaml">View.xaml</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$View.xaml.cs">View.xaml.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="$fileinputname$ViewModel.cs">ViewModel.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$Model.cs">Model.cs</ProjectItem>
-    </Folder>
+    <ProjectItem ReplaceParameters="true" SubType="UserControl" TargetFileName="$fileinputname$\$fileinputname$View.xaml">View\View.xaml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$\$fileinputname$View.xaml.cs">View\View.xaml.cs</ProjectItem>
+    <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="$fileinputname$\$fileinputname$ViewModel.cs">View\ViewModel.cs</ProjectItem>
+    <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$\$fileinputname$Model.cs">View\Model.cs</ProjectItem>
   </TemplateContent>
 
   <WizardExtension>

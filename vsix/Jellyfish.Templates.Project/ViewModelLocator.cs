@@ -1,9 +1,7 @@
-﻿using System.Windows;
-using Jellyfish;
-using Jellyfish.DependencyInjection;
-using $rootnamespace$.Main;
+﻿using Jellyfish.DependencyInjection;
+using $safeprojectname$.Main;
 
-namespace $rootnamespace$
+namespace $safeprojectname$
 {
 	public class ViewModelLocator
     {

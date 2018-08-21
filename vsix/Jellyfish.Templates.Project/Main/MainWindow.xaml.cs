@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace $rootnamespace$.Main
+namespace $safeprojectname$.Main
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

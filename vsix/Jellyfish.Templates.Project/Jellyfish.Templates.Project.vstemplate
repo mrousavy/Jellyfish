@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>Jellyfish MVVM Project Template</Name>
+    <Name>Jellyfish MVVM Project</Name>
     <Description>Jellyfish MVVM Project Template for creating a WPF Project with Jellyfish, a ViewModelLocator, an Injector singleton and a Preferences class</Description>
     <Icon>Jellyfish.Templates.Project.ico</Icon>
     <ProjectType>CSharp</ProjectType>

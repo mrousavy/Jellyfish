@@ -1,6 +1,6 @@
 ﻿using Jellyfish;
 
-namespace $rootnamespace$.Main
+namespace $safeprojectname$.Main
 {
     public class MainModel : Model
     {
