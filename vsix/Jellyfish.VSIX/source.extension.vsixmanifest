@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="Jellyfish.Wizard.d7c22efd-a37c-4d96-9cf8-a5c6d29d3b7a" Version="1.0" Language="en-US" Publisher="Marc Rousavy" />
+        <DisplayName>Jellyfish Templates</DisplayName>
+        <Description xml:space="preserve">Visual Studio templates for Jellyfish MVVM</Description>
+        <MoreInfo>https://github.com/mrousavy/Jellyfish</MoreInfo>
+        <Icon>jellyfish.ico</Icon>
+        <PreviewImage>jellyfish.png</PreviewImage>
+        <Tags>vsix jellyfish extension templates tools</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Jellyfish.Templates.MVVM.UserControl" d:TargetPath="|Jellyfish.Templates.MVVM.UserControl;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="Jellyfish.Templates.Project" d:TargetPath="|Jellyfish.Templates.Project;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+</PackageManifest>
