@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jellyfish.Wpf", "Jellyfish.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Wizard", "Jellyfish.Wizard\Jellyfish.Wizard.csproj", "{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Templates.MVVM.UserControl", "Jellyfish.Templates.MVVM.UserControl\Jellyfish.Templates.MVVM.UserControl.csproj", "{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

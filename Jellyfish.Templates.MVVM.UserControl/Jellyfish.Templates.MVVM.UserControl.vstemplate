@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Jellyfish MVVM View</Name>
+    <Description>Jellyfish MVVM UserControl template for creating a Model, ViewModel and View</Description>
+    <Icon>Jellyfish.Templates.ico</Icon>
+    <TemplateID>cb4554d4-9e2a-4ca8-85c0-1e383fbf1fc3</TemplateID>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName></DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Folder Name="View" TargetFolderName="$fileinputname$">
+      <ProjectItem ReplaceParameters="true" SubType="UserControl" TargetFileName="$fileinputname$View.xaml">View.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="$fileinputname$ViewModel.cs">ViewModel.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="$fileinputname$Model.cs">Model.cs</ProjectItem>
+    </Folder>
+  </TemplateContent>
+</VSTemplate>
