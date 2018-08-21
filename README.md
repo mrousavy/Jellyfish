@@ -21,6 +21,8 @@ Jellyfish is on [NuGet](https://www.nuget.org/packages/Jellyfish/):
 PM> Install-Package Jellyfish
 ```
 
+> Make sure to also check out the [**Jellyfish Visual Studio Extension 📦**](https://github.com/mrousavy/Jellyfish/wiki/Jellyfish-VSIX)!
+
 Compared to other **MVVM Frameworks** like [MVVM Light](http://www.mvvmlight.net/), [Prism](https://github.com/PrismLibrary/Prism) or [Caliburn.Micro](https://caliburnmicro.com/), this framework is
 * as light as possible
 * using modern best-practices
