@@ -14,7 +14,6 @@
   </TemplateData>
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
-      <!--Main Window-->
       <Folder Name="Main" TargetFolderName="Main">
         <ProjectItem ReplaceParameters="true" TargetFileName="MainModel.cs">MainModel.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="MainViewModel.cs">MainViewModel.cs</ProjectItem>

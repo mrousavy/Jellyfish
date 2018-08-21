@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Jellyfish.Wizard.d7c22efd-a37c-4d96-9cf8-a5c6d29d3b7a" Version="1.0" Language="en-US" Publisher="Marc Rousavy" />
+        <Identity Id="Jellyfish.Wizard.d7c22efd-a37c-4d96-9cf8-a5c6d29d3b7a" Version="1.0.1" Language="en-US" Publisher="mrousavy" />
         <DisplayName>Jellyfish Templates</DisplayName>
         <Description xml:space="preserve">Visual Studio templates for Jellyfish MVVM</Description>
         <MoreInfo>https://github.com/mrousavy/Jellyfish</MoreInfo>
