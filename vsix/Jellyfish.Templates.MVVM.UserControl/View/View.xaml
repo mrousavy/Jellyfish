@@ -1,14 +1,14 @@
 ﻿<UserControl
-    x:Class="$rootnamespace$.$safeitemrootname$"
+    x:Class="$rootnamespace$.$safeitemname$.$safeitemname$View"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DataContext="{d:DesignInstance Type=$safeitemrootname$Model,
+    d:DataContext="{d:DesignInstance Type=$safeitemname$ViewModel,
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    DataContext="{Binding $safeitemrootname$, Source={StaticResource ViewModelLocator}}"
+    DataContext="{Binding $safeitemname$ViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d">
     <Grid />
 </UserControl>
