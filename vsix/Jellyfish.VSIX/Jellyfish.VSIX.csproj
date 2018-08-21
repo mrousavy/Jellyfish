@@ -13,8 +13,8 @@
     <ProjectGuid>{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jellyfish.Wizard</RootNamespace>
-    <AssemblyName>Jellyfish.Wizard</AssemblyName>
+    <RootNamespace>Jellyfish.VSIX</RootNamespace>
+    <AssemblyName>Jellyfish.VSIX</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>false</IncludeAssemblyInVSIXContainer>

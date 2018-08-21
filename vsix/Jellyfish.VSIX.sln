@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Templates.MVVM.UserControl", "Jellyfish.Templates.MVVM.UserControl\Jellyfish.Templates.MVVM.UserControl.csproj", "{9CE931D7-BD54-4F9B-91A9-220BACF4B06C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Wizard", "Jellyfish.VSIX\Jellyfish.Wizard.csproj", "{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.VSIX", "Jellyfish.VSIX\Jellyfish.VSIX.csproj", "{7EDBDA62-3F90-4416-BE4E-9DFB6CEF9A03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jellyfish.Templates.Project", "Jellyfish.Templates.Project\Jellyfish.Templates.Project.csproj", "{67F0CF5A-45A0-4FC4-A19E-DFB783986CC6}"
 EndProject
