@@ -31,7 +31,6 @@
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
 	<ItemGroup>
-
     <Reference Include="System"/>
 	  <Reference Include="System.Data" />
 	  <Reference Include="System.Xml" />
@@ -52,14 +51,27 @@
 	  <Reference Include="PresentationCore" />
 	  <Reference Include="PresentationFramework" />
 	</ItemGroup>
-	<ItemGroup>
-	  <ApplicationDefinition Include="App.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	    <SubType>Designer</SubType>
-	  </ApplicationDefinition>
-		<Compile Include="Class1.cs" />
 
-		<Compile Include="Properties\AssemblyInfo.cs" />
-	</ItemGroup>
+	<ItemGroup>
+	  <Compile Include="Properties\AssemblyInfo.cs" />
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+
+    <Compile Include="Preferences.cs" />
+    <Compile Include="Instances.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="Main\MainModel.cs" />
+    <Compile Include="Main\MainViewModel.cs" />
+    <Compile Include="Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
  </Project>
