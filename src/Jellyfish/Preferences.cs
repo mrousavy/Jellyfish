@@ -15,15 +15,6 @@ namespace Jellyfish
     public abstract class Preferences
     {
         /// <summary>
-        ///     Initialize the Preferences construct
-        /// </summary>
-        /// <param name="path">The Path to the preferences file (See <see cref="RecommendedPath" /></param>
-        protected Preferences(string path)
-        {
-            Path = path;
-        }
-
-        /// <summary>
         ///     The size of the buffer for the filestream in bytes
         /// </summary>
         public static int FileBufferSize { get; set; } = 4096;
@@ -43,9 +34,6 @@ namespace Jellyfish
         /// </summary>
         public static string RecommendedPath => System.IO.Path.Combine(AppData, ExecutableName, "config.json");
 
-        [JsonIgnore]
-        private string Path { get; set; }
-
         /// <summary>
         ///     Load a preferences instance from the given file
         /// </summary>
@@ -60,9 +48,7 @@ namespace Jellyfish
             }
 
             string json = File.ReadAllText(path);
-            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
-            preferences.Path = path;
-            return preferences;
+            return JsonConvert.DeserializeObject<TPreferences>(json);
         }
 
         /// <summary>
@@ -86,16 +72,14 @@ namespace Jellyfish
                 int read;
                 do
                 {
-                    var buffer = new byte[1024];
+                    var buffer = new byte[FileBufferSize];
                     read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize).ConfigureAwait(false);
                     bytes.AddRange(buffer);
                 } while (read > 0);
             }
 
             string json = Encoding.Unicode.GetString(bytes.ToArray());
-            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
-            preferences.Path = path;
-            return preferences;
+            return JsonConvert.DeserializeObject<TPreferences>(json);
         }
 
         /// <summary>
@@ -112,9 +96,7 @@ namespace Jellyfish
             }
 
             string json = File.ReadAllText(path);
-            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
-            preferences.Path = path;
-            return preferences;
+            return JsonConvert.DeserializeObject<TPreferences>(json);
         }
 
         /// <summary>
@@ -139,47 +121,49 @@ namespace Jellyfish
                 int read;
                 do
                 {
-                    var buffer = new byte[1024];
+                    var buffer = new byte[FileBufferSize];
                     read = await sourceStream.ReadAsync(buffer, 0, FileBufferSize).ConfigureAwait(false);
                     bytes.AddRange(buffer);
                 } while (read > 0);
             }
 
             string json = Encoding.Unicode.GetString(bytes.ToArray());
-            var preferences = JsonConvert.DeserializeObject<TPreferences>(json);
-            preferences.Path = path;
-            return preferences;
+            return JsonConvert.DeserializeObject<TPreferences>(json);
         }
 
         /// <summary>
         ///     Serialize and save the preferences instance to the preferences file (<see cref="Path" />)
         /// </summary>
-        public void Save()
+        /// <param name="preferences">The preferences object to save</param>
+        /// <param name="path">The path to the preferences file</param>
+        public static void Save<TPreferences>(TPreferences preferences, string path) where TPreferences : Preferences
         {
-            CreateDirectory();
-            string json = JsonConvert.SerializeObject(this);
-            File.WriteAllText(Path, json);
+            CreateDirectory(path);
+            string json = JsonConvert.SerializeObject(preferences);
+            File.WriteAllText(path, json);
         }
 
         /// <summary>
         ///     Serialize and save the preferences instance to the preferences file (<see cref="Path" />) asynchronous
         /// </summary>
-        public async Task SaveAsync()
+        /// <param name="preferences">The preferences object to save</param>
+        /// <param name="path">The path to the preferences file</param>
+        public static async Task SaveAsync<TPreferences>(TPreferences preferences, string path) where TPreferences : Preferences
         {
-            CreateDirectory();
-            string json = JsonConvert.SerializeObject(this);
+            CreateDirectory(path);
+            string json = JsonConvert.SerializeObject(preferences);
             var content = Encoding.Unicode.GetBytes(json);
 
-            using (var sourceStream = new FileStream(Path, FileMode.Append, FileAccess.Write, FileShare.None,
+            using (var sourceStream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.None,
                 FileBufferSize, true))
             {
                 await sourceStream.WriteAsync(content, 0, content.Length).ConfigureAwait(false);
             }
         }
 
-        private void CreateDirectory()
+        private static void CreateDirectory(string path)
         {
-            var file = new FileInfo(Path);
+            var file = new FileInfo(path);
             var directory = file.Directory;
 
             if (directory != null)

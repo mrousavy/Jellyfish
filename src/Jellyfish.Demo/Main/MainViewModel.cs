@@ -31,13 +31,12 @@ namespace Jellyfish.Demo.Main
 
             var _ = new Timer(TimerCallback, null, 0, 1000);
 
-            // Load preferences from %AppData%/.../...json
-            var prefs = new DemoPreferences(Preferences.RecommendedPath);
-            prefs.Save();
+            // Save new preferences to %AppData%/.../...json
+            var prefs = new DemoPreferences();
+            Preferences.Save(prefs, Preferences.RecommendedPath);
 
             // Load and save preferences to %AppData%/.../...json
             var prefsLoaded = Preferences.Load<DemoPreferences>(Preferences.RecommendedPath);
-            prefsLoaded.Save();
 
             // Send to the `string` feed
             Feed.Notify("hello world!");
