@@ -18,11 +18,6 @@ namespace Jellyfish.Feeds
     public interface IFeed<TMessage>
     {
         /// <summary>
-        ///     A list of all sent messages in this feed
-        /// </summary>
-        IList<TMessage> Messages { get; }
-
-        /// <summary>
         ///     Notify all nodes in this feed with the given <see cref="message" />
         /// </summary>
         /// <param name="message">The message to notify all nodes about</param>

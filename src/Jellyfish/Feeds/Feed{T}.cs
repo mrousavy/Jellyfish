@@ -19,7 +19,6 @@ namespace Jellyfish.Feeds
         /// </summary>
         public Feed()
         {
-            Messages = new List<TMessage>();
             References = new List<IReference<INode<TMessage>>>();
         }
 
@@ -28,13 +27,11 @@ namespace Jellyfish.Feeds
         /// </summary>
         public static IFeed<TMessage> Instance => _instance ?? (_instance = new Feed<TMessage>());
 
-        public IList<TMessage> Messages { get; }
         private IList<INode<TMessage>> Nodes => GetReferences();
         private IList<IReference<INode<TMessage>>> References { get; }
 
         public void Notify(TMessage message)
         {
-            Messages.Add(message);
             foreach (var node in Nodes)
             {
                 node.MessageReceived(message);
