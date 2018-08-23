@@ -8,7 +8,7 @@ namespace Jellyfish.Tests.Data
     {
         public UsersWindow()
         {
-            this.Register();
+            this.Subscribe();
             Users = new List<IUser>();
         }
 

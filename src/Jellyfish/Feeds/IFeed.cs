@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Jellyfish.Feeds
 {
@@ -24,27 +23,27 @@ namespace Jellyfish.Feeds
         void Notify(TMessage message);
 
         /// <summary>
-        ///     Register a new node in this <see cref="IFeed{TMessage}"/> network
+        ///     Subscribe a new node to this <see cref="IFeed{TMessage}"/> network
         /// </summary>
-        /// <param name="node">The node to register</param>
+        /// <param name="node">The node to subscribe</param>
         /// <exception cref="ArgumentException">
-        ///     Thrown if the given node is already registered in this network
+        ///     Thrown if the given node is already subscribed to this network
         /// </exception>
         /// <exception cref="ArgumentNullException">
         ///     Thrown if the node is null
         /// </exception>
-        void RegisterNode(INode<TMessage> node);
+        void SubscribeNode(INode<TMessage> node);
 
         /// <summary>
-        ///     Unregister a node in this <see cref="IFeed{TMessage}"/> network
+        ///     Unsubscribe a node from this <see cref="IFeed{TMessage}"/> network
         /// </summary>
-        /// <param name="node">The node to unregister</param>
+        /// <param name="node">The node to unsubscribe</param>
         /// <exception cref="ArgumentException">
-        ///     Thrown if the given node is not registered in this network
+        ///     Thrown if the given node is not subscribed in this network
         /// </exception>
         /// <exception cref="ArgumentNullException">
         ///     Thrown if the node is null
         /// </exception>
-        void UnregisterNode(INode<TMessage> node);
+        void UnsubscribeNode(INode<TMessage> node);
     }
 }

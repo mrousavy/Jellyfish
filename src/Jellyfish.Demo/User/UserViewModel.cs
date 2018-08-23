@@ -14,7 +14,7 @@ namespace Jellyfish.Demo.User
 
         public UserViewModel()
         {
-            this.Register();
+            this.Subscribe();
             // Send to the `string` feed
             Feed.Notify("hello world!");
         }

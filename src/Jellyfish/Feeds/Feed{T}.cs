@@ -38,7 +38,7 @@ namespace Jellyfish.Feeds
             }
         }
 
-        public void RegisterNode(INode<TMessage> node)
+        public void SubscribeNode(INode<TMessage> node)
         {
             lock (References)
             {
@@ -58,7 +58,7 @@ namespace Jellyfish.Feeds
             }
         }
 
-        public void UnregisterNode(INode<TMessage> node)
+        public void UnsubscribeNode(INode<TMessage> node)
         {
             lock (References)
             {

@@ -15,7 +15,7 @@ namespace Jellyfish.Demo.Feeds
 
         public FeedViewModel()
         {
-            this.Register();
+            this.Subscribe();
             Messages = new ObservableCollection<string>();
 
             NotifyCommand = new RelayCommand(NotifyAction);

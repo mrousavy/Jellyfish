@@ -24,7 +24,7 @@ namespace Jellyfish.Demo.Main
 
         public MainViewModel()
         {
-            this.Register();
+            this.Subscribe();
             OpenFeedsCommand = new RelayCommand(OpenFeedsAction);
             OpenUserCommand = new RelayCommand(OpenUserAction);
             OpenInjectionCommand = new RelayCommand(OpenInjectionAction);
