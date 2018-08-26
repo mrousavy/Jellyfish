@@ -137,7 +137,7 @@ class CustomViewModel : INode<NotifyReason>
 {
     public CustomViewModel
     {
-        this.Register();
+        this.Subscribe();
     }
 
     public void MessageReceived(NotifyReason reason)
